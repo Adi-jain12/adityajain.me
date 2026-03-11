@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Source_Serif_4 } from "next/font/google";
+import localFont from 'next/font/local'
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-source-serif",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const iAMono = localFont({
+  src: [
+    {
+      path: '../public/fonts/iaWriter400.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/iaWriter400.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-ia-mono',
+})
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -26,10 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable}`}>
+      <body className="antialiased">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

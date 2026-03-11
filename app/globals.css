@@ -1,25 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #141414;
-  --foreground: #f58361;
-}
+@theme {
+  /* Base colors */
+  --color-background: #141414;
+  --color-foreground: #f58361;
+  --color-text: #EAEAEA;
+  --color-text-muted: #A0A0A0;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Accent palette */
+  --color-accent: #f58361;
+  --color-accent-light: #f9a88e;
+  --color-accent-dark: #d45f3e;
+
+  /* Surface colors (cards, sections, etc.) */
+  --color-surface: #1c1c1c;
+  --color-surface-hover: #252525;
+  --color-border: #2a2a2a;
+
+  /* Typography */
+  --font-mono: var(--font-ia-mono), "iA Writer Mono", "Monaco", "Consolas", "Andale Mono", "Ubuntu Mono", monospace;
 }
 
 html,
 body {
   min-height: 100%;
-  background: var(--background);
+  background: var(--color-background);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color : #EAEAEA;
+    font-family: var(--font-mono);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-foreground);
+  font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
+}
+
+.font-heading {
+  font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
 }
