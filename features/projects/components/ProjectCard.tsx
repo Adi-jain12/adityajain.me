@@ -1,31 +1,66 @@
 import Link from "next/link";
-import type { Project } from "../types";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import type { Project, ProjectSize } from "../types";
 
 interface ProjectCardProps {
   project: Project;
 }
 
+const sizeClasses: Record<ProjectSize, string> = {
+  small: "col-span-1 row-span-1",
+  medium: "col-span-1 row-span-2",
+  wide: "col-span-2 row-span-1",
+  large: "col-span-2 row-span-2",
+};
+
 export function ProjectCard({ project }: ProjectCardProps) {
+  const size = project.size ?? "small";
+
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group block rounded-xl border border-zinc-200 p-5 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600"
+      className={cn(
+        "group relative block overflow-hidden rounded-lg border border-border bg-surface",
+        sizeClasses[size]
+      )}
     >
-      <h3 className="text-lg font-semibold tracking-tight">
-        {project.title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed">
-        {project.description}
-      </p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
+      {project.image ? (
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover transition-[filter] duration-500 group-hover:blur-xs"
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-surface" />
+      )}
+
+      <div
+        className={cn(
+          "absolute inset-0 flex flex-col items-center justify-center",
+          "bg-black/0 transition-all duration-500 group-hover:bg-black/50"
+        )}
+      >
+        <p
+          className={cn(
+            "font-mono text-center text-sm font-semibold tracking-wide text-white md:text-sm lg:text-sm",
+            "translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+          )}
+        >
+          {project.title}
+        </p>
+        {project.category && (
           <span
-            key={tag}
-            className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-foreground dark:bg-zinc-800"
+            className={cn(
+              "mt-1.5 text-xs tracking-widest text-white/70 md:text-sm",
+              "translate-y-2 opacity-0 transition-all duration-500 delay-75 group-hover:translate-y-0 group-hover:opacity-100"
+            )}
           >
-            {tag}
+            [{project.category}]
           </span>
-        ))}
+        )}
       </div>
     </Link>
   );

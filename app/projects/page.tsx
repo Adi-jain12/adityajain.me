@@ -8,10 +8,10 @@ export default function ProjectsPage() {
   return (
     <Container className="py-16">
       <SectionHeading>All Projects</SectionHeading>
-      <p className="mt-4 text-lg">
+      <p className="mt-4 text-lg text-text-muted">
         A collection of things I&apos;ve built.
       </p>
-      <div className="mt-8">
+      <div className="mt-10">
         <ProjectGrid projects={projects} />
       </div>
     </Container>
