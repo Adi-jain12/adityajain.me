@@ -28,6 +28,17 @@ const iAMono = localFont({
   variable: '--font-ia-mono',
 })
 
+const VG = localFont({
+  src: [
+    {
+      path: '../public/fonts/VG.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-vg',
+})
+
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
@@ -39,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable}`}>
       <body className="antialiased">
         <Header />
         <main className="min-h-screen">{children}</main>

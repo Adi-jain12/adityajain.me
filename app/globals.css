@@ -30,7 +30,7 @@ body {
 body {
   background: var(--color-background);
   color : #EAEAEA;
-    font-family: var(--font-mono);
+    font-family: var(--font-vg), "VG", "Georgia", serif;
 }
 
 h1,
