@@ -3,6 +3,7 @@ import { Source_Serif_4 } from "next/font/google";
 import localFont from 'next/font/local'
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Loader } from "@/components/ui/Loader";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable}`}>
       <body className="antialiased">
+        <Loader />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
