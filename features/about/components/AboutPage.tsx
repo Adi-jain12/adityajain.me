@@ -1,17 +1,31 @@
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import Image from "next/image";
 import { aboutData } from "../data/about";
 
 export function AboutPage() {
   return (
     <div className="py-16">
-      <SectionHeading>About Me</SectionHeading>
+      <div className="flex flex-col items-center">
+        <div className="relative h-40 w-40 overflow-hidden rounded-full ring-2 ring-zinc-200 dark:ring-zinc-700 sm:h-52 sm:w-52">
+          <Image
+            src="/images/about/profile.jpg"
+            alt="Aditya Jain"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
-      <div className="mt-8 space-y-4">
+        <h1 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">
+          Aditya Jain
+        </h1>
+        <p className="mt-1 text-zinc-500 dark:text-zinc-400">
+          Developer &amp; Creator
+        </p>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-2xl space-y-4 text-center">
         {aboutData.bio.map((paragraph, i) => (
-          <p
-            key={i}
-            className="text-lg leading-relaxed"
-          >
+          <p key={i} className="text-lg leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -48,10 +62,7 @@ export function AboutPage() {
         </h3>
         <ul className="mt-4 space-y-2">
           {aboutData.currently.map((item, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3"
-            >
+            <li key={i} className="flex items-start gap-3">
               <span className="mt-2 block h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
               {item}
             </li>
