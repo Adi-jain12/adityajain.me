@@ -12,7 +12,7 @@ export default function Home() {
     <Container>
       <Hero />
       <About />
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="flex items-center justify-between">
           <SectionHeading>Projects</SectionHeading>
           <Link
@@ -25,7 +25,7 @@ export default function Home() {
         <div className="mt-8">
           <ProjectGrid projects={projects} />
         </div>
-      </section>
+      </section> */}
     </Container>
   );
 }

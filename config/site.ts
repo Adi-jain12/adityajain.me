@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Aditya Jain",
-  title: "Aditya Jain — Developer & Creator",
+  title: "Aditya Jain — Software Engineer",
   description:
-    "Developer & creator. Building things for the web.",
+    "Software Engineer. Building things for the web.",
   url: "https://adityajain.me",
 
   navLinks: [
