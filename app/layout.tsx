@@ -12,32 +12,32 @@ const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
 });
 
-const iAMono = localFont({
-  src: [
-    {
-      path: '../public/fonts/iaWriter400.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/iaWriter400.woff',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-ia-mono',
-})
+// const iAMono = localFont({
+//   src: [
+//     {
+//       path: '../public/fonts/iaWriter400.woff2',
+//       weight: '400',
+//       style: 'normal',
+//     },
+//     {
+//       path: '../public/fonts/iaWriter400.woff',
+//       weight: '400',
+//       style: 'normal',
+//     },
+//   ],
+//   variable: '--font-ia-mono',
+// })
 
-const VG = localFont({
-  src: [
-    {
-      path: '../public/fonts/VG.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-vg',
-})
+// const VG = localFont({
+//   src: [
+//     {
+//       path: '../public/fonts/VG.woff2',
+//       weight: '400',
+//       style: 'normal',
+//     },
+//   ],
+//   variable: '--font-vg',
+// })
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -53,7 +53,7 @@ export default function RootLayout({
     <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable}`}>
       <body className="antialiased">
         <Loader />
-        <Header />
+        {/* <Header /> */}
         <main className="min-h-screen">{children}</main>
       </body>
     </html>
