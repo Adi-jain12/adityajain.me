@@ -23,7 +23,7 @@ const sourceSerif = Source_Serif_4({
 //       path: '../public/fonts/iaWriter400.woff',
 //       weight: '400',
 //       style: 'normal',
-//     },
+//     },  
 //   ],
 //   variable: '--font-ia-mono',
 // })
@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable}`}>
+    <html lang="en" className={sourceSerif.variable}>
       <body className="antialiased">
         <Loader />
         {/* <Header /> */}
