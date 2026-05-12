@@ -29,8 +29,8 @@ export function AboutPage() {
             {paragraph}
           </p>
         ))}
-      </div>
-
+      </div>  
+        
       <div className="mt-16">
         <h3 className="text-xl font-semibold tracking-tight">
           Skills &amp; Technologies
