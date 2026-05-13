@@ -7,9 +7,10 @@ export const siteConfig = {
 
   navLinks: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
     { label: "Projects", href: "/projects" },
-    { label: "Contact", href: "/contact-us" },
+    { label: "About", href: "/about" },
+    // { label: "Work", href: "/work" },
+    // { label: "Contact", href: "/contact-us" },
   ],
 
   socialLinks: [
