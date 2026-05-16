@@ -29,7 +29,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         href="/projects"
         className="inline-block py-8 text-sm font-medium text-foreground transition-opacity hover:opacity-80"
       >
-        &larr; Back to projects
       </Link>
       <ProjectDetail project={project} />
     </Container>

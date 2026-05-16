@@ -167,9 +167,9 @@ export function AboutPage() {
       </div>
 
       {aboutData.techStack && aboutData.techStack.length > 0 && (
-        <section className="mt-16 sm:mt-24">
+        <section className="mx-auto mt-16 max-w-3xl sm:mt-24">
           <Reveal>
-            <h3 className="text-2xl font-bold lowercase tracking-tight text-text sm:text-3xl">
+            <h3 className="text-center text-2xl font-bold lowercase tracking-tight text-text sm:text-3xl">
               tech stack
             </h3>
           </Reveal>
@@ -182,7 +182,7 @@ export function AboutPage() {
         </section>
       )}
 
-      <div className="mt-8 sm:mt-12">
+      <div className="mx-auto mt-8 max-w-6xl sm:mt-12">
         {aboutData.sections.map((section) => (
           <Section key={section.heading} section={section} />
         ))}

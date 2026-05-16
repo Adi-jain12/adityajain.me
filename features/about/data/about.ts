@@ -24,7 +24,6 @@ export const aboutData: AboutData = {
     { name: "Git", icon: "git" },
     { name: "GitHub", icon: "github" },
     { name: "Docker", icon: "docker" },
-    { name: "Figma", icon: "figma" },
   ],
 
   sections: [
