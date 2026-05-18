@@ -21,21 +21,32 @@ export function Intro() {
               >
                 Yudiz Solutions
               </a>
-              . I care about clean code, thoughtful design, and shipping
-              products that feel <em className="text-foreground">inevitable</em>.
+              , where I architect and ship production-grade web apps from the
+              first commit to the live URL. I care about clean code, thoughtful
+              design, and shipping products that feel{" "}
+              <em className="text-foreground">inevitable</em> &mdash; the kind
+              you don&apos;t notice until you try the alternative.
             </p>
 
             <p>
-              These days I&apos;m shipping production apps with Next.js and
-              TypeScript, building reusable{" "}
+              My work lives at the intersection of engineering and design:
+              type-driven{" "}
               <Link
                 href="/projects"
                 className="text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
               >
-                design systems
-              </Link>
-              , and exploring AI-powered developer tooling &mdash; for the joy
-              of it.
+                full-stack apps
+              </Link>{" "}
+              with Next.js and TypeScript, reusable design systems that compound
+              into faster delivery, and interfaces tuned for motion, rhythm, and
+              the quiet details that make software feel considered.
+            </p>
+
+            <p>
+              Outside of client work, I&apos;m usually reading about software
+              architecture, tinkering with AI-powered developer tooling, or
+              building small experiments on the web &mdash; for the joy of the
+              craft.
             </p>
 
             <p className="pt-3">

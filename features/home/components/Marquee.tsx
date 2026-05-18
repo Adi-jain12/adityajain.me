@@ -13,7 +13,7 @@ export function Marquee() {
   const items = [...KEYWORDS, ...KEYWORDS];
 
   return (
-    <div className="relative my-6 overflow-hidden border-y border-border py-6 sm:my-10 sm:py-8">
+    <div className="relative mb-2 overflow-hidden border-b border-border py-5 sm:mb-4 sm:py-6">
       <div
         className="marquee-track flex w-max items-center font-heading text-3xl font-bold lowercase tracking-tight sm:text-4xl md:text-5xl"
         aria-hidden="true"

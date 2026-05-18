@@ -9,13 +9,10 @@ import {
 export default function Home() {
   return (
     <>
-      <div className="mx-auto w-full max-w-5xl px-6 sm:px-8">
-        <Hero />
-      </div>
-
       <Marquee />
 
       <div className="mx-auto w-full max-w-5xl px-6 sm:px-8">
+        <Hero />
         <Intro />
         <ContactCTA />
         <Socials />
