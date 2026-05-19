@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4 } from "next/font/google";
+import { Source_Serif_4, Caveat } from "next/font/google";
 import localFont from 'next/font/local'
 import { Header } from "@/components/layout/Header";
 import { Loader } from "@/components/ui/Loader";
@@ -11,6 +11,12 @@ const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-source-serif",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-caveat",
 });
 
 const iAMono = localFont({
@@ -53,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable}`}>
       <body className="antialiased">
         <SmoothScroll />
         <Loader />

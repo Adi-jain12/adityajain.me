@@ -53,6 +53,10 @@ h3 {
   font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
 }
 
+.font-script {
+  font-family: var(--font-caveat), "Caveat", "Bradley Hand", cursive;
+}
+
 /* Lenis smooth scroll */
 html.lenis,
 html.lenis body {
