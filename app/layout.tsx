@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Caveat } from "next/font/google";
+import { Source_Serif_4, Caveat, Playfair_Display } from "next/font/google";
 import localFont from 'next/font/local'
 import { Header } from "@/components/layout/Header";
 import { Loader } from "@/components/ui/Loader";
@@ -17,6 +17,13 @@ const caveat = Caveat({
   subsets: ["latin"],
   weight: ["500", "700"],
   variable: "--font-caveat",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
 });
 
 const iAMono = localFont({
@@ -59,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable} ${playfair.variable}`}>
       <body className="antialiased">
         <SmoothScroll />
         <Loader />
