@@ -171,15 +171,9 @@ export function Hero() {
               className="col-span-12 flex flex-col gap-y-5 sm:col-span-5"
             >
               <PosterLink
-                href="/contact-us"
-                label="SCHEDULE A CALL"
-                tone={CREAM}
-              />
-              <PosterLink
                 href="/projects"
                 label="MY PORTFOLIO"
                 tone={CREAM}
-                indent
               />
             </motion.div>
 

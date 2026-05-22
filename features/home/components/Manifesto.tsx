@@ -113,19 +113,6 @@ export function Manifesto() {
                     ↗
                   </span>
                 </Link>
-                <Link
-                  href="/contact-us"
-                  className="group inline-flex items-center gap-2 border-b pb-1 transition-opacity hover:opacity-80"
-                  style={{ color: POSTER_RED, borderColor: POSTER_RED }}
-                >
-                  start a project
-                  <span
-                    aria-hidden
-                    className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
-                  >
-                    ↗
-                  </span>
-                </Link>
               </div>
 
               <motion.p
