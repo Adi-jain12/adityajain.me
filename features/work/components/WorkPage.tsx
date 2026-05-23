@@ -5,7 +5,7 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
   const isCurrent = experience.endDate === null;
 
   return (
-    <div className="relative flex gap-6 pb-12 sm:gap-8">
+    <div className="relative flex gap-4 pb-10 sm:gap-8 sm:pb-12">
       {/* Timeline line */}
       {!isLast && (
         <div className="absolute left-[7px] top-[18px] h-full w-px bg-border sm:left-[9px]" />
@@ -23,13 +23,13 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
       </div>
 
       {/* Content */}
-      <div className="flex-1 -mt-1">
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-          <div>
-            <h3 className="text-lg font-semibold tracking-tight sm:text-xl">
+      <div className="-mt-1 min-w-0 flex-1">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+          <div className="min-w-0">
+            <h3 className="text-base font-semibold tracking-tight sm:text-lg md:text-xl">
               {experience.role}
             </h3>
-            <p className="mt-0.5 text-base">
+            <p className="mt-0.5 text-sm sm:text-base">
               {experience.companyUrl ? (
                 <a
                   href={experience.companyUrl}
@@ -46,8 +46,8 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
               <span className="text-text-muted">{experience.location}</span>
             </p>
           </div>
-          <div className="flex items-center gap-2 sm:shrink-0">
-            <span className="font-mono text-sm text-text-muted">
+          <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
+            <span className="font-mono text-xs text-text-muted sm:text-sm">
               {experience.startDate} — {experience.endDate ?? "Present"}
             </span>
             {isCurrent && (
@@ -62,7 +62,7 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
           {experience.type}
         </span>
 
-        <p className="mt-3 leading-relaxed text-text-muted">
+        <p className="mt-3 text-sm leading-relaxed text-text-muted sm:text-base">
           {experience.description}
         </p>
 
@@ -92,19 +92,19 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
 
 export function WorkPage() {
   return (
-    <div className="py-16">
+    <div className="py-10 sm:py-16">
       <div className="max-w-2xl">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
           Work Experience
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-text-muted">
+        <p className="mt-3 text-base leading-relaxed text-text-muted sm:mt-4 sm:text-lg">
           A timeline of my professional journey — the companies I&apos;ve worked
           with, the roles I&apos;ve held, and the impact I&apos;ve made along
           the way.
         </p>
       </div>
 
-      <div className="mt-14">
+      <div className="mt-10 sm:mt-14">
         {workData.experiences.map((experience, i) => (
           <WorkCard
             key={`${experience.company}-${experience.role}`}

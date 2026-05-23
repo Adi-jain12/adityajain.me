@@ -13,11 +13,11 @@ export function Manifesto() {
   return (
     <section
       aria-label="In the Mess of Life and Work"
-      className="relative w-full bg-background px-6 pb-16 pt-10 sm:px-10 sm:pt-14 sm:pb-20 lg:px-16 lg:pt-16 lg:pb-24"
+      className="relative w-full bg-background px-4 pb-16 pt-10 sm:px-10 sm:pt-14 sm:pb-20 lg:px-16 lg:pt-16 lg:pb-24"
     >
       <div className="mx-auto w-full max-w-[1400px]">
         {/* Top metadata bar */}
-        <div className="grid grid-cols-3 items-center pb-6 font-mono text-[10px] uppercase tracking-[0.25em] text-text-muted sm:pb-8 sm:text-[11px]">
+        <div className="grid grid-cols-2 items-center gap-2 pb-6 font-mono text-[9px] uppercase tracking-[0.2em] text-text-muted sm:grid-cols-3 sm:pb-8 sm:text-[11px] sm:tracking-[0.25em]">
           <span className="justify-self-start">Typography &amp; Layout</span>
           <span className="hidden justify-self-center sm:block">Grid Used</span>
           <span className="justify-self-end">The Golden Canon</span>
@@ -33,13 +33,13 @@ export function Manifesto() {
         >
           {/* Upper — cream area with title + body */}
           <div
-            className="grid grid-cols-12 gap-x-6 gap-y-8 px-6 py-12 sm:px-10 sm:py-14 md:gap-x-10 md:px-14 md:py-16 lg:px-20 lg:py-20"
+            className="grid grid-cols-12 gap-x-6 gap-y-8 px-5 py-10 sm:px-10 sm:py-14 md:gap-x-10 md:px-14 md:py-16 lg:px-20 lg:py-20"
             style={{ backgroundColor: CREAM }}
           >
             {/* Left — big italic serif title */}
             <div className="col-span-12 md:col-span-7">
               <h2
-                className="font-heading font-bold italic leading-[0.92] tracking-tight text-[3rem] sm:text-[4.5rem] md:text-[5rem] lg:text-[6.25rem]"
+                className="font-heading font-bold italic leading-[0.92] tracking-tight text-[2.5rem] sm:text-[4.5rem] md:text-[5rem] lg:text-[6.25rem]"
                 style={{ color: POSTER_RED }}
               >
                 <TitleLine delay={0.05}>
@@ -60,7 +60,7 @@ export function Manifesto() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.22em] sm:text-[11px]"
+                className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[9px] uppercase tracking-[0.18em] sm:mt-6 sm:gap-x-3 sm:text-[11px] sm:tracking-[0.22em]"
                 style={{ color: INK_SOFT }}
               >
                 <span>{YEAR}</span>
@@ -82,14 +82,13 @@ export function Manifesto() {
               className="col-span-12 self-start md:col-span-5 md:pt-3"
             >
               <h3
-                className="font-heading text-xl font-bold leading-tight sm:text-2xl md:text-[1.625rem]"
+                className="font-heading text-lg font-bold leading-tight sm:text-2xl md:text-[1.625rem]"
                 style={{ color: INK_SOFT }}
               >
                 Breathe easy. Escape the mess.
               </h3>
-
               <p
-                className="mt-4 text-sm leading-relaxed sm:text-[15px] md:text-justify"
+                className="mt-3 text-[13.5px] leading-relaxed sm:mt-4 sm:text-[15px] md:text-justify"
                 style={{ color: INK_SOFT }}
               >
                 Modern work is a knot of tools, tabs, and tickets. I build
@@ -99,7 +98,7 @@ export function Manifesto() {
                 Software that gives you back the day.
               </p>
 
-              <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em]">
+              <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] sm:mt-7 sm:text-[11px] sm:tracking-[0.22em]">
                 <Link
                   href="/projects"
                   className="group inline-flex items-center gap-2 border-b pb-1 transition-opacity hover:opacity-80"
@@ -134,7 +133,7 @@ export function Manifesto() {
             whileInView={{ scaleY: 1, opacity: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="h-40 w-full origin-top sm:h-56 md:h-64 lg:h-72"
+            className="h-28 w-full origin-top sm:h-56 md:h-64 lg:h-72"
             style={{ backgroundColor: POSTER_RED }}
             aria-hidden
           />

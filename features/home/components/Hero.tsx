@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const CREAM = "#f1e6cf";
@@ -49,14 +48,14 @@ export function Hero() {
         />
 
         {/* Main poster content */}
-        <div className="relative mx-auto w-full max-w-[1400px] px-6 pt-10 pb-12 sm:px-10 sm:pt-14 sm:pb-16 lg:px-16 lg:pt-16 lg:pb-20">
-        <div className="relative grid grid-cols-12 gap-x-4 sm:gap-x-6 lg:gap-x-8">
+        <div className="relative mx-auto w-full max-w-[1400px] px-4 pt-8 pb-10 sm:px-10 sm:pt-14 sm:pb-16 lg:px-16 lg:pt-16 lg:pb-20">
+        <div className="relative grid grid-cols-12 gap-x-3 sm:gap-x-6 lg:gap-x-8">
           {/* HELLO — top left */}
           <motion.h1
             initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="col-span-12 z-20 font-heading font-bold italic leading-[0.85] tracking-tight text-[20vw] sm:text-[16vw] md:col-span-5 md:text-[10vw] lg:text-[9.5vw] xl:text-[9rem]"
+            className="col-span-12 z-20 font-heading font-bold italic leading-[0.85] tracking-tight text-[18vw] sm:text-[16vw] md:col-span-5 md:text-[10vw] lg:text-[9.5vw] xl:text-[9rem]"
             style={{ color: POSTER_RED }}
           >
             ADITYA
@@ -67,29 +66,29 @@ export function Hero() {
             initial={{ opacity: 0, y: 12, rotate: -2 }}
             animate={{ opacity: 1, y: 0, rotate: -2 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="z-30 col-span-12 mt-4 flex items-start justify-start md:col-span-7 md:col-start-6 md:mt-2 md:justify-end"
+            className="z-30 col-span-12 mt-3 flex items-start justify-start md:col-span-7 md:col-start-6 md:mt-2 md:justify-end"
           >
             <div className="relative inline-flex flex-col items-start leading-none">
               {/* top pill — "software" */}
               <span
-                className="relative z-20 inline-flex items-center rounded-full px-6 pt-1.5 pb-2 font-script italic leading-none sm:px-7 sm:pt-2 sm:pb-2.5"
+                className="relative z-20 inline-flex items-center rounded-full px-4 pt-1 pb-1.5 font-script italic leading-none sm:px-7 sm:pt-2 sm:pb-2.5"
                 style={{
                   backgroundColor: INK,
                   color: CREAM,
                   boxShadow: "0 18px 40px -20px rgba(0,0,0,0.4)",
-                  fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+                  fontSize: "clamp(1.75rem, 8vw, 3.75rem)",
                 }}
               >
                 software
               </span>
               {/* bottom pill — "engineer", nudged right + pulled up to overlap */}
               <span
-                className="relative z-10 -mt-6 ml-16 inline-flex items-center rounded-full px-6 pt-1.5 pb-2 font-script italic leading-none sm:-mt-7 sm:ml-24 sm:px-7 sm:pt-2 sm:pb-2.5 md:ml-28"
+                className="relative z-10 -mt-4 ml-10 inline-flex items-center rounded-full px-4 pt-1 pb-1.5 font-script italic leading-none sm:-mt-7 sm:ml-24 sm:px-7 sm:pt-2 sm:pb-2.5 md:ml-28"
                 style={{
                   backgroundColor: INK,
                   color: CREAM,
                   boxShadow: "0 18px 40px -20px rgba(0,0,0,0.4)",
-                  fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+                  fontSize: "clamp(1.75rem, 8vw, 3.75rem)",
                 }}
               >
                 engineer
@@ -97,26 +96,12 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* I'M and ADITYA row — typography flanking the centered image */}
-          <div className="col-span-12 mt-2 grid grid-cols-12 items-center gap-x-4 sm:mt-4 sm:gap-x-6 lg:gap-x-8">
-            {/* I'M — left */}
-            <motion.h2
-              initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{
-                duration: 0.9,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="col-span-3 z-20 font-heading font-bold italic leading-[0.85] tracking-tight text-[18vw] sm:text-[14vw] md:text-[9vw] lg:text-[8.5vw] xl:text-[8rem]"
-              style={{ color: POSTER_RED }}
-            >
-           
-            </motion.h2>
+          {/* JAIN row */}
+          <div className="col-span-12 mt-2 grid grid-cols-12 items-center gap-x-3 sm:mt-4 sm:gap-x-6 lg:gap-x-8">
+            {/* spacer for desktop only */}
+            <div className="hidden md:col-span-7 md:block" aria-hidden />
 
-            {/* Center photo */}
-
-            {/* ADITYA — right */}
+            {/* JAIN */}
             <motion.h2
               initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -125,7 +110,7 @@ export function Hero() {
                 delay: 0.25,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="col-span-4 z-20 font-heading font-bold italic leading-[0.85] tracking-tight text-[18vw] sm:text-[14vw] md:col-span-5 md:text-[10vw] lg:text-[9.5vw] xl:text-[9rem]"
+              className="col-span-12 z-20 font-heading font-bold italic leading-[0.85] tracking-tight text-[18vw] sm:text-[16vw] md:col-span-5 md:text-[10vw] lg:text-[9.5vw] xl:text-[9rem]"
               style={{ color: POSTER_RED }}
             >
               JAIN
@@ -157,8 +142,8 @@ export function Hero() {
           }}
         />
 
-        <div className="relative mx-auto w-full max-w-[1400px] px-6 pt-12 pb-20 sm:px-10 sm:pt-14 sm:pb-24 lg:px-16 lg:pt-16 lg:pb-28">
-          <div className="grid grid-cols-12 gap-x-4 gap-y-10 sm:gap-x-6 lg:gap-x-8">
+        <div className="relative mx-auto w-full max-w-[1400px] px-4 pt-10 pb-20 sm:px-10 sm:pt-14 sm:pb-24 lg:px-16 lg:pt-16 lg:pb-28">
+          <div className="grid grid-cols-12 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
             {/* Left — CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -186,7 +171,7 @@ export function Hero() {
                 delay: 0.7,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="col-span-12 max-w-[44ch] text-[15px] leading-[1.7] sm:col-span-7 sm:col-start-6 sm:text-base md:col-span-6 md:col-start-7 md:text-justify"
+              className="col-span-12 max-w-[44ch] pr-16 text-[14px] leading-[1.65] sm:col-span-7 sm:col-start-6 sm:pr-0 sm:text-base sm:leading-[1.7] md:col-span-6 md:col-start-7 md:text-justify"
               style={{ color: CREAM }}
             >
               A software engineer based in India, currently at{" "}
@@ -206,7 +191,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.6, rotate: -45 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10"
+            className="absolute bottom-4 right-4 scale-75 sm:bottom-8 sm:right-8 sm:scale-100 lg:bottom-10 lg:right-10"
           >
             <Sunburst color={CREAM} />
           </motion.div>

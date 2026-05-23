@@ -6,12 +6,12 @@ export default function ProjectsPage() {
   const projects = getAllProjects();
 
   return (
-    <Container className="py-16">
+    <Container className="py-10 sm:py-16">
       <SectionHeading>All Projects</SectionHeading>
-      <p className="mt-4 text-lg text-text-muted">
+      <p className="mt-3 text-base text-text-muted sm:mt-4 sm:text-lg">
         A collection of things I&apos;ve built.
       </p>
-      <div className="mt-10">
+      <div className="mt-8 sm:mt-10">
         <ProjectGrid projects={projects} />
       </div>
     </Container>
