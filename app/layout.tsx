@@ -67,11 +67,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable} ${playfair.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased flex min-h-svh flex-col">
         <SmoothScroll />
         <Loader />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="flex flex-1 flex-col">{children}</main>
       </body>
     </html>
   );

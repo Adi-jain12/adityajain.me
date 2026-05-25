@@ -15,7 +15,7 @@ export function Manifesto() {
       aria-label="In the Mess of Life and Work"
       className="relative w-full bg-background px-4 pb-16 pt-10 sm:px-10 sm:pt-14 sm:pb-20 lg:px-16 lg:pt-16 lg:pb-24"
     >
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="w-full">
         {/* Top metadata bar */}
         <div className="grid grid-cols-2 items-center gap-2 pb-6 font-mono text-[9px] uppercase tracking-[0.2em] text-text-muted sm:grid-cols-3 sm:pb-8 sm:text-[11px] sm:tracking-[0.25em]">
           <span className="justify-self-start">Typography &amp; Layout</span>

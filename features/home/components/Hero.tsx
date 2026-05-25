@@ -26,13 +26,16 @@ export function Hero() {
   return (
     <section
       aria-label="Aditya Jain — portfolio poster"
-      className="relative w-full overflow-hidden"
+      className="relative flex w-full flex-1 flex-col overflow-hidden"
     >
       {/* Top black marquee */}
       <TopMarquee />
 
-      {/* Cream poster area */}
-      <div className="relative" style={{ backgroundColor: CREAM }}>
+      {/* Cream poster area — grows to fill remaining viewport */}
+      <div
+        className="relative flex min-h-0 flex-1 flex-col justify-center"
+        style={{ backgroundColor: CREAM }}
+      >
         {/* Dotted background pattern — scoped to cream area only */}
         <div
           aria-hidden
@@ -48,7 +51,7 @@ export function Hero() {
         />
 
         {/* Main poster content */}
-        <div className="relative mx-auto w-full max-w-[1400px] px-4 pt-8 pb-10 sm:px-10 sm:pt-14 sm:pb-16 lg:px-16 lg:pt-16 lg:pb-20">
+        <div className="relative w-full px-4 py-6 sm:px-10 sm:py-10 lg:px-16 lg:py-12">
         <div className="relative grid grid-cols-12 gap-x-3 sm:gap-x-6 lg:gap-x-8">
           {/* HELLO — top left */}
           <motion.h1
@@ -121,14 +124,19 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Gradient panel — content (paragraph + CTAs + sunburst) */}
-      <motion.div
-        initial={{ scaleY: 0.5, opacity: 0.4 }}
-        animate={{ scaleY: 1, opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full origin-top overflow-hidden"
-        style={{ backgroundImage: POSTER_GRADIENT }}
+      {/* Cream band with the lifted orange card sitting on top */}
+      <div
+        className="relative shrink-0 px-4 pt-6 sm:px-8 sm:pt-10 lg:px-12 lg:pt-14"
+        style={{ backgroundColor: CREAM }}
       >
+        {/* Gradient panel — content (paragraph + CTAs + sunburst) */}
+        <motion.div
+          initial={{ scaleY: 0.5, opacity: 0.4 }}
+          animate={{ scaleY: 1, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="relative flex w-full origin-top flex-col overflow-hidden rounded-t-4xl min-h-[36svh] sm:rounded-t-[2.5rem] sm:min-h-[40svh] lg:rounded-t-[3rem] lg:min-h-[42svh]"
+          style={{ backgroundImage: POSTER_GRADIENT }}
+        >
         {/* Subtle dotted texture for depth, scoped to the red strip */}
         <div
           aria-hidden
@@ -142,7 +150,7 @@ export function Hero() {
           }}
         />
 
-        <div className="relative mx-auto w-full max-w-[1400px] px-4 pt-10 pb-20 sm:px-10 sm:pt-14 sm:pb-24 lg:px-16 lg:pt-16 lg:pb-28">
+        <div className="relative w-full px-4 pt-14 pb-20 sm:px-10 sm:pt-20 sm:pb-28 lg:px-16 lg:pt-24 lg:pb-32">
           <div className="grid grid-cols-12 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
             {/* Left — CTAs */}
             <motion.div
@@ -174,14 +182,16 @@ export function Hero() {
               className="col-span-12 max-w-[44ch] pr-16 text-[14px] leading-[1.65] sm:col-span-7 sm:col-start-6 sm:pr-0 sm:text-base sm:leading-[1.7] md:col-span-6 md:col-start-7 md:text-justify"
               style={{ color: CREAM }}
             >
-              A software engineer based in India, currently at{" "}
+              {/* A software engineer based in India, currently at{" "}
               <span className="font-bold underline decoration-2 underline-offset-4">
                 Yudiz Solutions
               </span>
               , where I architect and ship production-grade web apps from the
               first commit to the live URL. I care about clean code, thoughtful
               design, and software that feels{" "}
-              <em className="font-semibold">inevitable</em>.
+              <em className="font-semibold">inevitable</em>. */}
+
+              Fullstack Developer crafting high-performance, interactive web experiences. Focusing on scalable backend systems and seamless user interfaces.
             </motion.p>
           </div>
 
@@ -196,7 +206,8 @@ export function Hero() {
             <Sunburst color={CREAM} />
           </motion.div>
         </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       {/* Bottom metadata strip on dark page bg */}
       {/* <div className="bg-background px-6 py-5 sm:px-10 sm:py-6 lg:px-16">
