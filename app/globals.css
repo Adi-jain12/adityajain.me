@@ -107,3 +107,110 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* Premium primitives — easing tokens & reusable micro-animations */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Pulsing presence dot (availability indicator) */
+@keyframes dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.72;
+  }
+}
+
+@keyframes dot-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.presence-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #5fd97a;
+  box-shadow: 0 0 0 0 rgba(95, 217, 122, 0.55);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+
+.presence-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(95, 217, 122, 0.55);
+  animation: dot-ring 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presence-dot,
+  .presence-dot::after {
+    animation: none;
+  }
+}
+
+/* Magnetic / soft-lift button affordance */
+.btn-magnetic {
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo),
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.btn-magnetic:hover {
+  transform: translateY(-2px);
+}
+
+/* Animated underline used by nav and inline links */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-out-quart);
+}
+
+.link-underline:hover::after,
+.link-underline[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+.link-underline[data-active="true"]::after {
+  transform-origin: left center;
+}
+
+/* Hide scrollbars on horizontally scrolling pill rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
