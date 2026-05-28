@@ -9,14 +9,54 @@ import { motion, type Variants } from "framer-motion";
 const CREAM = "#F1E7D2";
 const CREAM_SOFT = "#EFE3CB";
 const POSTER_RED = "#E04B22";
+const CTA_RED = "#cd5230";
+const CODE_PILL_BLUE = "#1e3a8a";
 const INK = "#0A0A0A";
 
-const POSTER_GRADIENT =
-  "linear-gradient(90deg, #1f0805 0%, #6a1a0d 15%, #b13a1e 32%, #d45f3e 55%, #ea6f44 80%, #f58361 100%)";
+const POSTER_GRADIENT = `
+  radial-gradient(
+    circle at 82% 50%,
+    rgba(255,140,70,0.22) 0%,
+    rgba(255,140,70,0.10) 24%,
+    transparent 46%
+  ),
+  linear-gradient(
+    90deg,
+    #2a120d 0%,
+    #3a1710 14%,
+    #562014 32%,
+    #742817 48%,
+    #94311b 64%,
+    #bc4122 82%,
+    #e85a2f 100%
+  )
+`;
 
 // 🎛 Orange card width — tweak this value to resize the bottom card.
 // Accepts any CSS width: "100%", "1260px", "92%", "min(100%, 1320px)", etc.
-const ORANGE_CARD_MAX_WIDTH = "95%";
+const ORANGE_CARD_MAX_WIDTH = "94%";
+
+// Headline inline pills (face + blob) — shared box so both scale with the title
+const HEADLINE_PILL = {
+  height: "0.98em",
+  width: "2.35em",
+} as const;
+
+const HEADLINE_PILL_SHELL_STYLE: React.CSSProperties = {
+  backgroundColor: POSTER_RED,
+  boxShadow:
+    "0 12px 28px -16px rgba(224, 75, 34, 0.6), inset 0 0 0 1px rgba(0,0,0,0.04)",
+};
+
+const HEADLINE_PILL_BLUE_SHELL_STYLE: React.CSSProperties = {
+  backgroundColor: CODE_PILL_BLUE,
+  boxShadow:
+    "0 12px 28px -16px rgba(30, 58, 138, 0.55), inset 0 0 0 1px rgba(0,0,0,0.04)",
+};
+
+const HEADLINE_PILL_INNER_RING: React.CSSProperties = {
+  boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.18)",
+};
 
 const MARQUEE_WORDS = [
   "DESIGNING TYPE",
@@ -97,19 +137,17 @@ export function Hero() {
     <section
       data-fit-viewport
       aria-label="Aditya Jain — portfolio"
-      className="relative grid w-full min-h-0 flex-1 grid-rows-[auto_minmax(0,0.9fr)_minmax(0,1.1fr)] overflow-hidden sm:grid-rows-[auto_minmax(0,1fr)_minmax(0,1.05fr)] lg:grid-rows-[auto_minmax(0,0.95fr)_minmax(0,1fr)]"
+      className="relative grid w-full min-h-0 flex-1 grid-rows-[auto_minmax(0,1.08fr)_minmax(0,0.92fr)] overflow-hidden sm:grid-rows-[auto_minmax(0,1.1fr)_minmax(0,0.9fr)] lg:grid-rows-[auto_minmax(0,1.12fr)_minmax(0,0.88fr)]"
       style={{ backgroundColor: CREAM }}
     >
       <TopMarquee />
 
-      {/* Cream hero — fixed proportion via grid row */}
+      {/* Cream hero — headline + CTAs, left-aligned with top margin */}
       <div
-        className="paper-grain relative flex min-h-0 flex-col justify-between overflow-hidden"
+        className="paper-grain relative flex min-h-0 flex-col overflow-hidden"
         style={{ backgroundColor: CREAM }}
       >
-        <CornerLabels />
-        <HeroHeadline />
-        <HeroFooter />
+        <HeroIntro />
       </div>
 
       {/* Orange card — bottom proportion via grid row */}
@@ -171,20 +209,15 @@ function TopMarquee() {
 }
 
 // ═════════════════════════════════════════════════════════
-// Cream hero — corner labels, headline, footer row
+// Cream hero — left-aligned headline + CTAs, top margin only
 // ═════════════════════════════════════════════════════════
 
-function CornerLabels() {
+function HeroIntro() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
-      className="pointer-events-none relative z-20 flex shrink-0 items-center justify-between px-3 pt-2 sm:px-6 sm:pt-3 lg:px-12 lg:pt-4"
-      style={{ color: INK }}
-    >
-
-    </motion.div>
+    <div className="relative z-10 mx-auto mt-10 w-full max-w-[1200px] flex flex-col items-start gap-4 px-3 sm:mt-14 sm:gap-5 sm:px-6 md:mt-16 lg:mt-18 lg:gap-6 lg:px-12">
+      <HeroHeadline />
+      <HeroFooter />
+    </div>
   );
 }
 
@@ -194,18 +227,18 @@ function HeroHeadline() {
       variants={stagger}
       initial="hidden"
       animate="visible"
-      className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col items-center justify-center px-3 pt-1 pb-1 sm:px-6 sm:pt-2 sm:pb-1 lg:items-start lg:px-12 lg:pt-3"
+      className="flex w-full flex-col items-start"
     >
       <div
-        className="font-display text-center font-black leading-[0.94] tracking-[-0.035em] lg:text-left"
+        className="font-display flex flex-col gap-[0.14em] text-left font-black leading-[0.90] tracking-[-0.035em] sm:gap-[0.20em] md:gap-[0.20em]"
         style={{
           color: INK,
-          fontSize: "clamp(1.35rem, 4.4vw + 0.15rem, 4.9rem)",
+          fontSize: "clamp(1.35rem, 4.8vw + 0.15rem, 4.9rem)",
         }}
       >
         <motion.div
           variants={fadeUp}
-          className="flex flex-wrap items-center justify-center gap-x-[0.16em] gap-y-1 lg:flex-nowrap lg:justify-start lg:whitespace-nowrap"
+          className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap"
         >
           <span className="font-bold">Hello</span>
           <FacePill />
@@ -214,18 +247,17 @@ function HeroHeadline() {
 
         <motion.div
           variants={fadeUp}
-          className="mt-0.5 flex flex-wrap items-center justify-center gap-x-[0.16em] gap-y-1 sm:mt-1 lg:flex-nowrap lg:justify-start lg:whitespace-nowrap"
+          className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap"
         >
           <span className="font-bold">I build</span>
           <BlueBlob />
-          <span className="sm:whitespace-nowrap font-bold">digital experiences</span>
+          <span className="sm:whitespace-nowrap font-bold">web experiences</span>
         </motion.div>
       </div>
 
-      {/* Subtitle */}
       <motion.p
         variants={fadeUpSubtle}
-        className="mt-1.5 max-w-[56ch] text-center font-mono text-[9px] leading-[1.55] tracking-[0.02em] sm:mt-2 sm:text-[10px] md:text-[11px] lg:text-left lg:text-[12px]"
+        className="mt-2 max-w-[80ch] text-left font-mono text-[9px] leading-[1.55] tracking-[0.02em] sm:mt-4.5 sm:text-[10px] md:text-[11px] lg:text-[12px]"
         style={{ color: INK, opacity: 0.78 }}
       >
         Full-stack developer crafting high-performance, interactive web
@@ -235,26 +267,62 @@ function HeroHeadline() {
   );
 }
 
-function FacePill() {
+function HeadlinePill({
+  children,
+  className = "",
+  style,
+  initial,
+  animate,
+  transition,
+  "aria-hidden": ariaHidden,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  initial?: { scale?: number; opacity?: number; rotate?: number };
+  animate?: { scale?: number; opacity?: number; rotate?: number };
+  transition?: { duration?: number; delay?: number; ease?: [number, number, number, number] };
+  "aria-hidden"?: boolean;
+}) {
   return (
     <motion.span
+      initial={initial}
+      animate={animate}
+      transition={transition}
+      aria-hidden={ariaHidden}
+      className={`relative inline-flex shrink-0 items-center justify-center overflow-hidden align-middle ${className}`}
+      style={{
+        height: HEADLINE_PILL.height,
+        width: HEADLINE_PILL.width,
+        borderRadius: "9999px",
+        ...style,
+      }}
+    >
+      {children}
+    </motion.span>
+  );
+}
+
+function HeadlinePillInner({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      className="absolute inset-[8%] overflow-hidden rounded-full"
+      style={HEADLINE_PILL_INNER_RING}
+    >
+      {children}
+    </span>
+  );
+}
+
+function FacePill() {
+  return (
+    <HeadlinePill
       initial={{ scale: 0.6, opacity: 0, rotate: -8 }}
       animate={{ scale: 1, opacity: 1, rotate: 0 }}
       transition={{ duration: 1, delay: 0.7, ease: EASE }}
-      className="relative inline-flex shrink-0 items-center align-middle"
-      style={{
-        height: "0.78em",
-        width: "1.55em",
-        backgroundColor: POSTER_RED,
-        borderRadius: "9999px",
-        boxShadow:
-          "0 12px 28px -16px rgba(224, 75, 34, 0.6), inset 0 0 0 1px rgba(0,0,0,0.04)",
-      }}
+      style={HEADLINE_PILL_SHELL_STYLE}
     >
-      <span
-        className="absolute inset-y-[6%] left-[6%] aspect-square overflow-hidden rounded-full"
-        style={{ boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.18)" }}
-      >
+      <HeadlinePillInner>
         <Image
           src="/images/about/profile.jpeg"
           alt=""
@@ -263,65 +331,29 @@ function FacePill() {
           priority
           className="h-full w-full object-cover"
         />
-      </span>
-    </motion.span>
+      </HeadlinePillInner>
+    </HeadlinePill>
   );
 }
 
 function BlueBlob() {
   return (
-    <motion.span
+    <HeadlinePill
       initial={{ scale: 0.55, opacity: 0, rotate: 12 }}
       animate={{ scale: 1, opacity: 1, rotate: 0 }}
       transition={{ duration: 1.05, delay: 0.85, ease: EASE }}
-      className="relative inline-flex shrink-0 items-center align-middle"
-      style={{ height: "0.82em", width: "1.5em" }}
       aria-hidden
+      style={HEADLINE_PILL_BLUE_SHELL_STYLE}
     >
-      <span className="blob-float relative block h-full w-full">
-        <svg
-          viewBox="0 0 200 110"
-          preserveAspectRatio="xMidYMid meet"
-          className="h-full w-full overflow-visible"
+      <HeadlinePillInner>
+        <span
+          className="flex h-full w-full items-center justify-center font-mono font-bold leading-none tracking-tight"
+          style={{ color: CREAM, fontSize: "0.54em" }}
         >
-          <defs>
-            <radialGradient id="blob-core" cx="0.32" cy="0.28" r="0.95">
-              <stop offset="0%" stopColor="#A9C0FF" />
-              <stop offset="22%" stopColor="#5C7CF5" />
-              <stop offset="55%" stopColor="#1F36C0" />
-              <stop offset="82%" stopColor="#0A1376" />
-              <stop offset="100%" stopColor="#02062E" />
-            </radialGradient>
-            <radialGradient id="blob-spec" cx="0.22" cy="0.22" r="0.32">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-            </radialGradient>
-            <linearGradient id="blob-rim" x1="0" y1="0.5" x2="1" y2="0.5">
-              <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-              <stop offset="55%" stopColor="rgba(124, 152, 255, 0.0)" />
-              <stop offset="100%" stopColor="rgba(255, 187, 130, 0.55)" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M30 55 Q 18 18, 78 14 Q 130 9, 168 28 Q 198 46, 188 76 Q 175 102, 122 102 Q 70 104, 42 92 Q 12 78, 30 55 Z"
-            fill="url(#blob-core)"
-          />
-          <path
-            d="M30 55 Q 18 18, 78 14 Q 130 9, 168 28 Q 198 46, 188 76 Q 175 102, 122 102 Q 70 104, 42 92 Q 12 78, 30 55 Z"
-            fill="url(#blob-rim)"
-            opacity="0.6"
-          />
-          <ellipse cx="68" cy="38" rx="32" ry="14" fill="url(#blob-spec)" />
-          <ellipse
-            cx="135"
-            cy="78"
-            rx="22"
-            ry="6"
-            fill="rgba(255,255,255,0.18)"
-          />
-        </svg>
-      </span>
-    </motion.span>
+          {"</>"}
+        </span>
+      </HeadlinePillInner>
+    </HeadlinePill>
   );
 }
 
@@ -331,15 +363,11 @@ function HeroFooter() {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay: 1.05, ease: EASE }}
-      className="relative z-10 mx-auto grid w-full max-w-[1200px] shrink-0 grid-cols-[auto_1fr_auto] items-center gap-2 px-3 pb-2.5 pt-1 sm:gap-3 sm:px-6 sm:pb-3 sm:pt-2 lg:px-12 lg:pb-3.5 lg:pt-2"
+      className="inline-grid min-w-[17rem] grid-cols-2 gap-2 sm:min-w-[20rem] sm:gap-3 md:min-w-[25rem] lg:min-w-[26rem]"
       style={{ color: INK }}
     >
-
-      <div className="col-span-3 flex items-center justify-center gap-2 sm:col-span-1 sm:justify-start sm:gap-3">
-        <CtaPrimary href="/projects" label="View My Work" />
-        <CtaSecondary href="/about" label="About Me" />
-      </div>
-
+      <CtaPrimary href="/projects" label="View My Work" />
+      <CtaSecondary href="/about" label="About Me" />
     </motion.div>
   );
 }
@@ -348,13 +376,16 @@ function HeroFooter() {
 // Hero CTA buttons
 // ═════════════════════════════════════════════════════════
 
+const CTA_BUTTON_CLASS =
+  "btn-magnetic group relative inline-flex w-full min-w-0 items-center justify-center gap-2 rounded-full px-4 py-2 font-mono text-[9.5px] font-semibold uppercase tracking-[0.18em] sm:px-5 sm:py-2.5 sm:text-[11px] md:px-6 md:py-3";
+
 function CtaPrimary({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="btn-magnetic group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-3.5 py-2 font-mono text-[9.5px] font-semibold uppercase tracking-[0.18em] sm:px-5 sm:py-2.5 sm:text-[11px] md:px-6 md:py-3"
+      className={`${CTA_BUTTON_CLASS} overflow-hidden`}
       style={{
-        backgroundColor: POSTER_RED,
+        backgroundColor: CTA_RED,
         color: CREAM,
         boxShadow: "0 14px 32px -16px rgba(224,75,34,0.65)",
       }}
@@ -377,7 +408,7 @@ function CtaSecondary({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="btn-magnetic group inline-flex items-center gap-2 rounded-full border px-3.5 py-2 font-mono text-[9.5px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 hover:bg-[#0a0a0a] hover:text-[#F1E7D2] sm:px-5 sm:py-2.5 sm:text-[11px] md:px-6 md:py-3"
+      className={`${CTA_BUTTON_CLASS} border transition-colors duration-300 hover:bg-[#0a0a0a] hover:text-[#F1E7D2]`}
       style={{
         color: INK,
         borderColor: "rgba(10,10,10,0.65)",

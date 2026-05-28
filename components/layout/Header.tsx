@@ -14,13 +14,7 @@ export function Header() {
           <span className="font-heading text-[15px] font-semibold tracking-tight text-foreground sm:text-lg md:text-xl">
             {siteConfig.name}
           </span>
-          <span
-            aria-hidden
-            className="hidden items-baseline font-mono text-[8.5px] uppercase tracking-[0.32em] text-foreground/55 transition-colors duration-300 group-hover:text-foreground/80 md:inline-flex md:text-[9.5px]"
-          >
-            <span className="mr-1.5 inline-block h-1 w-1 -translate-y-[3px] rounded-full bg-foreground/55 align-baseline" />
-            Portfolio · &lsquo;26
-          </span>
+         
         </Link>
         <Navigation />
       </div>
