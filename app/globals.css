@@ -61,6 +61,26 @@ h3 {
   font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
 }
 
+.font-display {
+  font-family: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Viewport-locked landing page (no scroll, fits exactly one screen).
+ * Higher specificity than the Lenis defaults so it wins. */
+html:has([data-fit-viewport]),
+html.lenis:has([data-fit-viewport]),
+html.lenis:has([data-fit-viewport]) body,
+body:has([data-fit-viewport]) {
+  height: 100svh !important;
+  max-height: 100svh !important;
+  overflow: hidden !important;
+}
+
+body:has([data-fit-viewport]) {
+  overscroll-behavior: none;
+}
+
 /* Lenis smooth scroll */
 html.lenis,
 html.lenis body {
@@ -213,4 +233,52 @@ html.lenis body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Paper grain on cream surfaces */
+.paper-grain {
+  position: relative;
+}
+
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(10, 10, 10, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  opacity: 0.55;
+}
+
+/* GitHub bars rise-in */
+@keyframes bar-rise {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(var(--bar-h, 1));
+    opacity: 1;
+  }
+}
+
+.bar-rise {
+  transform-origin: bottom;
+  animation: bar-rise 0.9s var(--ease-out-quart) both;
+}
+
+/* Subtle floating motion for the blob */
+@keyframes blob-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3%) rotate(2deg);
+  }
+}
+
+.blob-float {
+  animation: blob-float 7s ease-in-out infinite;
 }
