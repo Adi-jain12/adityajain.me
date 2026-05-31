@@ -1,5 +1,9 @@
 import { Hero } from "@/features/home";
 
 export default function Home() {
-  return <Hero />;
+  return (
+    <div className="flex min-h-0 flex-1 flex-col">
+      <Hero />
+    </div>
+  );
 }

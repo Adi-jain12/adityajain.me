@@ -282,3 +282,64 @@ html.lenis body {
 .blob-float {
   animation: blob-float 7s ease-in-out infinite;
 }
+
+/* Homepage — shared horizontal shell (hero intro + orange card alignment) */
+body:has([data-fit-viewport]) header > div {
+  width: 100%;
+  margin-inline: auto;
+  max-width: min(94%, 1200px);
+}
+
+@media (min-width: 1280px) {
+  body:has([data-fit-viewport]) header > div {
+    max-width: min(94%, 1400px);
+  }
+}
+
+@media (min-width: 1536px) {
+  body:has([data-fit-viewport]) header > div {
+    max-width: min(94%, 1600px);
+  }
+}
+
+@media (min-width: 2560px) {
+  body:has([data-fit-viewport]) header > div {
+    max-width: min(92%, 1720px);
+  }
+}
+
+@layer components {
+  .home-shell {
+    width: 100%;
+    margin-inline: auto;
+    max-width: min(94%, 1200px);
+  }
+
+  @media (min-width: 1280px) {
+    .home-shell {
+      max-width: min(94%, 1400px);
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .home-shell {
+      max-width: min(94%, 1600px);
+    }
+  }
+
+  @media (min-width: 2560px) {
+    .home-shell {
+      max-width: min(92%, 1720px);
+    }
+  }
+
+  .home-headline {
+    font-size: clamp(1.35rem, 4.8vw + 0.15rem, 4.9rem);
+  }
+
+  @media (min-width: 1536px) {
+    .home-headline {
+      font-size: clamp(1.35rem, 5.2vw + 0.2rem, 6rem);
+    }
+  }
+}
