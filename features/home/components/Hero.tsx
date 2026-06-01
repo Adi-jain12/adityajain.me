@@ -7,7 +7,6 @@ import { motion, type Variants } from "framer-motion";
 // ───────────────── Tokens ─────────────────
 
 const CREAM = "#F1E7D2";
-const CREAM_SOFT = "#EFE3CB";
 const POSTER_RED = "#E04B22";
 const CTA_RED = "#cd5230";
 const CODE_PILL_BLUE = "#1e3a8a";
@@ -85,17 +84,7 @@ type Stat = { value: string; label: string; shortLabel: string };
 const STATS: Stat[] = [
   { value: "2+", label: "Years\nExperience", shortLabel: "Years\nexp." },
   { value: "10+", label: "Projects\nDelivered", shortLabel: "Projects" },
-  {
-    value: "400+",
-    label: "Contributions\non GitHub",
-    shortLabel: "GitHub\ncommits",
-  },
   { value: "∞", label: "Cups of\nCoffee", shortLabel: "Cups of\ncoffee" },
-];
-
-const BAR_HEIGHTS = [
-  18, 32, 26, 48, 38, 60, 44, 72, 55, 80, 62, 90, 70, 85, 58, 74, 46, 62, 38,
-  28, 50, 42, 66,
 ];
 
 // ───────────────── Motion presets ─────────────────
@@ -486,7 +475,7 @@ function OrangeCard() {
         {/* Col 1 — bio + stats */}
         <motion.div
           variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-12 sm:gap-2 md:col-span-6 lg:col-span-4"
+          className="col-span-12 flex flex-col gap-1.5 sm:col-span-12 sm:gap-2 md:col-span-6 lg:col-span-5"
         >
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
             <span aria-hidden className="presence-dot" />
@@ -503,7 +492,7 @@ function OrangeCard() {
             code, intuitive interfaces and thoughtful UX.
           </p>
 
-          <dl className="grid grid-cols-4 gap-1.5 pt-2 sm:gap-3 lg:gap-4">
+          <dl className="grid grid-cols-3 gap-1.5 pt-2 sm:gap-3 lg:gap-4">
             {STATS.map((stat) => (
               <div
                 key={stat.label}
@@ -524,7 +513,7 @@ function OrangeCard() {
         {/* Col 2 — tech stack */}
         <motion.div
           variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-6 md:col-span-6 lg:col-span-3 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
+          className="col-span-12 flex flex-col gap-1.5 sm:col-span-6 md:col-span-6 lg:col-span-4 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
         >
           <SectionLabel>Tech Stack</SectionLabel>
           <ul className="flex flex-wrap gap-1 sm:gap-1.5">
@@ -546,7 +535,7 @@ function OrangeCard() {
         {/* Col 3 — currently exploring */}
         <motion.div
           variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-6 md:col-span-6 lg:col-span-2 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
+          className="col-span-12 flex flex-col gap-1.5 sm:col-span-6 md:col-span-6 lg:col-span-3 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
         >
           <SectionLabel>Currently Exploring</SectionLabel>
           <div className="flex items-start gap-2">
@@ -575,30 +564,6 @@ function OrangeCard() {
             <span className="link-underline">More on my journey</span>
           </a>
         </motion.div>
-
-        {/* Col 4 — let's connect */}
-        <motion.div
-          variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-12 md:col-span-6 lg:col-span-3 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
-        >
-          <SectionLabel>Let&rsquo;s Connect</SectionLabel>
-
-          <div className="grid grid-cols-1 gap-1.5">
-            {/* GitHub bar chart */}
-            <div className="flex items-end justify-between gap-3 pt-1 lg:mt-1 lg:items-end lg:justify-between lg:pl-0">
-              <div className="flex flex-col gap-0.5">
-                <div className="font-mono text-[7.5px] uppercase tracking-[0.22em] opacity-75 sm:text-[8.5px] lg:text-[9.5px]">
-                  GitHub Activity
-                </div>
-                <BarChart />
-                <div className="font-mono text-[8px] tracking-[0.04em] opacity-80 sm:text-[8.5px] lg:text-[9.5px]">
-                  400+ contributions
-                </div>
-              </div>
-              <Sparkle className="hidden shrink-0 lg:block" />
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
 
       <CornerMark className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5" />
@@ -619,48 +584,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
       </span>
       <span>{children}</span>
     </div>
-  );
-}
-
-function BarChart() {
-  return (
-    <div
-      aria-hidden
-      className="flex h-5 items-end gap-[2px] sm:h-6 md:h-7 lg:h-8"
-      style={{ width: "min(100%, 220px)", maxWidth: "100%" }}
-    >
-      {BAR_HEIGHTS.map((h, i) => (
-        <span
-          key={i}
-          className="bar-rise inline-block w-[2.5px] rounded-[1px] sm:w-[3px] lg:w-[4px]"
-          style={{
-            height: `${h}%`,
-            backgroundColor: "rgba(241,231,210,0.85)",
-            ["--bar-h" as string]: "1",
-            animationDelay: `${0.6 + i * 0.025}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function Sparkle({ className = "" }: { className?: string }) {
-  return (
-    <motion.span
-      animate={{ rotate: [0, 12, 0, -8, 0] }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      aria-hidden
-      className={className}
-      style={{ color: CREAM_SOFT }}
-    >
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path
-          d="M11 2 L12.6 9.4 L20 11 L12.6 12.6 L11 20 L9.4 12.6 L2 11 L9.4 9.4 Z"
-          fill="currentColor"
-        />
-      </svg>
-    </motion.span>
   );
 }
 
