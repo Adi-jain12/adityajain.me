@@ -160,7 +160,7 @@ function TopMarquee() {
 
 function HeroIntro() {
   return (
-    <div className="home-shell relative z-10 mt-6 flex min-h-0 flex-1 flex-col items-start justify-center gap-3 px-3 sm:mt-8 sm:gap-4 sm:px-6 md:mt-9 lg:mt-10 lg:gap-5 lg:px-12 2xl:mt-11 2xl:gap-6 2xl:px-14">
+    <div className="home-shell relative z-10 mt-6 flex min-h-0 flex-1 flex-col items-start justify-center gap-3 px-3 pb-8 sm:mt-8 sm:gap-4 sm:px-6 sm:pb-10 md:mt-9 lg:mt-10 lg:gap-5 lg:px-12 lg:pb-12 [@media(max-height:780px)]:pb-6 2xl:mt-11 2xl:gap-6 2xl:px-14 2xl:pb-14">
       <HeroHeadline />
       <HeroFooter />
     </div>
