@@ -3,6 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
+import type { IconType } from "react-icons";
+import {
+  LuBrainCircuit,
+  LuCalendarDays,
+  LuCode,
+  LuCodeXml,
+  LuCoffee,
+  LuRocket,
+  LuZap,
+} from "react-icons/lu";
 
 // ───────────────── Tokens ─────────────────
 
@@ -66,25 +76,50 @@ const MARQUEE_WORDS = [
   "SOLVING PROBLEMS",
 ];
 
-const TECH_STACK = [
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "React",
-  "PostgreSQL",
-  "Prisma",
-  "Tailwind CSS",
-  "Shadcn UI",
-  "Redux Toolkit",
-  "Docker",
+type ExperienceItem = {
+  icon: IconType;
+  value: string;
+  label: string;
+};
+
+const EXPERIENCE_ITEMS: ExperienceItem[] = [
+  { icon: LuCalendarDays, value: "2+", label: "Years Experience" },
+  { icon: LuRocket, value: "10+", label: "Projects Delivered" },
+  { icon: LuCode, value: "End-to-End", label: "Development" },
 ];
 
-type Stat = { value: string; label: string; shortLabel: string };
+type FocusItem = {
+  icon: IconType;
+  title: string;
+  description: string;
+  color: string;
+};
 
-const STATS: Stat[] = [
-  { value: "2+", label: "Years\nExperience", shortLabel: "Years\nexp." },
-  { value: "10+", label: "Projects\nDelivered", shortLabel: "Projects" },
-  { value: "∞", label: "Cups of\nCoffee", shortLabel: "Cups of\ncoffee" },
+const FOCUS_ITEMS: FocusItem[] = [
+  {
+    icon: LuCodeXml,
+    title: "Currently Coding",
+    description: "Modern Frontend & Backend Applications",
+    color: "#20e7ff",
+  },
+  {
+    icon: LuBrainCircuit,
+    title: "Learning",
+    description: "Advanced AI Agents & LLM Integration",
+    color: "#be38ff",
+  },
+  {
+    icon: LuZap,
+    title: "Building",
+    description: "Scalable Fullstack Architectures",
+    color: "#f5df22",
+  },
+  {
+    icon: LuCoffee,
+    title: "Focusing On",
+    description: "Clean Code & Performance Optimization",
+    color: "#18df78",
+  },
 ];
 
 // ───────────────── Motion presets ─────────────────
@@ -126,14 +161,14 @@ export function Hero() {
     <section
       data-fit-viewport
       aria-label="Aditya Jain — portfolio"
-      className="relative grid w-full min-h-0 flex-1 grid-rows-[auto_minmax(0,1.08fr)_minmax(0,0.92fr)] overflow-hidden sm:grid-rows-[auto_minmax(0,1.1fr)_minmax(0,0.9fr)] lg:grid-rows-[auto_minmax(0,1.12fr)_minmax(0,0.88fr)]"
+      className="relative grid min-h-svh w-full grid-rows-[auto_auto_auto] overflow-visible md:min-h-0 md:flex-1 md:grid-rows-[auto_minmax(0,1.1fr)_minmax(0,0.9fr)] md:overflow-hidden lg:grid-rows-[auto_minmax(0,1.12fr)_minmax(0,0.88fr)]"
       style={{ backgroundColor: CREAM }}
     >
       <TopMarquee />
 
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
       <div
-        className="paper-grain relative flex min-h-0 flex-col overflow-hidden"
+        className="paper-grain relative flex min-h-0 flex-col overflow-visible md:overflow-hidden"
         style={{ backgroundColor: CREAM }}
       >
         <HeroIntro />
@@ -141,7 +176,7 @@ export function Hero() {
 
       {/* Orange card — bottom proportion via grid row */}
       <div
-        className="relative flex min-h-0 flex-col overflow-hidden px-2 sm:px-3 lg:px-5"
+        className="relative flex min-h-0 flex-col overflow-visible px-2 sm:px-3 md:overflow-hidden lg:px-5"
         style={{ backgroundColor: CREAM }}
       >
         <OrangeCard />
@@ -438,7 +473,7 @@ function OrangeCard() {
       initial={{ scaleY: 0.6, opacity: 0.45, y: 12 }}
       animate={{ scaleY: 1, opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.25, ease: EASE }}
-      className="relative mx-auto flex min-h-0 w-full flex-1 origin-top flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] lg:rounded-t-[2.2rem]"
+      className="relative mx-auto flex min-h-fit w-full origin-top flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:min-h-0 md:flex-1 lg:rounded-t-[2.2rem]"
       style={{
         backgroundImage: POSTER_GRADIENT,
         maxWidth: ORANGE_CARD_MAX_WIDTH,
@@ -469,100 +504,66 @@ function OrangeCard() {
         }}
         initial="hidden"
         animate="visible"
-        className="relative grid h-full grid-cols-12 gap-x-3 gap-y-3 px-4 py-4 sm:gap-x-4 sm:gap-y-2.5 sm:px-5 sm:py-4 md:gap-x-5 md:px-6 md:py-4 lg:gap-x-7 lg:px-9 lg:py-5"
+        className="no-scrollbar relative grid h-auto min-h-0 grid-cols-1 content-start gap-x-3 gap-y-4 overflow-visible px-4 py-4 sm:gap-x-4 sm:gap-y-4 sm:px-5 sm:py-4 md:h-full md:grid-cols-[1.14fr_0.86fr_1fr] md:content-stretch md:gap-x-5 md:gap-y-2.5 md:overflow-y-auto md:px-6 md:py-4 lg:gap-x-7 lg:px-9 lg:py-5"
         style={{ color: CREAM }}
       >
-        {/* Col 1 — bio + stats */}
+        {/* Col 1 - intro */}
         <motion.div
           variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-12 sm:gap-2 md:col-span-6 lg:col-span-5"
+          className="flex min-w-0 flex-col justify-center gap-3 sm:gap-4"
         >
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
             <span aria-hidden className="presence-dot" />
             <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] sm:text-[9.5px]">
-              Available for select work · Q2 2026
+              Available for full-time opportunities
             </span>
           </div>
 
-          <p
-            className="max-w-[38ch] font-display text-[12px] font-medium leading-normal tracking-[-0.005em] sm:text-[12.5px] md:text-[13px] lg:text-[14px]"
+          <h2
+            className="max-w-[16ch] font-display text-[1.25rem] font-bold leading-[1.28] tracking-normal sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
             style={{ color: CREAM }}
           >
-            I help startups and teams build fast, scalable products with clean
-            code, intuitive interfaces and thoughtful UX.
-          </p>
+            I build products that scale and solve real problems.
+          </h2>
 
-          <dl className="grid grid-cols-3 gap-1.5 pt-2 sm:gap-3 lg:gap-4">
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex min-w-0 flex-col"
-              >
-                <dd className="font-display text-[1.05rem] font-bold leading-none tracking-tight sm:text-[1.15rem] md:text-[1.25rem] lg:text-[1.5rem]">
-                  {stat.value}
-                </dd>
-                <dt className="mt-1 whitespace-pre-line font-mono text-[7px] uppercase leading-tight tracking-[0.14em] opacity-80 sm:text-[8px] sm:tracking-[0.18em] lg:text-[8.5px] lg:tracking-[0.2em]">
-                  <span className="lg:hidden">{stat.shortLabel}</span>
-                  <span className="hidden lg:inline">{stat.label}</span>
-                </dt>
-              </div>
-            ))}
-          </dl>
+          <p className="max-w-[42ch] font-mono text-[9px] leading-[1.85] tracking-[0.04em] opacity-95 sm:text-[10px] md:max-w-[36ch] lg:text-[11px]">
+            From idea to production, I help startups and teams build fast,
+            reliable and user-focused web applications.
+          </p>
         </motion.div>
 
-        {/* Col 2 — tech stack */}
+        {/* Col 2 - experience */}
         <motion.div
           variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-6 md:col-span-6 lg:col-span-4 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
+          className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8"
         >
-          <SectionLabel>Tech Stack</SectionLabel>
-          <ul className="flex flex-wrap gap-1 sm:gap-1.5">
-            {TECH_STACK.map((tech) => (
-              <li
-                key={tech}
-                className="group inline-flex cursor-default items-center rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.06)] px-2 py-[3px] font-mono text-[9px] tracking-[0.04em] backdrop-blur-[2px] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-[rgba(241,231,210,0.16)] sm:px-2.5 sm:py-1 sm:text-[10px] lg:text-[10.5px]"
-                style={{ color: CREAM }}
-              >
-                {tech}
-              </li>
+          <OrangeCardHeading>Experience</OrangeCardHeading>
+          <ul className="flex flex-col">
+            {EXPERIENCE_ITEMS.map((item, index) => (
+              <ExperienceRow
+                key={item.label}
+                item={item}
+                showDivider={index > 0}
+              />
             ))}
           </ul>
-          <span className="mt-auto font-mono text-[9px] italic opacity-70 sm:text-[9.5px]">
-            and more...
-          </span>
         </motion.div>
 
-        {/* Col 3 — currently exploring */}
+        {/* Col 3 - current focus */}
         <motion.div
           variants={fadeUpSubtle}
-          className="col-span-12 flex flex-col gap-1.5 sm:col-span-6 md:col-span-6 lg:col-span-3 lg:border-l lg:border-[rgba(241,231,210,0.16)] lg:pl-8"
+          className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8"
         >
-          <SectionLabel>Currently Exploring</SectionLabel>
-          <div className="flex items-start gap-2">
-            <span
-              aria-hidden
-              className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md font-mono text-[10px] sm:h-9 sm:w-9 sm:text-[12px]"
-              style={{
-                backgroundColor: "rgba(10,10,10,0.7)",
-                color: CREAM,
-                boxShadow: "0 10px 24px -14px rgba(0,0,0,0.6)",
-              }}
-            >
-              {"</>"}
-            </span>
-            <p className="font-display text-[10.5px] leading-[1.4] tracking-[-0.005em] opacity-95 sm:text-[11px] lg:text-[11.5px]">
-              Design systems, AI tooling and serverless architectures. Building
-              things that merge performance with experience.
-            </p>
-          </div>
-          <a
-            href="/about"
-            className="group mt-auto inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] opacity-85 transition-opacity hover:opacity-100 sm:text-[9.5px]"
-            style={{ color: CREAM }}
-          >
-            <span aria-hidden>→</span>
-            <span className="link-underline">More on my journey</span>
-          </a>
+          <OrangeCardHeading>Current Focus</OrangeCardHeading>
+          <ul className="flex flex-col">
+            {FOCUS_ITEMS.map((item, index) => (
+              <FocusRow
+                key={item.title}
+                item={item}
+                showDivider={index > 0}
+              />
+            ))}
+          </ul>
         </motion.div>
       </motion.div>
 
@@ -576,14 +577,96 @@ function OrangeCard() {
 // Sub-pieces
 // ═════════════════════════════════════════════════════════
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function OrangeCardHeading({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-2 font-mono text-[8.5px] uppercase tracking-[0.28em] opacity-80 sm:text-[9.5px]">
-      <span aria-hidden className="opacity-80">
-        ·
-      </span>
-      <span>{children}</span>
-    </div>
+    <h3
+      className="font-mono text-[9px] font-semibold uppercase tracking-[0.2em] opacity-95 sm:text-[10px] lg:text-[11px]"
+      style={{ color: CREAM }}
+    >
+      {children}
+    </h3>
+  );
+}
+
+function IconTile({
+  icon: Icon,
+  color = CREAM,
+}: {
+  icon: IconType;
+  color?: string;
+}) {
+  return (
+    <span
+      aria-hidden
+      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-[15px] sm:h-9 sm:w-9 sm:text-[17px] lg:h-10 lg:w-10 lg:text-[18px]"
+      style={{
+        backgroundColor: "rgba(10,10,10,0.78)",
+        color,
+        boxShadow: "0 10px 24px -14px rgba(0,0,0,0.6)",
+      }}
+    >
+      <Icon />
+    </span>
+  );
+}
+
+function ExperienceRow({
+  item,
+  showDivider,
+}: {
+  item: ExperienceItem;
+  showDivider: boolean;
+}) {
+  const isLongValue = item.value.length > 4;
+
+  return (
+    <li
+      className={`flex min-w-0 items-center gap-3 py-2.5 sm:gap-3.5 sm:py-3 ${
+        showDivider ? "border-t border-[rgba(241,231,210,0.12)]" : ""
+      }`}
+    >
+      <IconTile icon={item.icon} />
+      <div className="min-w-0">
+        <p
+          className={`font-display font-bold leading-none tracking-normal ${
+            isLongValue
+              ? "text-[15px] sm:text-[16px] lg:text-[18px]"
+              : "text-[1.45rem] sm:text-[1.65rem] lg:text-[2rem]"
+          }`}
+        >
+          {item.value}
+        </p>
+        <p className="mt-1 font-display text-[10.5px] font-semibold leading-tight tracking-normal opacity-95 sm:text-[11.5px] lg:text-[12.5px]">
+          {item.label}
+        </p>
+      </div>
+    </li>
+  );
+}
+
+function FocusRow({
+  item,
+  showDivider,
+}: {
+  item: FocusItem;
+  showDivider: boolean;
+}) {
+  return (
+    <li
+      className={`flex min-w-0 items-start gap-2.5 py-2 sm:gap-3 sm:py-2.5 ${
+        showDivider ? "border-t border-[rgba(241,231,210,0.12)]" : ""
+      }`}
+    >
+      <IconTile icon={item.icon} color={item.color} />
+      <div className="min-w-0 pt-[1px]">
+        <p className="font-display text-[11px] font-bold leading-tight tracking-normal opacity-95 sm:text-[12px] lg:text-[13px]">
+          {item.title}
+        </p>
+        <p className="mt-0.5 break-words font-mono text-[7.5px] leading-[1.35] tracking-[0.03em] opacity-90 sm:text-[8px] lg:text-[8.5px]">
+          {item.description}
+        </p>
+      </div>
+    </li>
   );
 }
 

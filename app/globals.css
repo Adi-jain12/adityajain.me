@@ -66,19 +66,32 @@ h3 {
   font-feature-settings: "ss01", "cv11";
 }
 
-/* Viewport-locked landing page (no scroll, fits exactly one screen).
- * Higher specificity than the Lenis defaults so it wins. */
-html:has([data-fit-viewport]),
-html.lenis:has([data-fit-viewport]),
-html.lenis:has([data-fit-viewport]) body,
-body:has([data-fit-viewport]) {
-  height: 100svh !important;
-  max-height: 100svh !important;
-  overflow: hidden !important;
+/* Viewport-locked landing page on tablet/desktop only. */
+@media (max-width: 767px) {
+  html:has([data-fit-viewport]),
+  html.lenis:has([data-fit-viewport]),
+  html.lenis:has([data-fit-viewport]) body,
+  body:has([data-fit-viewport]) {
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
 }
 
-body:has([data-fit-viewport]) {
-  overscroll-behavior: none;
+@media (min-width: 768px) {
+  html:has([data-fit-viewport]),
+  html.lenis:has([data-fit-viewport]),
+  html.lenis:has([data-fit-viewport]) body,
+  body:has([data-fit-viewport]) {
+    height: 100svh !important;
+    max-height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  body:has([data-fit-viewport]) {
+    overscroll-behavior: none;
+  }
 }
 
 /* Lenis smooth scroll */
