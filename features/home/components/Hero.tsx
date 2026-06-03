@@ -510,7 +510,7 @@ function OrangeCard() {
         {/* Col 1 - intro */}
         <motion.div
           variants={fadeUpSubtle}
-          className="flex min-w-0 flex-col justify-center gap-3 sm:gap-4"
+          className="flex min-w-0 flex-col justify-center gap-8 sm:gap-8"
         >
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
             <span aria-hidden className="presence-dot" />
@@ -520,16 +520,16 @@ function OrangeCard() {
           </div>
 
           <h2
-            className="max-w-[16ch] font-display text-[1.25rem] font-bold leading-[1.28] tracking-normal sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
+            className="max-w-[16ch] font-display text-[1.25rem] font-black leading-[1.12] tracking-[-0.02em] sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
             style={{ color: CREAM }}
           >
             I build products that scale and solve real problems.
           </h2>
 
-          <p className="max-w-[42ch] font-mono text-[9px] leading-[1.85] tracking-[0.04em] opacity-95 sm:text-[10px] md:max-w-[36ch] lg:text-[11px]">
+          {/* <p className="max-w-[42ch] font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-95 sm:text-[10px] md:max-w-[36ch] md:text-[11px] lg:text-[12px]">
             From idea to production, I help startups and teams build fast,
             reliable and user-focused web applications.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* Col 2 - experience */}
@@ -537,7 +537,7 @@ function OrangeCard() {
           variants={fadeUpSubtle}
           className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8"
         >
-          <OrangeCardHeading>Experience</OrangeCardHeading>
+          <span className='font-display font-bold'>Experience</span>
           <ul className="flex flex-col">
             {EXPERIENCE_ITEMS.map((item, index) => (
               <ExperienceRow
@@ -554,7 +554,7 @@ function OrangeCard() {
           variants={fadeUpSubtle}
           className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8"
         >
-          <OrangeCardHeading>Current Focus</OrangeCardHeading>
+          <span className='font-display font-bold'>Current Focus</span>
           <ul className="flex flex-col">
             {FOCUS_ITEMS.map((item, index) => (
               <FocusRow
@@ -628,7 +628,7 @@ function ExperienceRow({
       <IconTile icon={item.icon} />
       <div className="min-w-0">
         <p
-          className={`font-display font-bold leading-none tracking-normal ${
+          className={`font-mono font-bold leading-none tracking-[0.02em] ${
             isLongValue
               ? "text-[15px] sm:text-[16px] lg:text-[18px]"
               : "text-[1.45rem] sm:text-[1.65rem] lg:text-[2rem]"
@@ -636,7 +636,7 @@ function ExperienceRow({
         >
           {item.value}
         </p>
-        <p className="mt-1 font-display text-[10.5px] font-semibold leading-tight tracking-normal opacity-95 sm:text-[11.5px] lg:text-[12.5px]">
+        <p className="mt-1 font-mono text-[9px] font-semibold uppercase leading-tight tracking-[0.18em] opacity-95 sm:text-[10px] lg:text-[11px]">
           {item.label}
         </p>
       </div>
@@ -659,10 +659,10 @@ function FocusRow({
     >
       <IconTile icon={item.icon} color={item.color} />
       <div className="min-w-0 pt-[1px]">
-        <p className="font-display text-[11px] font-bold leading-tight tracking-normal opacity-95 sm:text-[12px] lg:text-[13px]">
+        <p className="font-mono text-[10px] font-semibold uppercase leading-tight tracking-[0.16em] opacity-95 sm:text-[11px] lg:text-[12px]">
           {item.title}
         </p>
-        <p className="mt-0.5 break-words font-mono text-[7.5px] leading-[1.35] tracking-[0.03em] opacity-90 sm:text-[8px] lg:text-[8.5px]">
+        <p className="mt-0.5 break-words font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-90 sm:text-[10px] lg:text-[11px]">
           {item.description}
         </p>
       </div>
