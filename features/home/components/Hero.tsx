@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
   LuBrainCircuit,
@@ -122,36 +119,6 @@ const FOCUS_ITEMS: FocusItem[] = [
   },
 ];
 
-// ───────────────── Motion presets ─────────────────
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 22, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.9, ease: EASE },
-  },
-};
-
-const fadeUpSubtle: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: EASE },
-  },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.05 },
-  },
-};
-
 // ═════════════════════════════════════════════════════════
 // Main
 // ═════════════════════════════════════════════════════════
@@ -247,12 +214,7 @@ function HeroIntro() {
 
 function HeroHeadline() {
   return (
-    <motion.div
-      variants={stagger}
-      initial="hidden"
-      animate="visible"
-      className="flex w-full flex-col items-start"
-    >
+    <div className="flex w-full flex-col items-start">
       <div
         className="font-display flex flex-col gap-[0.14em] text-left font-black leading-[0.90] tracking-[-0.035em] sm:gap-[0.20em] md:gap-[0.20em]"
         style={{
@@ -260,34 +222,27 @@ function HeroHeadline() {
           fontSize: "clamp(1.35rem, 4.8vw + 0.15rem, 4.9rem)",
         }}
       >
-        <motion.div
-          variants={fadeUp}
-          className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap"
-        >
+        <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
           <span className="font-bold">Hello</span>
           <FacePill />
           <span className="sm:whitespace-nowrap font-bold">I&rsquo;m Aditya</span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={fadeUp}
-          className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap"
-        >
+        <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
           <span className="font-bold">I build</span>
           <BlueBlob />
           <span className="sm:whitespace-nowrap font-bold">web experiences</span>
-        </motion.div>
+        </div>
       </div>
 
-      <motion.p
-        variants={fadeUpSubtle}
+      <p
         className="mt-2 max-w-[80ch] text-left font-mono text-[9px] leading-[1.55] tracking-[0.02em] sm:mt-4.5 sm:text-[10px] md:text-[11px] lg:text-[12px]"
         style={{ color: INK, opacity: 0.78 }}
       >
         Full-stack developer crafting high-performance, interactive web
         experiences with scalable backends and clean interfaces.
-      </motion.p>
-    </motion.div>
+      </p>
+    </div>
   );
 }
 
@@ -295,24 +250,15 @@ function HeadlinePill({
   children,
   className = "",
   style,
-  initial,
-  animate,
-  transition,
   "aria-hidden": ariaHidden,
 }: {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  initial?: { scale?: number; opacity?: number; rotate?: number };
-  animate?: { scale?: number; opacity?: number; rotate?: number };
-  transition?: { duration?: number; delay?: number; ease?: [number, number, number, number] };
   "aria-hidden"?: boolean;
 }) {
   return (
-    <motion.span
-      initial={initial}
-      animate={animate}
-      transition={transition}
+    <span
       aria-hidden={ariaHidden}
       className={`relative inline-flex shrink-0 items-center justify-center overflow-hidden align-middle ${className}`}
       style={{
@@ -323,7 +269,7 @@ function HeadlinePill({
       }}
     >
       {children}
-    </motion.span>
+    </span>
   );
 }
 
@@ -340,12 +286,7 @@ function HeadlinePillInner({ children }: { children: React.ReactNode }) {
 
 function FacePill() {
   return (
-    <HeadlinePill
-      initial={{ scale: 0.6, opacity: 0, rotate: -8 }}
-      animate={{ scale: 1, opacity: 1, rotate: 0 }}
-      transition={{ duration: 1, delay: 0.7, ease: EASE }}
-      style={HEADLINE_PILL_SHELL_STYLE}
-    >
+    <HeadlinePill style={HEADLINE_PILL_SHELL_STYLE}>
       <HeadlinePillInner>
         <Image
           src="/images/about/profile.jpeg"
@@ -362,13 +303,7 @@ function FacePill() {
 
 function BlueBlob() {
   return (
-    <HeadlinePill
-      initial={{ scale: 0.55, opacity: 0, rotate: 12 }}
-      animate={{ scale: 1, opacity: 1, rotate: 0 }}
-      transition={{ duration: 1.05, delay: 0.85, ease: EASE }}
-      aria-hidden
-      style={HEADLINE_PILL_BLUE_SHELL_STYLE}
-    >
+    <HeadlinePill aria-hidden style={HEADLINE_PILL_BLUE_SHELL_STYLE}>
       <HeadlinePillInner>
         <span
           className="flex h-full w-full items-center justify-center font-mono font-bold leading-none tracking-tight"
@@ -383,16 +318,13 @@ function BlueBlob() {
 
 function HeroFooter() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, delay: 1.05, ease: EASE }}
+    <div
       className="inline-grid min-w-[17rem] grid-cols-2 gap-2 sm:min-w-[20rem] sm:gap-3 md:min-w-[25rem] lg:min-w-[26rem]"
       style={{ color: INK }}
     >
       <CtaPrimary href="/projects" label="View My Work" />
       <CtaSecondary href="/about" label="About Me" />
-    </motion.div>
+    </div>
   );
 }
 
@@ -469,11 +401,8 @@ function ArrowUpRight({ className = "" }: { className?: string }) {
 
 function OrangeCard() {
   return (
-    <motion.div
-      initial={{ scaleY: 0.6, opacity: 0.45, y: 12 }}
-      animate={{ scaleY: 1, opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.25, ease: EASE }}
-      className="relative mx-auto flex min-h-fit w-full origin-top flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:min-h-0 md:flex-1 lg:rounded-t-[2.2rem]"
+    <div
+      className="relative mx-auto flex min-h-fit w-full flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:min-h-0 md:flex-1 lg:rounded-t-[2.2rem]"
       style={{
         backgroundImage: POSTER_GRADIENT,
         maxWidth: ORANGE_CARD_MAX_WIDTH,
@@ -495,23 +424,12 @@ function OrangeCard() {
       <CornerMark className="absolute left-3 top-3 sm:left-5 sm:top-5" />
       <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
 
-      <motion.div
-        variants={{
-          hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.08, delayChildren: 0.45 },
-          },
-        }}
-        initial="hidden"
-        animate="visible"
+      <div
         className="no-scrollbar relative grid h-auto min-h-0 grid-cols-1 content-start gap-x-3 gap-y-4 overflow-visible px-4 py-4 sm:gap-x-4 sm:gap-y-4 sm:px-5 sm:py-4 md:h-full md:grid-cols-[1.14fr_0.86fr_1fr] md:content-stretch md:gap-x-5 md:gap-y-2.5 md:overflow-y-auto md:px-6 md:py-4 lg:gap-x-7 lg:px-9 lg:py-5"
         style={{ color: CREAM }}
       >
         {/* Col 1 - intro */}
-        <motion.div
-          variants={fadeUpSubtle}
-          className="flex min-w-0 flex-col justify-center gap-8 sm:gap-8"
-        >
+        <div className="flex min-w-0 flex-col justify-center gap-8 sm:gap-8">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
             <span aria-hidden className="presence-dot" />
             <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] sm:text-[9.5px]">
@@ -530,13 +448,10 @@ function OrangeCard() {
             From idea to production, I help startups and teams build fast,
             reliable and user-focused web applications.
           </p> */}
-        </motion.div>
+        </div>
 
         {/* Col 2 - experience */}
-        <motion.div
-          variants={fadeUpSubtle}
-          className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8"
-        >
+        <div className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8">
           <span className='font-display font-bold'>Experience</span>
           <ul className="flex flex-col">
             {EXPERIENCE_ITEMS.map((item, index) => (
@@ -547,13 +462,10 @@ function OrangeCard() {
               />
             ))}
           </ul>
-        </motion.div>
+        </div>
 
         {/* Col 3 - current focus */}
-        <motion.div
-          variants={fadeUpSubtle}
-          className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8"
-        >
+        <div className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8">
           <span className='font-display font-bold'>Current Focus</span>
           <ul className="flex flex-col">
             {FOCUS_ITEMS.map((item, index) => (
@@ -564,12 +476,12 @@ function OrangeCard() {
               />
             ))}
           </ul>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       <CornerMark className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5" />
       <CornerMark className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5" />
-    </motion.div>
+    </div>
   );
 }
 
