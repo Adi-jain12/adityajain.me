@@ -19,6 +19,9 @@ const CTA_RED = "#cd5230";
 const CODE_PILL_BLUE = "#1e3a8a";
 const INK = "#0A0A0A";
 
+const BINARY_DIGIT_TILE_INK = createBinaryDigitTile(INK, 0.2);
+const BINARY_DIGIT_TILE_CREAM = createBinaryDigitTile(CREAM, 0.34);
+
 const POSTER_GRADIENT = `
   radial-gradient(
     circle at 82% 50%,
@@ -41,6 +44,21 @@ const POSTER_GRADIENT = `
 // 🎛 Orange card width — tweak this value to resize the bottom card.
 // Accepts any CSS width: "100%", "1260px", "92%", "min(100%, 1320px)", etc.
 const ORANGE_CARD_MAX_WIDTH = "94%";
+
+function createBinaryDigitTile(fill: string, fillOpacity: number) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+      <g fill="${fill}" fill-opacity="${fillOpacity}" font-family="monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+        <text x="10" y="10">1</text>
+        <text x="30" y="10">0</text>
+        <text x="10" y="30">0</text>
+        <text x="30" y="30">1</text>
+      </g>
+    </svg>
+  `;
+
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
 
 // Headline inline pills (face + blob) — shared box so both scale with the title
 const HEADLINE_PILL = {
@@ -135,9 +153,10 @@ export function Hero() {
 
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
       <div
-        className="paper-grain relative flex min-h-0 flex-col overflow-visible md:overflow-hidden"
+        className="relative flex min-h-0 flex-col overflow-visible md:overflow-hidden"
         style={{ backgroundColor: CREAM }}
       >
+        <BinaryDigitBackdrop variant="cream" />
         <HeroIntro />
       </div>
 
@@ -408,18 +427,7 @@ function OrangeCard() {
         maxWidth: ORANGE_CARD_MAX_WIDTH,
       }}
     >
-      {/* dotted texture */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-25"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
-        }}
-      />
+      <BinaryDigitBackdrop variant="poster" />
 
       <CornerMark className="absolute left-3 top-3 sm:left-5 sm:top-5" />
       <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
@@ -497,6 +505,36 @@ function OrangeCardHeading({ children }: { children: React.ReactNode }) {
     >
       {children}
     </h3>
+  );
+}
+
+function BinaryDigitBackdrop({ variant }: { variant: "cream" | "poster" }) {
+  const isPoster = variant === "poster";
+  const maskImage = isPoster
+    ? "linear-gradient(to bottom, transparent 0%, black 18%, black 90%, transparent 100%)"
+    : "radial-gradient(ellipse at center, black 58%, transparent 100%)";
+
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 overflow-hidden select-none"
+      style={{
+        opacity: isPoster ? 0.62 : 0.5,
+        WebkitMaskImage: maskImage,
+        maskImage,
+      }}
+    >
+      <div
+        className="absolute -inset-8"
+        style={{
+          backgroundImage: isPoster
+            ? BINARY_DIGIT_TILE_CREAM
+            : BINARY_DIGIT_TILE_INK,
+          backgroundPosition: isPoster ? "0 0" : "10px 4px",
+          backgroundSize: isPoster ? "42px 42px" : "36px 36px",
+        }}
+      />
+    </div>
   );
 }
 

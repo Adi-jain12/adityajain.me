@@ -248,23 +248,6 @@ html.lenis body {
   scrollbar-width: none;
 }
 
-/* Paper grain on cream surfaces */
-.paper-grain {
-  position: relative;
-}
-
-.paper-grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(10, 10, 10, 0.18) 1px, transparent 1px);
-  background-size: 18px 18px;
-  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
-  opacity: 0.55;
-}
-
 /* GitHub bars rise-in */
 @keyframes bar-rise {
   from {
