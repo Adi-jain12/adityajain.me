@@ -20,7 +20,6 @@ const CODE_PILL_BLUE = "#1e3a8a";
 const INK = "#0A0A0A";
 
 const BINARY_DIGIT_TILE_INK = createBinaryDigitTile(INK, 0.2);
-const BINARY_DIGIT_TILE_CREAM = createBinaryDigitTile(CREAM, 0.34);
 
 const POSTER_GRADIENT = `
   radial-gradient(
@@ -156,7 +155,7 @@ export function Hero() {
         className="relative flex min-h-0 flex-col overflow-visible md:overflow-hidden"
         style={{ backgroundColor: CREAM }}
       >
-        <BinaryDigitBackdrop variant="cream" />
+        <BinaryDigitBackdrop />
         <HeroIntro />
       </div>
 
@@ -427,8 +426,6 @@ function OrangeCard() {
         maxWidth: ORANGE_CARD_MAX_WIDTH,
       }}
     >
-      <BinaryDigitBackdrop variant="poster" />
-
       <CornerMark className="absolute left-3 top-3 sm:left-5 sm:top-5" />
       <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
 
@@ -508,18 +505,16 @@ function OrangeCardHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function BinaryDigitBackdrop({ variant }: { variant: "cream" | "poster" }) {
-  const isPoster = variant === "poster";
-  const maskImage = isPoster
-    ? "linear-gradient(to bottom, transparent 0%, black 18%, black 90%, transparent 100%)"
-    : "radial-gradient(ellipse at center, black 58%, transparent 100%)";
+function BinaryDigitBackdrop() {
+  const maskImage =
+    "radial-gradient(ellipse at center, black 58%, transparent 100%)";
 
   return (
     <div
       aria-hidden
       className="pointer-events-none absolute inset-0 overflow-hidden select-none"
       style={{
-        opacity: isPoster ? 0.62 : 0.5,
+        opacity: 0.5,
         WebkitMaskImage: maskImage,
         maskImage,
       }}
@@ -527,11 +522,9 @@ function BinaryDigitBackdrop({ variant }: { variant: "cream" | "poster" }) {
       <div
         className="absolute -inset-8"
         style={{
-          backgroundImage: isPoster
-            ? BINARY_DIGIT_TILE_CREAM
-            : BINARY_DIGIT_TILE_INK,
-          backgroundPosition: isPoster ? "0 0" : "10px 4px",
-          backgroundSize: isPoster ? "42px 42px" : "36px 36px",
+          backgroundImage: BINARY_DIGIT_TILE_INK,
+          backgroundPosition: "10px 4px",
+          backgroundSize: "36px 36px",
         }}
       />
     </div>
