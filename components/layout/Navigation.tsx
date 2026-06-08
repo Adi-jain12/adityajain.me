@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 function isNavActive(pathname: string, href: string) {
   return href === "/"
@@ -124,6 +125,8 @@ export function Navigation() {
           );
         })}
 
+        <ThemeToggle />
+
         <ConnectLink
           className={cn(
             connectClass,
@@ -132,7 +135,9 @@ export function Navigation() {
         />
       </nav>
 
-      <div className="sm:hidden">
+      <div className="flex items-center gap-2 sm:hidden">
+        <ThemeToggle />
+
         <button
           type="button"
           aria-expanded={open}
@@ -199,3 +204,4 @@ export function Navigation() {
     </>
   );
 }
+
