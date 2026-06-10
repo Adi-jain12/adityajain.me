@@ -128,24 +128,17 @@ export function Hero() {
     <section
       data-fit-viewport
       aria-label="Aditya Jain — portfolio"
-      className="relative grid min-h-svh w-full grid-rows-[auto_auto_auto] overflow-visible md:min-h-0 md:flex-1 md:grid-rows-[auto_minmax(0,1.1fr)_minmax(0,0.9fr)] md:overflow-hidden lg:grid-rows-[auto_minmax(0,1.12fr)_minmax(0,0.88fr)]"
-      style={{ backgroundColor: CREAM }}
+      className="relative grid min-h-svh w-full grid-rows-[auto_auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[auto_auto_minmax(0,1fr)] md:overflow-hidden"
     >
       <TopMarquee />
 
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
-      <div
-        className="paper-grain relative flex min-h-0 flex-col overflow-visible md:overflow-hidden"
-        style={{ backgroundColor: CREAM }}
-      >
+      <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:overflow-hidden">
         <HeroIntro />
       </div>
 
       {/* Orange card — bottom proportion via grid row */}
-      <div
-        className="relative flex min-h-0 flex-col overflow-visible px-4 sm:px-3 md:overflow-hidden lg:px-5"
-        style={{ backgroundColor: CREAM }}
-      >
+      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-5 transition-colors duration-300 sm:px-3 sm:pt-6 md:overflow-hidden md:pt-7 lg:px-5">
         <OrangeCard />
       </div>
     </section>
@@ -161,8 +154,7 @@ function TopMarquee() {
   return (
     <div
       aria-hidden
-      className="relative w-full shrink-0 overflow-hidden"
-      style={{ backgroundColor: INK }}
+      className="relative w-full shrink-0 overflow-hidden bg-marquee-bg transition-colors duration-300"
     >
       <div
         className="marquee-track flex w-max items-center py-1.5 sm:py-2"
@@ -171,8 +163,7 @@ function TopMarquee() {
         {items.map((word, i) => (
           <span
             key={`${word}-${i}`}
-            className="flex items-center font-mono text-[8.5px] uppercase tracking-[0.28em] sm:text-[10px] md:text-[11px]"
-            style={{ color: CREAM, opacity: 0.7 }}
+            className="flex items-center font-mono text-[8.5px] uppercase tracking-[0.28em] text-marquee-fg/70 sm:text-[10px] md:text-[11px]"
           >
             <span className="px-4 sm:px-6 md:px-8">{word}</span>
             <span aria-hidden className="opacity-60">
@@ -183,17 +174,11 @@ function TopMarquee() {
       </div>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16"
-        style={{
-          background: `linear-gradient(to right, ${INK} 0%, rgba(10,10,10,0) 100%)`,
-        }}
+        className="hero-marquee-fade-l pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16"
-        style={{
-          background: `linear-gradient(to left, ${INK} 0%, rgba(10,10,10,0) 100%)`,
-        }}
+        className="hero-marquee-fade-r pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16"
       />
     </div>
   );
@@ -209,7 +194,7 @@ function HeroIntro() {
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
-      <MobileEstablishedLine />
+      {/* <MobileEstablishedLine /> */}
     </div>
   );
 }
@@ -218,18 +203,9 @@ function HeroIntro() {
 
 function MobileAvailabilityBadge() {
   return (
-    <div
-      className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border px-3 py-1.5 md:hidden"
-      style={{
-        borderColor: "rgba(10,10,10,0.14)",
-        backgroundColor: "rgba(255,255,255,0.55)",
-      }}
-    >
+    <div className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1.5 md:hidden">
       <span aria-hidden className="presence-dot" />
-      <span
-        className="font-mono text-[8.5px] uppercase tracking-[0.22em]"
-        style={{ color: INK }}
-      >
+      <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] text-text">
         Available for full-time opportunities
       </span>
     </div>
@@ -239,8 +215,7 @@ function MobileAvailabilityBadge() {
 function MobileEstablishedLine() {
   return (
     <div
-      className="flex w-full items-center justify-center gap-2 font-mono text-[9px] uppercase tracking-[0.3em] md:hidden"
-      style={{ color: INK, opacity: 0.55 }}
+      className="flex w-full items-center justify-center gap-2 font-mono text-[9px] uppercase tracking-[0.3em] text-text-muted md:hidden"
     >
       <span>Est. 2024</span>
       <span aria-hidden>•</span>
@@ -254,7 +229,7 @@ function HeroHeadline() {
     <div className="flex w-full flex-col items-start">
       {/* Mobile headline — stacked like the poster layout */}
       <div
-        className="font-display flex w-full flex-col items-start text-left font-black tracking-[-0.04em] md:hidden"
+        className="font-heading flex w-full flex-col items-start text-left font-bold tracking-tight md:hidden"
         style={{ color: INK }}
       >
         <div
@@ -289,11 +264,10 @@ function HeroHeadline() {
         </span>
       </div>
 
-      {/* Desktop headline — unchanged */}
+      {/* Desktop headline */}
       <div
-        className="font-display hidden flex-col gap-[0.14em] text-left font-black leading-[0.90] tracking-[-0.035em] sm:gap-[0.20em] md:flex md:gap-[0.20em]"
+        className="font-heading hidden flex-col gap-[0.14em] text-left font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em]"
         style={{
-          color: INK,
           fontSize: "clamp(1.35rem, 4.8vw + 0.15rem, 4.9rem)",
         }}
       >
@@ -311,8 +285,7 @@ function HeroHeadline() {
       </div>
 
       <p
-        className="mt-4 w-full max-w-none text-left font-mono text-[10.5px] leading-[1.65] tracking-[0.02em] sm:mt-4.5 md:max-w-[80ch] md:text-[11px] lg:text-[12px]"
-        style={{ color: INK, opacity: 0.78 }}
+        className="mt-4 w-full max-w-none text-left text-base leading-relaxed tracking-tight text-text/80 sm:mt-4.5 md:max-w-[80ch] lg:text-lg"
       >
         Full-stack developer crafting high-performance, interactive web
         experiences with scalable backends and clean interfaces.
@@ -394,11 +367,10 @@ function BlueBlob() {
 function HeroFooter() {
   return (
     <div
-      className="grid w-full grid-cols-1 gap-2.5 md:inline-grid md:w-auto md:min-w-100 md:grid-cols-2 md:gap-3 lg:min-w-104"
-      style={{ color: INK }}
+      className="grid w-full grid-cols-1 gap-2.5 text-text md:inline-grid md:w-auto md:min-w-100 md:grid-cols-2 md:gap-3 lg:min-w-104"
     >
       <CtaPrimary href="/projects" label="View My Work" />
-      <CtaSecondary href="/about" label="About Me" />
+      <CtaSecondary href="/contact" label="Hire Me" />
     </div>
   );
 }
@@ -408,7 +380,7 @@ function HeroFooter() {
 // ═════════════════════════════════════════════════════════
 
 const CTA_BUTTON_CLASS =
-  "btn-magnetic group relative inline-flex w-full min-w-0 items-center justify-center gap-2 rounded-full px-4 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] sm:px-5 sm:text-[11px] md:px-6 md:py-3";
+  "btn-magnetic group relative inline-flex min-h-11 w-full min-w-0 flex-row items-center justify-center gap-2 rounded-full px-5 text-base leading-none tracking-tight whitespace-nowrap sm:min-h-12 sm:px-6";
 
 function CtaPrimary({ href, label }: { href: string; label: string }) {
   return (
@@ -421,8 +393,8 @@ function CtaPrimary({ href, label }: { href: string; label: string }) {
         boxShadow: "0 14px 32px -16px rgba(224,75,34,0.65)",
       }}
     >
-      <span className="relative z-10">{label}</span>
-      <ArrowUpRight className="relative z-10 h-3 w-3 sm:h-3.5 sm:w-3.5" />
+      <span className="relative z-10 mt-2 shrink-0">{label}</span>
+      <ArrowUpRight className="relative z-10 block h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
       <span
         aria-hidden
         className="absolute inset-0 -translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0"
@@ -439,14 +411,10 @@ function CtaSecondary({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className={`${CTA_BUTTON_CLASS} border transition-colors duration-300 hover:bg-[#0a0a0a] hover:text-[#F1E7D2]`}
-      style={{
-        color: INK,
-        borderColor: "rgba(10,10,10,0.65)",
-      }}
+      className={`${CTA_BUTTON_CLASS} border border-text/65 text-text transition-colors duration-300 hover:bg-text hover:text-background`}
     >
-      <span>{label}</span>
-      <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+      <span className="mt-2 shrink-0">{label}</span>
+      <ArrowUpRight className="block h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
     </Link>
   );
 }
@@ -503,11 +471,11 @@ function OrangeCard() {
         <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
 
         <div
-          className="no-scrollbar relative grid h-full min-h-0 content-stretch gap-y-2.5 overflow-y-auto px-6 py-4 md:grid-cols-[1.14fr_0.86fr_1fr] md:gap-x-5 lg:gap-x-7 lg:px-9 lg:py-5"
+          className="no-scrollbar relative grid h-full min-h-0 items-start gap-y-2.5 overflow-y-auto px-6 py-6 md:grid-cols-[1.14fr_0.86fr_1fr] md:gap-x-5 md:py-7 lg:gap-x-7 lg:px-9 lg:py-8"
           style={{ color: CREAM }}
         >
           {/* Col 1 - intro */}
-          <div className="flex min-w-0 flex-col justify-center gap-8 sm:gap-8">
+          <div className="flex min-w-0 flex-col justify-start gap-8 sm:gap-8">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
               <span aria-hidden className="presence-dot" />
               <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] sm:text-[9.5px]">
@@ -516,10 +484,10 @@ function OrangeCard() {
             </div>
 
             <h2
-              className="max-w-[16ch] font-display text-[1.25rem] font-black leading-[1.12] tracking-[-0.02em] sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
+              className="max-w-[16ch] font-heading text-[1.25rem] font-bold leading-[1.12] tracking-tight sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
               style={{ color: CREAM }}
             >
-              I build products that scale and solve real problems.
+              Build. Innovate. Scale.
             </h2>
 
             {/* <p className="max-w-[42ch] font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-95 sm:text-[10px] md:max-w-[36ch] md:text-[11px] lg:text-[12px]">
@@ -529,8 +497,8 @@ function OrangeCard() {
           </div>
 
           {/* Col 2 - experience */}
-          <div className="flex min-w-0 flex-col justify-center gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
-            <span className='font-display font-bold'>Experience</span>
+          <div className="flex min-w-0 flex-col justify-start gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
+            <OrangeCardHeading>experience</OrangeCardHeading>
             <ul className="flex flex-col">
               {EXPERIENCE_ITEMS.map((item, index) => (
                 <ExperienceRow
@@ -543,8 +511,8 @@ function OrangeCard() {
           </div>
 
           {/* Col 3 - current focus */}
-          <div className="flex min-w-0 flex-col justify-center gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
-            <span className='font-display font-bold'>Current Focus</span>
+          <div className="flex min-w-0 flex-col justify-start gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
+            <OrangeCardHeading>current focus</OrangeCardHeading>
             <ul className="flex flex-col">
               {FOCUS_ITEMS.map((item, index) => (
                 <FocusRow
@@ -570,7 +538,7 @@ function OrangeCard() {
 
 function MobileCardStack() {
   return (
-    <div className="mx-auto mt-6 flex w-full max-w-136 flex-col gap-3 pb-7 md:hidden">
+    <div className="mx-auto flex w-full max-w-136 flex-col gap-3 pb-7 md:hidden">
       {/* Box 1 — orange statement card */}
       <div
         className="relative overflow-hidden rounded-[1.4rem] px-5 py-7"
@@ -607,12 +575,9 @@ function MobileCardStack() {
         className="relative overflow-hidden rounded-[1.4rem] px-5 py-6"
         style={{ backgroundColor: INK, color: CREAM }}
       >
-        <p
-          className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em]"
-          style={{ color: "#ff6b3d" }}
-        >
-          Experience
-        </p>
+        <OrangeCardHeading style={{ color: "#ff6b3d" }}>
+          experience
+        </OrangeCardHeading>
         <ul className="mt-2 flex flex-col">
           {EXPERIENCE_ITEMS.map((item, index) => (
             <ExperienceRow
@@ -625,28 +590,17 @@ function MobileCardStack() {
       </div>
 
       {/* Box 3 — light current focus card */}
-      <div
-        className="relative overflow-hidden rounded-[1.4rem] border px-5 py-6"
-        style={{
-          backgroundColor: "#FBF5E9",
-          borderColor: "rgba(10,10,10,0.08)",
-          color: INK,
-          boxShadow: "0 18px 40px -28px rgba(10,10,10,0.25)",
-        }}
-      >
-        <p
-          className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em]"
-          style={{ color: INK, opacity: 0.85 }}
-        >
-          Current Focus
-        </p>
+      <div className="relative overflow-hidden rounded-[1.4rem] border border-border bg-surface px-5 py-6 text-text shadow-[0_18px_40px_-28px_rgba(10,10,10,0.25)]">
+        <OrangeCardHeading className="opacity-85">
+          current focus
+        </OrangeCardHeading>
         <ul className="mt-2 flex flex-col">
           {FOCUS_ITEMS.map((item, index) => (
             <FocusRow
               key={item.title}
               item={item}
               showDivider={index > 0}
-              dividerClassName="border-[rgba(10,10,10,0.08)]"
+              dividerClassName="border-border"
             />
           ))}
         </ul>
@@ -659,11 +613,19 @@ function MobileCardStack() {
 // Sub-pieces
 // ═════════════════════════════════════════════════════════
 
-function OrangeCardHeading({ children }: { children: React.ReactNode }) {
+function OrangeCardHeading({
+  children,
+  className = "",
+  style,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
     <h3
-      className="font-mono text-[9px] font-semibold uppercase tracking-[0.2em] opacity-95 sm:text-[10px] lg:text-[11px]"
-      style={{ color: CREAM }}
+      className={`font-heading text-xl font-bold lowercase tracking-tight opacity-95 sm:text-2xl md:text-xl lg:text-2xl ${className}`}
+      style={style}
     >
       {children}
     </h3>
@@ -699,8 +661,6 @@ function ExperienceRow({
   item: ExperienceItem;
   showDivider: boolean;
 }) {
-  const isLongValue = item.value.length > 4;
-
   return (
     <li
       className={`flex min-w-0 items-center gap-3 py-2.5 sm:gap-3.5 sm:py-3 ${
@@ -710,15 +670,11 @@ function ExperienceRow({
       <IconTile icon={item.icon} />
       <div className="min-w-0">
         <p
-          className={`font-mono font-bold leading-none tracking-[0.02em] ${
-            isLongValue
-              ? "text-[15px] sm:text-[16px] lg:text-[18px]"
-              : "text-[1.45rem] sm:text-[1.65rem] lg:text-[2rem]"
-          }`}
+          className="font-heading text-base font-bold leading-tight tracking-tight sm:text-lg lg:text-xl"
         >
           {item.value}
         </p>
-        <p className="mt-1 font-mono text-[9px] font-semibold uppercase leading-tight tracking-[0.18em] opacity-95 sm:text-[10px] lg:text-[11px]">
+        <p className="mt-1 text-sm leading-tight opacity-95 sm:text-base">
           {item.label}
         </p>
       </div>
@@ -743,10 +699,10 @@ function FocusRow({
     >
       <IconTile icon={item.icon} color={item.color} />
       <div className="min-w-0 pt-px">
-        <p className="font-mono text-[10px] font-semibold uppercase leading-tight tracking-[0.16em] opacity-95 sm:text-[11px] lg:text-[12px]">
+        <p className="font-heading text-base font-bold leading-tight tracking-tight opacity-95 sm:text-lg lg:text-xl">
           {item.title}
         </p>
-        <p className="mt-0.5 wrap-break-word font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-90 sm:text-[10px] lg:text-[11px]">
+        <p className="mt-1 wrap-break-word text-sm leading-relaxed opacity-90 sm:text-base">
           {item.description}
         </p>
       </div>

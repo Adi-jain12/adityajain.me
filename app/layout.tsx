@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import { Header } from "@/components/layout/Header";
 import { Loader } from "@/components/ui/Loader";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -72,12 +73,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable} ${playfair.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable} ${playfair.variable} ${inter.variable}`}
+    >
       <body className="antialiased flex min-h-svh flex-col">
-        <SmoothScroll />
-        <Loader />
-        <Header />
-        <main className="flex flex-1 flex-col">{children}</main>
+        <ThemeProvider>
+          <SmoothScroll />
+          <Loader />
+          <Header />
+          <main className="flex flex-1 flex-col">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

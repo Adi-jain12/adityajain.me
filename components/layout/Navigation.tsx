@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 function isNavActive(pathname: string, href: string) {
   return href === "/"
@@ -14,7 +15,9 @@ function isNavActive(pathname: string, href: string) {
 }
 
 const linkBaseClass =
-  "group relative inline-flex items-baseline gap-1 font-mono uppercase transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:gap-1.5";
+  "group relative inline-flex items-center gap-1 tracking-tight transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:gap-1.5";
+
+const navTextClass = "text-base tracking-tight";
 
 type NavLinkProps = {
   link: (typeof siteConfig.navLinks)[number];
@@ -32,14 +35,13 @@ function NavLink({ link, idx, isActive, className, onNavigate }: NavLinkProps) {
       onClick={onNavigate}
       className={className}
     >
-      <span
+      {/* <span
         aria-hidden
-        className="text-[8.5px] font-semibold tabular-nums opacity-90 transition-opacity duration-300 sm:text-[10px]"
+        className="text-[10px] tabular-nums opacity-80 transition-opacity duration-300 sm:text-xs"
       >
         0{idx + 1}.
-      </span>
+      </span> */}
       <span
-        className="link-underline font-semibold"
         data-active={isActive ? "true" : undefined}
       >
         {link.label}
@@ -48,34 +50,34 @@ function NavLink({ link, idx, isActive, className, onNavigate }: NavLinkProps) {
   );
 }
 
-function ConnectLink({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
-  return (
-    <a
-      href="mailto:hello@adityajain.me"
-      onClick={onNavigate}
-      className={className}
-    >
-      <span>Let&apos;s Connect</span>
-      <span
-        aria-hidden
-        className="inline-flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5"
-      >
-        <svg viewBox="0 0 20 10" className="h-[10px] w-[18px]" fill="none">
-          <path
-            d="M1 5 H17 M13 1 L17 5 L13 9"
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
-    </a>
-  );
-}
+// function ConnectLink({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
+//   return (
+//     <a
+//       href="mailto:hello@adityajain.me"
+//       onClick={onNavigate}
+//       className={className}
+//     >
+//       <span className="mt-2">Let&apos;s Connect</span>
+//       <span
+//         aria-hidden
+//         className="inline-flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5"
+//       >
+//         <svg viewBox="0 0 20 10" className="h-[10px] w-[18px]" fill="none">
+//           <path
+//             d="M1 5 H17 M13 1 L17 5 L13 9"
+//             stroke="currentColor"
+//             strokeWidth="1.4"
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//           />
+//         </svg>
+//       </span>
+//     </a>
+//   );
+// }
 
 const connectClass =
-  "group inline-flex items-center gap-2 rounded-full border font-mono font-semibold uppercase transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] border-text/45 text-text hover:border-text/80 hover:bg-white/5";
+  "group inline-flex items-center gap-2 rounded-full border tracking-tight transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] border-text/45 text-text hover:border-text/80 hover:bg-white/5";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -105,7 +107,7 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="hidden shrink-0 items-center gap-7 md:gap-12 sm:flex">
+      <nav className="hidden shrink-0 items-center gap-4 md:gap-6 sm:flex">
         {siteConfig.navLinks.map((link, idx) => {
           const isActive = isNavActive(pathname, link.href);
 
@@ -117,22 +119,25 @@ export function Navigation() {
               isActive={isActive}
               className={cn(
                 linkBaseClass,
-                "text-[11px] tracking-[0.24em]",
+                navTextClass,
                 isActive ? "text-foreground" : "text-text/85 hover:text-foreground",
               )}
             />
           );
         })}
 
-        <ConnectLink
+        <ThemeToggle className={navTextClass} />
+
+        {/* <ConnectLink
           className={cn(
             connectClass,
-            "ml-1 hidden px-3 py-1.5 text-[11px] tracking-[0.24em] md:inline-flex",
+            "ml-1 hidden px-3 py-1.5 text-base md:inline-flex",
           )}
-        />
+        /> */}
       </nav>
 
-      <div className="sm:hidden">
+      <div className="flex items-center gap-2 sm:hidden">
+        <ThemeToggle className={navTextClass} />
         <button
           type="button"
           aria-expanded={open}
@@ -173,7 +178,7 @@ export function Navigation() {
                         onNavigate={closeMenu}
                         className={cn(
                           linkBaseClass,
-                          "w-full py-3 text-[12px] tracking-[0.2em]",
+                          "w-full py-3 text-lg",
                           isActive
                             ? "text-foreground"
                             : "text-text/85 hover:text-foreground",
@@ -182,15 +187,15 @@ export function Navigation() {
                     </li>
                   );
                 })}
-                <li className="pt-2">
+                {/* <li className="pt-2">
                   <ConnectLink
                     onNavigate={closeMenu}
                     className={cn(
                       connectClass,
-                      "w-full justify-center px-4 py-3 text-[11px] tracking-[0.2em]",
+                      "w-full justify-center px-4 py-3 text-base",
                     )}
                   />
-                </li>
+                </li> */}
               </ul>
             </nav>
           </>

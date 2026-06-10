@@ -17,8 +17,27 @@
   --color-surface-hover: #252525;
   --color-border: #2a2a2a;
 
+  /* Hero marquee */
+  --color-marquee-bg: #1c1c1c;
+  --color-marquee-fg: #f58361;
+
   /* Typography */
   --font-mono: var(--font-ia-mono), "iA Writer Mono", "Monaco", "Consolas", "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+[data-theme="light"] {
+  --color-background: #f1e7d2;
+  --color-foreground: #e04b22;
+  --color-text: #0a0a0a;
+  --color-text-muted: #5c5c5c;
+  --color-accent: #e04b22;
+  --color-accent-light: #f06a42;
+  --color-accent-dark: #cd5230;
+  --color-surface: #fbf5e9;
+  --color-surface-hover: #ebe0cc;
+  --color-border: rgba(10, 10, 10, 0.08);
+  --color-marquee-bg: #0a0a0a;
+  --color-marquee-fg: #f1e7d2;
 }
 
 @layer base {
@@ -30,8 +49,11 @@
 
   body {
     background: var(--color-background);
-    color: #eaeaea;
+    color: var(--color-text);
     font-family: var(--font-vg), "VG", "Georgia", serif;
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
   }
 
   h1,
@@ -133,6 +155,14 @@ html.lenis body {
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+.hero-marquee-fade-l {
+  background: linear-gradient(to right, var(--color-marquee-bg) 0%, transparent 100%);
+}
+
+.hero-marquee-fade-r {
+  background: linear-gradient(to left, var(--color-marquee-bg) 0%, transparent 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {
