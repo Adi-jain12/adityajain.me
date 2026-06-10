@@ -143,7 +143,7 @@ export function Hero() {
 
       {/* Orange card — bottom proportion via grid row */}
       <div
-        className="relative flex min-h-0 flex-col overflow-visible px-2 sm:px-3 md:overflow-hidden lg:px-5"
+        className="relative flex min-h-0 flex-col overflow-visible px-4 sm:px-3 md:overflow-hidden lg:px-5"
         style={{ backgroundColor: CREAM }}
       >
         <OrangeCard />
@@ -205,9 +205,46 @@ function TopMarquee() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-10 w-full max-w-[1200px] flex flex-col items-start gap-4 px-3 sm:mt-14 sm:gap-5 sm:px-6 md:mt-16 lg:mt-18 lg:gap-6 lg:px-12">
+    <div className="relative z-10 mx-auto mt-7 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-14 sm:gap-5 sm:px-6 md:mt-16 md:items-start lg:mt-18 lg:gap-6 lg:px-12">
+      <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
+      <MobileEstablishedLine />
+    </div>
+  );
+}
+
+// Mobile-only pieces (hidden on md+)
+
+function MobileAvailabilityBadge() {
+  return (
+    <div
+      className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border px-3 py-1.5 md:hidden"
+      style={{
+        borderColor: "rgba(10,10,10,0.14)",
+        backgroundColor: "rgba(255,255,255,0.55)",
+      }}
+    >
+      <span aria-hidden className="presence-dot" />
+      <span
+        className="font-mono text-[8.5px] uppercase tracking-[0.22em]"
+        style={{ color: INK }}
+      >
+        Available for full-time opportunities
+      </span>
+    </div>
+  );
+}
+
+function MobileEstablishedLine() {
+  return (
+    <div
+      className="flex w-full items-center justify-center gap-2 font-mono text-[9px] uppercase tracking-[0.3em] md:hidden"
+      style={{ color: INK, opacity: 0.55 }}
+    >
+      <span>Est. 2024</span>
+      <span aria-hidden>•</span>
+      <span>India</span>
     </div>
   );
 }
@@ -215,8 +252,46 @@ function HeroIntro() {
 function HeroHeadline() {
   return (
     <div className="flex w-full flex-col items-start">
+      {/* Mobile headline — stacked like the poster layout */}
       <div
-        className="font-display flex flex-col gap-[0.14em] text-left font-black leading-[0.90] tracking-[-0.035em] sm:gap-[0.20em] md:gap-[0.20em]"
+        className="font-display flex w-full flex-col items-start text-left font-black tracking-[-0.04em] md:hidden"
+        style={{ color: INK }}
+      >
+        <div
+          className="flex items-center justify-start gap-x-[0.16em] font-bold"
+          style={{
+            fontSize: "clamp(2.2rem, 10.2vw, 3rem)",
+            lineHeight: 0.95,
+          }}
+        >
+          <span>Hello,</span>
+          <FacePill />
+        </div>
+        <span
+          className="mt-1 font-bold"
+          style={{
+            fontSize: "clamp(2.55rem, 12vw, 3.55rem)",
+            lineHeight: 0.95,
+          }}
+        >
+          I&rsquo;m Aditya
+        </span>
+        <span
+          className="mt-3 flex max-w-[12ch] flex-wrap items-center justify-start gap-x-[0.18em] gap-y-1 font-bold"
+          style={{
+            fontSize: "clamp(1.75rem, 8.2vw, 2.35rem)",
+            lineHeight: 1.02,
+          }}
+        >
+          <span>I build</span>
+          <BlueBlob />
+          <span>web experiences</span>
+        </span>
+      </div>
+
+      {/* Desktop headline — unchanged */}
+      <div
+        className="font-display hidden flex-col gap-[0.14em] text-left font-black leading-[0.90] tracking-[-0.035em] sm:gap-[0.20em] md:flex md:gap-[0.20em]"
         style={{
           color: INK,
           fontSize: "clamp(1.35rem, 4.8vw + 0.15rem, 4.9rem)",
@@ -236,7 +311,7 @@ function HeroHeadline() {
       </div>
 
       <p
-        className="mt-2 max-w-[80ch] text-left font-mono text-[9px] leading-[1.55] tracking-[0.02em] sm:mt-4.5 sm:text-[10px] md:text-[11px] lg:text-[12px]"
+        className="mt-4 w-full max-w-none text-left font-mono text-[10.5px] leading-[1.65] tracking-[0.02em] sm:mt-4.5 md:max-w-[80ch] md:text-[11px] lg:text-[12px]"
         style={{ color: INK, opacity: 0.78 }}
       >
         Full-stack developer crafting high-performance, interactive web
@@ -319,7 +394,7 @@ function BlueBlob() {
 function HeroFooter() {
   return (
     <div
-      className="inline-grid min-w-[17rem] grid-cols-2 gap-2 sm:min-w-[20rem] sm:gap-3 md:min-w-[25rem] lg:min-w-[26rem]"
+      className="grid w-full grid-cols-1 gap-2.5 md:inline-grid md:w-auto md:min-w-100 md:grid-cols-2 md:gap-3 lg:min-w-104"
       style={{ color: INK }}
     >
       <CtaPrimary href="/projects" label="View My Work" />
@@ -333,7 +408,7 @@ function HeroFooter() {
 // ═════════════════════════════════════════════════════════
 
 const CTA_BUTTON_CLASS =
-  "btn-magnetic group relative inline-flex w-full min-w-0 items-center justify-center gap-2 rounded-full px-4 py-2 font-mono text-[9.5px] font-semibold uppercase tracking-[0.18em] sm:px-5 sm:py-2.5 sm:text-[11px] md:px-6 md:py-3";
+  "btn-magnetic group relative inline-flex w-full min-w-0 items-center justify-center gap-2 rounded-full px-4 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] sm:px-5 sm:text-[11px] md:px-6 md:py-3";
 
 function CtaPrimary({ href, label }: { href: string; label: string }) {
   return (
@@ -401,86 +476,181 @@ function ArrowUpRight({ className = "" }: { className?: string }) {
 
 function OrangeCard() {
   return (
-    <div
-      className="relative mx-auto flex min-h-fit w-full flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:min-h-0 md:flex-1 lg:rounded-t-[2.2rem]"
-      style={{
-        backgroundImage: POSTER_GRADIENT,
-        maxWidth: ORANGE_CARD_MAX_WIDTH,
-      }}
-    >
-      {/* dotted texture */}
+    <>
+      <MobileCardStack />
+
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-25"
+        className="relative mx-auto hidden min-h-fit w-full flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:flex md:min-h-0 md:flex-1 lg:rounded-t-[2.2rem]"
         style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
+          backgroundImage: POSTER_GRADIENT,
+          maxWidth: ORANGE_CARD_MAX_WIDTH,
         }}
-      />
-
-      <CornerMark className="absolute left-3 top-3 sm:left-5 sm:top-5" />
-      <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
-
-      <div
-        className="no-scrollbar relative grid h-auto min-h-0 grid-cols-1 content-start gap-x-3 gap-y-4 overflow-visible px-4 py-4 sm:gap-x-4 sm:gap-y-4 sm:px-5 sm:py-4 md:h-full md:grid-cols-[1.14fr_0.86fr_1fr] md:content-stretch md:gap-x-5 md:gap-y-2.5 md:overflow-y-auto md:px-6 md:py-4 lg:gap-x-7 lg:px-9 lg:py-5"
-        style={{ color: CREAM }}
       >
-        {/* Col 1 - intro */}
-        <div className="flex min-w-0 flex-col justify-center gap-8 sm:gap-8">
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
-            <span aria-hidden className="presence-dot" />
-            <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] sm:text-[9.5px]">
-              Available for full-time opportunities
-            </span>
+        {/* dotted texture */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-25"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
+          }}
+        />
+
+        <CornerMark className="absolute left-3 top-3 sm:left-5 sm:top-5" />
+        <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
+
+        <div
+          className="no-scrollbar relative grid h-full min-h-0 content-stretch gap-y-2.5 overflow-y-auto px-6 py-4 md:grid-cols-[1.14fr_0.86fr_1fr] md:gap-x-5 lg:gap-x-7 lg:px-9 lg:py-5"
+          style={{ color: CREAM }}
+        >
+          {/* Col 1 - intro */}
+          <div className="flex min-w-0 flex-col justify-center gap-8 sm:gap-8">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
+              <span aria-hidden className="presence-dot" />
+              <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] sm:text-[9.5px]">
+                Available for full-time opportunities
+              </span>
+            </div>
+
+            <h2
+              className="max-w-[16ch] font-display text-[1.25rem] font-black leading-[1.12] tracking-[-0.02em] sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
+              style={{ color: CREAM }}
+            >
+              I build products that scale and solve real problems.
+            </h2>
+
+            {/* <p className="max-w-[42ch] font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-95 sm:text-[10px] md:max-w-[36ch] md:text-[11px] lg:text-[12px]">
+              From idea to production, I help startups and teams build fast,
+              reliable and user-focused web applications.
+            </p> */}
           </div>
 
-          <h2
-            className="max-w-[16ch] font-display text-[1.25rem] font-black leading-[1.12] tracking-[-0.02em] sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
-            style={{ color: CREAM }}
-          >
-            I build products that scale and solve real problems.
-          </h2>
+          {/* Col 2 - experience */}
+          <div className="flex min-w-0 flex-col justify-center gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
+            <span className='font-display font-bold'>Experience</span>
+            <ul className="flex flex-col">
+              {EXPERIENCE_ITEMS.map((item, index) => (
+                <ExperienceRow
+                  key={item.label}
+                  item={item}
+                  showDivider={index > 0}
+                />
+              ))}
+            </ul>
+          </div>
 
-          {/* <p className="max-w-[42ch] font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-95 sm:text-[10px] md:max-w-[36ch] md:text-[11px] lg:text-[12px]">
-            From idea to production, I help startups and teams build fast,
-            reliable and user-focused web applications.
-          </p> */}
+          {/* Col 3 - current focus */}
+          <div className="flex min-w-0 flex-col justify-center gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
+            <span className='font-display font-bold'>Current Focus</span>
+            <ul className="flex flex-col">
+              {FOCUS_ITEMS.map((item, index) => (
+                <FocusRow
+                  key={item.title}
+                  item={item}
+                  showDivider={index > 0}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Col 2 - experience */}
-        <div className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8">
-          <span className='font-display font-bold'>Experience</span>
-          <ul className="flex flex-col">
-            {EXPERIENCE_ITEMS.map((item, index) => (
-              <ExperienceRow
-                key={item.label}
-                item={item}
-                showDivider={index > 0}
-              />
-            ))}
-          </ul>
-        </div>
+        <CornerMark className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5" />
+        <CornerMark className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5" />
+      </div>
+    </>
+  );
+}
 
-        {/* Col 3 - current focus */}
-        <div className="flex min-w-0 flex-col justify-center gap-2 border-t border-[rgba(241,231,210,0.16)] pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0 lg:pl-8">
-          <span className='font-display font-bold'>Current Focus</span>
-          <ul className="flex flex-col">
-            {FOCUS_ITEMS.map((item, index) => (
-              <FocusRow
-                key={item.title}
-                item={item}
-                showDivider={index > 0}
-              />
-            ))}
-          </ul>
-        </div>
+// ═════════════════════════════════════════════════════════
+// Mobile card stack — poster-style boxes (hidden on md+)
+// ═════════════════════════════════════════════════════════
+
+function MobileCardStack() {
+  return (
+    <div className="mx-auto mt-6 flex w-full max-w-136 flex-col gap-3 pb-7 md:hidden">
+      {/* Box 1 — orange statement card */}
+      <div
+        className="relative overflow-hidden rounded-[1.4rem] px-5 py-7"
+        style={{ backgroundImage: POSTER_GRADIENT, color: CREAM }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-25"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
+          }}
+        />
+        <span
+          aria-hidden
+          className="absolute right-4 top-4 text-[16px] opacity-90"
+        >
+          ✦
+        </span>
+
+        <h2
+          className="relative max-w-[18ch] font-display text-[1.45rem] font-black leading-[1.15] tracking-[-0.02em]"
+          style={{ color: CREAM }}
+        >
+          I build products that scale and solve real problems.
+        </h2>
       </div>
 
-      <CornerMark className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5" />
-      <CornerMark className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5" />
+      {/* Box 2 — dark experience card */}
+      <div
+        className="relative overflow-hidden rounded-[1.4rem] px-5 py-6"
+        style={{ backgroundColor: INK, color: CREAM }}
+      >
+        <p
+          className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em]"
+          style={{ color: "#ff6b3d" }}
+        >
+          Experience
+        </p>
+        <ul className="mt-2 flex flex-col">
+          {EXPERIENCE_ITEMS.map((item, index) => (
+            <ExperienceRow
+              key={item.label}
+              item={item}
+              showDivider={index > 0}
+            />
+          ))}
+        </ul>
+      </div>
+
+      {/* Box 3 — light current focus card */}
+      <div
+        className="relative overflow-hidden rounded-[1.4rem] border px-5 py-6"
+        style={{
+          backgroundColor: "#FBF5E9",
+          borderColor: "rgba(10,10,10,0.08)",
+          color: INK,
+          boxShadow: "0 18px 40px -28px rgba(10,10,10,0.25)",
+        }}
+      >
+        <p
+          className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em]"
+          style={{ color: INK, opacity: 0.85 }}
+        >
+          Current Focus
+        </p>
+        <ul className="mt-2 flex flex-col">
+          {FOCUS_ITEMS.map((item, index) => (
+            <FocusRow
+              key={item.title}
+              item={item}
+              showDivider={index > 0}
+              dividerClassName="border-[rgba(10,10,10,0.08)]"
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -559,22 +729,24 @@ function ExperienceRow({
 function FocusRow({
   item,
   showDivider,
+  dividerClassName = "border-[rgba(241,231,210,0.12)]",
 }: {
   item: FocusItem;
   showDivider: boolean;
+  dividerClassName?: string;
 }) {
   return (
     <li
       className={`flex min-w-0 items-start gap-2.5 py-2 sm:gap-3 sm:py-2.5 ${
-        showDivider ? "border-t border-[rgba(241,231,210,0.12)]" : ""
+        showDivider ? `border-t ${dividerClassName}` : ""
       }`}
     >
       <IconTile icon={item.icon} color={item.color} />
-      <div className="min-w-0 pt-[1px]">
+      <div className="min-w-0 pt-px">
         <p className="font-mono text-[10px] font-semibold uppercase leading-tight tracking-[0.16em] opacity-95 sm:text-[11px] lg:text-[12px]">
           {item.title}
         </p>
-        <p className="mt-0.5 break-words font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-90 sm:text-[10px] lg:text-[11px]">
+        <p className="mt-0.5 wrap-break-word font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-90 sm:text-[10px] lg:text-[11px]">
           {item.description}
         </p>
       </div>
