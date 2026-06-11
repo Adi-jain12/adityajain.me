@@ -146,7 +146,7 @@ export function Hero() {
       aria-label="Aditya Jain — portfolio"
       className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[auto_minmax(0,1fr)] md:overflow-hidden"
     >
-      <TopMarquee />
+      {/* <TopMarquee /> */}
 
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
       <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:overflow-hidden">
@@ -221,7 +221,7 @@ function MobileAvailabilityBadge() {
   return (
     <div className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1.5 md:hidden">
       <span aria-hidden className="presence-dot" />
-      <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] text-text">
+      <span className="presence-text font-mono text-[8.5px] uppercase tracking-[0.22em] text-text">
         Available for full-time opportunities
       </span>
     </div>
@@ -479,9 +479,9 @@ function OrangeCard() {
         >
           {/* Col 1 - intro */}
           <div className="flex min-w-0 flex-col justify-start gap-8 sm:gap-8">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
               <span aria-hidden className="presence-dot" />
-              <span className="font-mono text-[7.5px] uppercase tracking-[0.22em] sm:text-[8.5px]">
+              <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-400 sm:text-[8.5px]">
                 Available for full-time opportunities
               </span>
             </div>

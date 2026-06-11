@@ -221,9 +221,24 @@ html.lenis body {
   animation: dot-ring 2.4s ease-out infinite;
 }
 
+@keyframes presence-text-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.presence-text {
+  animation: presence-text-blink 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .presence-dot,
-  .presence-dot::after {
+  .presence-dot::after,
+  .presence-text {
     animation: none;
   }
 }

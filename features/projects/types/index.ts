@@ -5,6 +5,7 @@ export interface Project {
   title: string;
   description: string;
   category?: string;
+  year?: number;
   tags: string[];
   image?: string;
   liveUrl?: string;

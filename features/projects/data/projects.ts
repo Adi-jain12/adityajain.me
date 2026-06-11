@@ -7,6 +7,7 @@ export const projects: Project[] = [
     description:
       "A brief description of the first project and what it accomplishes.",
     category: "Website",
+    year: 2026,
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     image: "/images/projects/spiderman.jpg",
     liveUrl: "https://example.com",
@@ -19,6 +20,7 @@ export const projects: Project[] = [
     description:
       "A brief description of the second project and what it accomplishes.",
     category: "App",
+    year: 2025,
     tags: ["React", "Node.js"],
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
@@ -31,6 +33,7 @@ export const projects: Project[] = [
     description:
       "A brief description of the second project and what it accomplishes.",
     category: "App",
+    year: 2025,
     tags: ["React", "Node.js"],
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
@@ -43,6 +46,7 @@ export const projects: Project[] = [
     description:
       "A brief description of the second project and what it accomplishes.",
     category: "App",
+    year: 2024,
     tags: ["React", "Node.js"],
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
@@ -55,6 +59,7 @@ export const projects: Project[] = [
     description:
       "A brief description of the second project and what it accomplishes.",
     category: "App",
+    year: 2024,
     tags: ["React", "Node.js"],
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
@@ -67,6 +72,7 @@ export const projects: Project[] = [
     description:
       "A brief description of the second project and what it accomplishes.",
     category: "App",
+    year: 2023,
     tags: ["React", "Node.js"],
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",

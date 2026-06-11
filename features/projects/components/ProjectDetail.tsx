@@ -1,64 +1,147 @@
 import Image from "next/image";
 import type { Project } from "../types";
 
+const CTA_BUTTON_CLASS =
+  "btn-magnetic group relative inline-flex min-h-11 w-full min-w-0 flex-row items-center justify-center gap-2 rounded-full px-5 text-base leading-none tracking-tight whitespace-nowrap sm:min-h-12 sm:px-6";
+
+const CTA_RED = "#cd5230";
+const CREAM = "#F1E7D2";
+
 interface ProjectDetailProps {
   project: Project;
 }
 
-export function ProjectDetail({ project }: ProjectDetailProps) {
+function MetaRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <article className="py-10 sm:py-16">
-      <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+    <div className="flex">
+      <p className="flex-1 text-text-muted">{label}</p>
+      <div className="flex-1 text-text">{children}</div>
+    </div>
+  );
+}
+
+function TechPills({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {items.map((tech) => (
+        <span
+          key={tech}
+          className="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] tracking-wider text-accent sm:text-xs"
+        >
+          {tech}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ArrowUpRight({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      fill="none"
+      className={`transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${className}`}
+      aria-hidden
+    >
+      <path
+        d="M3 9 L9 3 M4 3 H9 V8"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ProjectLinkPrimary({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${CTA_BUTTON_CLASS} overflow-hidden`}
+      style={{
+        backgroundColor: CTA_RED,
+        color: CREAM,
+        boxShadow: "0 14px 32px -16px rgba(224,75,34,0.65)",
+      }}
+    >
+      <span className="relative z-10 mt-2 shrink-0">{label}</span>
+      <ArrowUpRight className="relative z-10 block h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+      <span
+        aria-hidden
+        className="absolute inset-0 -translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0))",
+        }}
+      />
+    </a>
+  );
+}
+
+function ProjectLinkSecondary({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${CTA_BUTTON_CLASS} border border-text/65 text-text transition-colors duration-300 hover:bg-text hover:text-background`}
+    >
+      <span className="mt-2 shrink-0">{label}</span>
+      <ArrowUpRight className="block h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+    </a>
+  );
+}
+
+export function ProjectDetail({ project }: ProjectDetailProps) {
+  const hasLinks = project.liveUrl || project.githubUrl;
+
+  return (
+    <article className="flex flex-col gap-8 sm:gap-8">
+      <h1 className="font-heading text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
         {project.title}
       </h1>
-      <p className="mt-3 text-base leading-relaxed sm:mt-4 sm:text-lg">
-        {project.description}
-      </p>
 
       {project.image && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 sm:mt-8 dark:border-zinc-800">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-border bg-surface">
           <Image
             src={project.image}
             alt={project.title}
-            width={1200}
-            height={630}
-            className="w-full object-cover"
-            sizes="(max-width: 768px) 100vw, 1200px"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            priority
           />
         </div>
       )}
 
-      <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-foreground dark:bg-zinc-800"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      <div className="flex flex-col gap-8 py-4 md:flex-row md:gap-8">
+        <div className="flex flex-1 flex-col gap-4 md:gap-8">
+          {project.tags.length > 0 && (
+            <MetaRow label="Tech stack">
+              <TechPills items={project.tags} />
+            </MetaRow>
+          )}
+          {hasLinks && (
+            <MetaRow label="Links">
+              <div className="flex flex-col gap-3">
+                {project.liveUrl && (
+                  <ProjectLinkPrimary href={project.liveUrl} label="Website" />
+                )}
+                {project.githubUrl && (
+                  <ProjectLinkSecondary href={project.githubUrl} label="GitHub" />
+                )}
+              </div>
+            </MetaRow>
+          )}
+        </div>
 
-      <div className="mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-[#383838] sm:px-5 sm:py-2.5 dark:hover:bg-[#ccc]"
-          >
-            Live Demo
-          </a>
-        )}
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium transition-colors hover:bg-zinc-100 sm:px-5 sm:py-2.5 dark:border-zinc-800 dark:hover:bg-zinc-900"
-          >
-            Source Code
-          </a>
+        {project.description && (
+          <div className="flex flex-1 flex-col gap-4 md:sticky md:top-20 md:h-fit">
+            <p className="leading-relaxed text-text">{project.description}</p>
+          </div>
         )}
       </div>
     </article>

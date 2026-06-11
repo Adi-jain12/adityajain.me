@@ -116,7 +116,7 @@ function EntryCard({
               </span>
             )}
             {entry.current && (
-              <span className="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent sm:text-xs">
+              <span className="rounded-full bg-green-500/20  px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-green-500 sm:text-xs">
                 Current
               </span>
             )}
@@ -140,7 +140,7 @@ function EntryCard({
           {entry.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-border bg-background/60 px-2.5 py-0.5 font-mono text-[11px] text-text-muted sm:text-xs"
+              className="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] tracking-wider text-accent sm:text-xs"
             >
               {tech}
             </span>

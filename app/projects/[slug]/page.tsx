@@ -5,7 +5,6 @@ import {
   getAllProjectSlugs,
 } from "@/features/projects";
 import { Container } from "@/components/ui/Container";
-import Link from "next/link";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -24,13 +23,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <Container>
-      <Link
-        href="/projects"
-        className="inline-block py-8 text-sm font-medium text-foreground transition-opacity hover:opacity-80"
-      >
-      </Link>
-      <ProjectDetail project={project} />
+    <Container className="py-10 sm:py-16">
+      <div className="mx-auto max-w-7xl">
+        <ProjectDetail project={project} />
+      </div>
     </Container>
   );
 }
