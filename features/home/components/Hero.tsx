@@ -14,9 +14,22 @@ import {
 // ───────────────── Tokens ─────────────────
 
 const CREAM = "#F1E7D2";
-const POSTER_RED = "#E04B22";
 const CTA_RED = "#cd5230";
-const CODE_PILL_BLUE = "#1e3a8a";
+const HEADLINE_PILL_BLUE_GRADIENT = `
+  radial-gradient(
+    circle at 72% 40%,
+    rgba(59, 130, 246, 0.18) 0%,
+    transparent 48%
+  ),
+  linear-gradient(
+    118deg,
+    #0f172a 0%,
+    #1e293b 18%,
+    #1e3a8a 48%,
+    #2563eb 78%,
+    #1d4ed8 100%
+  )
+`;
 const INK = "#0A0A0A";
 
 const POSTER_GRADIENT = `
@@ -49,15 +62,15 @@ const HEADLINE_PILL = {
 } as const;
 
 const HEADLINE_PILL_SHELL_STYLE: React.CSSProperties = {
-  backgroundColor: POSTER_RED,
+  background: POSTER_GRADIENT,
   boxShadow:
     "0 12px 28px -16px rgba(224, 75, 34, 0.6), inset 0 0 0 1px rgba(0,0,0,0.04)",
 };
 
 const HEADLINE_PILL_BLUE_SHELL_STYLE: React.CSSProperties = {
-  backgroundColor: CODE_PILL_BLUE,
+  background: HEADLINE_PILL_BLUE_GRADIENT,
   boxShadow:
-    "0 12px 28px -16px rgba(30, 58, 138, 0.55), inset 0 0 0 1px rgba(0,0,0,0.04)",
+    "0 12px 28px -16px rgba(2, 6, 23, 0.65), inset 0 0 0 1px rgba(255,255,255,0.06)",
 };
 
 const HEADLINE_PILL_INNER_RING: React.CSSProperties = {
@@ -65,12 +78,14 @@ const HEADLINE_PILL_INNER_RING: React.CSSProperties = {
 };
 
 const MARQUEE_WORDS = [
-  "DESIGNING TYPE",
-  "WRITING CODE",
-  "SHIPPING PRODUCTS",
-  "BAKING BREAD",
-  "ARRANGING PIXELS",
-  "SOLVING PROBLEMS",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "PostgreSQL",
+  "AI Applications",
+  "Performance Optimization",
+  "Full-Stack Development",
 ];
 
 type ExperienceItem = {
@@ -83,13 +98,14 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
   { icon: LuCalendarDays, value: "2+", label: "Years Experience" },
   { icon: LuRocket, value: "10+", label: "Projects Delivered" },
   { icon: LuCode, value: "End-to-End", label: "Development" },
+  { icon: LuCode, value: "Coffee", label: "Coffee" },
 ];
 
 type FocusItem = {
   icon: IconType;
   title: string;
   description: string;
-  color: string;
+  // color: string;
 };
 
 const FOCUS_ITEMS: FocusItem[] = [
@@ -97,25 +113,25 @@ const FOCUS_ITEMS: FocusItem[] = [
     icon: LuCodeXml,
     title: "Currently Coding",
     description: "Modern Frontend & Backend Applications",
-    color: "#20e7ff",
+    // color: "#20e7ff",
   },
   {
     icon: LuBrainCircuit,
     title: "Learning",
     description: "Advanced AI Agents & LLM Integration",
-    color: "#be38ff",
+    // color: "#be38ff",
   },
   {
     icon: LuZap,
     title: "Building",
     description: "Scalable Fullstack Architectures",
-    color: "#f5df22",
+    // color: "#f5df22",
   },
   {
     icon: LuCoffee,
     title: "Focusing On",
     description: "Clean Code & Performance Optimization",
-    color: "#18df78",
+    // color: "#18df78",
   },
 ];
 
@@ -128,7 +144,7 @@ export function Hero() {
     <section
       data-fit-viewport
       aria-label="Aditya Jain — portfolio"
-      className="relative grid min-h-svh w-full grid-rows-[auto_auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[auto_auto_minmax(0,1fr)] md:overflow-hidden"
+      className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[auto_minmax(0,1fr)] md:overflow-hidden"
     >
       <TopMarquee />
 
@@ -137,8 +153,8 @@ export function Hero() {
         <HeroIntro />
       </div>
 
-      {/* Orange card — bottom proportion via grid row */}
-      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-5 transition-colors duration-300 sm:px-3 sm:pt-6 md:overflow-hidden md:pt-7 lg:px-5">
+      {/* Orange card */}
+      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:overflow-hidden md:pt-6 md:pb-0 lg:px-5">
         <OrangeCard />
       </div>
     </section>
@@ -157,15 +173,15 @@ function TopMarquee() {
       className="relative w-full shrink-0 overflow-hidden bg-marquee-bg transition-colors duration-300"
     >
       <div
-        className="marquee-track flex w-max items-center py-1.5 sm:py-2"
+        className="marquee-track flex w-max items-center py-1 sm:py-1.5"
         style={{ ["--marquee-duration" as string]: "70s" }}
       >
         {items.map((word, i) => (
           <span
             key={`${word}-${i}`}
-            className="flex items-center font-mono text-[8.5px] uppercase tracking-[0.28em] text-marquee-fg/70 sm:text-[10px] md:text-[11px]"
+            className="flex items-center font-heading text-[11px] font-bold tracking-tight text-marquee-fg/70 sm:text-xs md:text-[13px]"
           >
-            <span className="px-4 sm:px-6 md:px-8">{word}</span>
+            <span className="px-3 sm:px-4 md:px-6">{word}</span>
             <span aria-hidden className="opacity-60">
               ·
             </span>
@@ -190,7 +206,7 @@ function TopMarquee() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-7 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-14 sm:gap-5 sm:px-6 md:mt-16 md:items-start lg:mt-18 lg:gap-6 lg:px-12">
+    <div className="relative z-10 mx-auto mt-4 w-full max-w-[1200px] flex flex-col items-center gap-3 px-4 sm:mt-6 sm:gap-4 sm:px-6 md:mt-8 md:items-start md:gap-4 lg:mt-10 lg:px-12">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
@@ -321,21 +337,13 @@ function HeadlinePill({
   );
 }
 
-function HeadlinePillInner({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="absolute inset-[8%] overflow-hidden rounded-full"
-      style={HEADLINE_PILL_INNER_RING}
-    >
-      {children}
-    </span>
-  );
-}
-
 function FacePill() {
   return (
     <HeadlinePill style={HEADLINE_PILL_SHELL_STYLE}>
-      <HeadlinePillInner>
+      <span
+        className="absolute top-1/2 left-[6%] aspect-square h-[84%] -translate-y-1/2 overflow-hidden rounded-full"
+        style={HEADLINE_PILL_INNER_RING}
+      >
         <Image
           src="/images/about/profile.jpeg"
           alt=""
@@ -344,7 +352,7 @@ function FacePill() {
           priority
           className="h-full w-full object-cover"
         />
-      </HeadlinePillInner>
+      </span>
     </HeadlinePill>
   );
 }
@@ -352,14 +360,12 @@ function FacePill() {
 function BlueBlob() {
   return (
     <HeadlinePill aria-hidden style={HEADLINE_PILL_BLUE_SHELL_STYLE}>
-      <HeadlinePillInner>
-        <span
-          className="flex h-full w-full items-center justify-center font-mono font-bold leading-none tracking-tight"
-          style={{ color: CREAM, fontSize: "0.54em" }}
-        >
-          {"</>"}
-        </span>
-      </HeadlinePillInner>
+      <span
+        className="flex h-full w-full items-center justify-center font-mono font-bold leading-none tracking-tight"
+        style={{ color: CREAM, fontSize: "0.54em" }}
+      >
+        {"</>"}
+      </span>
     </HeadlinePill>
   );
 }
@@ -467,24 +473,21 @@ function OrangeCard() {
           }}
         />
 
-        <CornerMark className="absolute left-3 top-3 sm:left-5 sm:top-5" />
-        <CornerMark className="absolute right-3 top-3 sm:right-5 sm:top-5" />
-
         <div
-          className="no-scrollbar relative grid h-full min-h-0 items-start gap-y-2.5 overflow-y-auto px-6 py-6 md:grid-cols-[1.14fr_0.86fr_1fr] md:gap-x-5 md:py-7 lg:gap-x-7 lg:px-9 lg:py-8"
+          className="no-scrollbar relative grid h-full min-h-0 items-start gap-y-2.5 overflow-y-auto px-6 py-5 md:grid-cols-[1.14fr_0.86fr_1fr] md:gap-x-5 md:py-6 lg:gap-x-7 lg:px-9 lg:py-7"
           style={{ color: CREAM }}
         >
           {/* Col 1 - intro */}
           <div className="flex min-w-0 flex-col justify-start gap-8 sm:gap-8">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(241,231,210,0.32)] bg-[rgba(241,231,210,0.08)] px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
               <span aria-hidden className="presence-dot" />
-              <span className="font-mono text-[8.5px] uppercase tracking-[0.22em] sm:text-[9.5px]">
+              <span className="font-mono text-[7.5px] uppercase tracking-[0.22em] sm:text-[8.5px]">
                 Available for full-time opportunities
               </span>
             </div>
 
             <h2
-              className="max-w-[16ch] font-heading text-[1.25rem] font-bold leading-[1.12] tracking-tight sm:text-[1.6rem] md:text-[1.35rem] lg:text-[1.75rem] xl:text-[2rem]"
+              className="max-w-[16ch] font-heading text-[1.1rem] font-bold leading-[1.12] tracking-tight sm:text-[1.35rem] md:text-[1.15rem] lg:text-[1.5rem] xl:text-[1.65rem]"
               style={{ color: CREAM }}
             >
               Build. Innovate. Scale.
@@ -498,13 +501,14 @@ function OrangeCard() {
 
           {/* Col 2 - experience */}
           <div className="flex min-w-0 flex-col justify-start gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
-            <OrangeCardHeading>experience</OrangeCardHeading>
+            {/* <OrangeCardHeading compact>experience</OrangeCardHeading> */}
             <ul className="flex flex-col">
               {EXPERIENCE_ITEMS.map((item, index) => (
                 <ExperienceRow
                   key={item.label}
                   item={item}
                   showDivider={index > 0}
+                  compact
                 />
               ))}
             </ul>
@@ -512,21 +516,19 @@ function OrangeCard() {
 
           {/* Col 3 - current focus */}
           <div className="flex min-w-0 flex-col justify-start gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
-            <OrangeCardHeading>current focus</OrangeCardHeading>
+            {/* <OrangeCardHeading compact>current focus</OuncrangeCardHeading> */}
             <ul className="flex flex-col">
               {FOCUS_ITEMS.map((item, index) => (
                 <FocusRow
                   key={item.title}
                   item={item}
                   showDivider={index > 0}
+                  compact
                 />
               ))}
             </ul>
           </div>
         </div>
-
-        <CornerMark className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5" />
-        <CornerMark className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5" />
       </div>
     </>
   );
@@ -563,7 +565,7 @@ function MobileCardStack() {
         </span>
 
         <h2
-          className="relative max-w-[18ch] font-display text-[1.45rem] font-black leading-[1.15] tracking-[-0.02em]"
+          className="relative max-w-[18ch] font-display text-[1.2rem] font-black leading-[1.15] tracking-[-0.02em]"
           style={{ color: CREAM }}
         >
           I build products that scale and solve real problems.
@@ -617,14 +619,20 @@ function OrangeCardHeading({
   children,
   className = "",
   style,
+  compact = false,
 }: {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  compact?: boolean;
 }) {
   return (
     <h3
-      className={`font-heading text-xl font-bold lowercase tracking-tight opacity-95 sm:text-2xl md:text-xl lg:text-2xl ${className}`}
+      className={`font-heading font-bold lowercase tracking-tight opacity-95 ${
+        compact
+          ? "text-lg sm:text-xl md:text-lg lg:text-xl"
+          : "text-xl sm:text-2xl md:text-xl lg:text-2xl"
+      } ${className}`}
       style={style}
     >
       {children}
@@ -632,17 +640,38 @@ function OrangeCardHeading({
   );
 }
 
+const ORANGE_CARD_LIST_ROW_CLASS =
+  "flex min-w-0 items-center gap-3 py-2.5 sm:gap-3.5 sm:py-2.5";
+
+const ORANGE_CARD_LIST_TITLE_CLASS = (compact: boolean) =>
+  `font-heading font-bold leading-tight tracking-tight ${
+    compact
+      ? "text-sm sm:text-base lg:text-lg"
+      : "text-base sm:text-lg lg:text-xl"
+  }`;
+
+const ORANGE_CARD_LIST_DETAIL_CLASS = (compact: boolean) =>
+  `mt-1 leading-tight opacity-95 ${
+    compact ? "text-xs sm:text-sm" : "text-sm sm:text-base"
+  }`;
+
 function IconTile({
   icon: Icon,
   color = CREAM,
+  compact = false,
 }: {
   icon: IconType;
   color?: string;
+  compact?: boolean;
 }) {
   return (
     <span
       aria-hidden
-      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-[15px] sm:h-9 sm:w-9 sm:text-[17px] lg:h-10 lg:w-10 lg:text-[18px]"
+      className={`inline-flex shrink-0 items-center justify-center rounded-md ${
+        compact
+          ? "h-7 w-7 text-[13px] sm:h-8 sm:w-8 sm:text-[15px] lg:h-9 lg:w-9 lg:text-[16px]"
+          : "h-8 w-8 text-[15px] sm:h-9 sm:w-9 sm:text-[17px] lg:h-10 lg:w-10 lg:text-[18px]"
+      }`}
       style={{
         backgroundColor: "rgba(10,10,10,0.78)",
         color,
@@ -657,26 +686,22 @@ function IconTile({
 function ExperienceRow({
   item,
   showDivider,
+  compact = false,
 }: {
   item: ExperienceItem;
   showDivider: boolean;
+  compact?: boolean;
 }) {
   return (
     <li
-      className={`flex min-w-0 items-center gap-3 py-2.5 sm:gap-3.5 sm:py-3 ${
+      className={`${ORANGE_CARD_LIST_ROW_CLASS} ${
         showDivider ? "border-t border-[rgba(241,231,210,0.12)]" : ""
       }`}
     >
-      <IconTile icon={item.icon} />
+      <IconTile icon={item.icon} compact={compact} />
       <div className="min-w-0">
-        <p
-          className="font-heading text-base font-bold leading-tight tracking-tight sm:text-lg lg:text-xl"
-        >
-          {item.value}
-        </p>
-        <p className="mt-1 text-sm leading-tight opacity-95 sm:text-base">
-          {item.label}
-        </p>
+        <p className={ORANGE_CARD_LIST_TITLE_CLASS(compact)}>{item.value}</p>
+        <p className={ORANGE_CARD_LIST_DETAIL_CLASS(compact)}>{item.label}</p>
       </div>
     </li>
   );
@@ -686,23 +711,23 @@ function FocusRow({
   item,
   showDivider,
   dividerClassName = "border-[rgba(241,231,210,0.12)]",
+  compact = false,
 }: {
   item: FocusItem;
   showDivider: boolean;
   dividerClassName?: string;
+  compact?: boolean;
 }) {
   return (
     <li
-      className={`flex min-w-0 items-start gap-2.5 py-2 sm:gap-3 sm:py-2.5 ${
+      className={`${ORANGE_CARD_LIST_ROW_CLASS} ${
         showDivider ? `border-t ${dividerClassName}` : ""
       }`}
     >
-      <IconTile icon={item.icon} color={item.color} />
-      <div className="min-w-0 pt-px">
-        <p className="font-heading text-base font-bold leading-tight tracking-tight opacity-95 sm:text-lg lg:text-xl">
-          {item.title}
-        </p>
-        <p className="mt-1 wrap-break-word text-sm leading-relaxed opacity-90 sm:text-base">
+      <IconTile icon={item.icon} compact={compact} />
+      <div className="min-w-0">
+        <p className={ORANGE_CARD_LIST_TITLE_CLASS(compact)}>{item.title}</p>
+        <p className={`${ORANGE_CARD_LIST_DETAIL_CLASS(compact)} wrap-break-word`}>
           {item.description}
         </p>
       </div>

@@ -43,6 +43,7 @@ function NavLink({ link, idx, isActive, className, onNavigate }: NavLinkProps) {
       </span> */}
       <span
         data-active={isActive ? "true" : undefined}
+        className={cn(isActive && "font-bold")}
       >
         {link.label}
       </span>
