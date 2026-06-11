@@ -1,4 +1,4 @@
-import type { ComponentType, CSSProperties, SVGProps } from "react";
+import type { ComponentType, SVGProps } from "react";
 import {
   SiReact,
   SiNextdotjs,
@@ -55,51 +55,35 @@ const iconColorMap: Record<TechIconKey, string> = {
 
 interface TechStackProps {
   items: TechItem[];
-  /** Duration of one full loop in seconds. Higher = slower. */
-  duration?: number;
 }
 
-function TechPill({ item }: { item: TechItem }) {
+function TechCard({ item }: { item: TechItem }) {
   const Icon = iconMap[item.icon];
   const color = iconColorMap[item.icon];
 
   return (
-    <div className="flex w-28 shrink-0 flex-col items-center gap-3 sm:w-32 sm:gap-4">
+    <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-border/40 bg-surface/30 px-3 py-5 sm:gap-4 sm:px-4 sm:py-6">
       <Icon
-        className="h-10 w-10 shrink-0 transition-transform duration-300 hover:scale-110 sm:h-12 sm:w-12"
+        className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
         style={{ color }}
         aria-hidden="true"
       />
-      <span className="whitespace-nowrap text-xs font-medium text-text-muted sm:text-sm">
+      <span className="text-center text-[10px] font-medium uppercase tracking-wider text-text-muted sm:text-xs">
         {item.name}
       </span>
     </div>
   );
 }
 
-export function TechStack({ items, duration = 35 }: TechStackProps) {
-  const marqueeStyle: CSSProperties = {
-    ["--marquee-duration" as string]: `${duration}s`,
-  };
-
-  const maskStyle: CSSProperties = {
-    WebkitMaskImage:
-      "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-    maskImage:
-      "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-  };
-
+export function TechStack({ items }: TechStackProps) {
   return (
-    <div className="relative overflow-hidden" style={maskStyle}>
-      <div
-        className="marquee-track flex w-max gap-8 sm:gap-12"
-        style={marqueeStyle}
-        aria-label="Tech stack"
-      >
-        {[...items, ...items].map((item, i) => (
-          <TechPill key={`${item.name}-${i}`} item={item} />
-        ))}
-      </div>
+    <div
+      className="grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 md:grid-cols-5 md:gap-5"
+      aria-label="Tech stack"
+    >
+      {items.map((item) => (
+        <TechCard key={item.name} item={item} />
+      ))}
     </div>
   );
 }

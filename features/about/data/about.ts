@@ -12,6 +12,29 @@ export const aboutData: AboutData = {
 
   photoCaption: "Photo of Aditya",
 
+  highlights: [
+    {
+      icon: "rocket",
+      title: "Building Products",
+      description: "Creating applications that solve real problems.",
+    },
+    {
+      icon: "palette",
+      title: "Design Engineering",
+      description: "Combining aesthetics with functionality.",
+    },
+    {
+      icon: "zap",
+      title: "Performance",
+      description: "Fast, responsive, and optimized experiences.",
+    },
+    {
+      icon: "book",
+      title: "Continuous Learning",
+      description: "Always exploring new technologies and ideas.",
+    },
+  ],
+
   techStack: [
     { name: "TypeScript", icon: "typescript" },
     { name: "React", icon: "react" },

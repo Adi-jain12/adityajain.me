@@ -37,10 +37,19 @@ export interface TechItem {
   icon: TechIconKey;
 }
 
+export type HighlightIconKey = "rocket" | "palette" | "zap" | "book";
+
+export interface AboutHighlight {
+  icon: HighlightIconKey;
+  title: string;
+  description: string;
+}
+
 export interface AboutData {
   headline: string;
   description: string[];
   photoCaption?: string;
+  highlights?: AboutHighlight[];
   techStack?: TechItem[];
   sections: AboutSection[];
 }
