@@ -206,7 +206,7 @@ function TopMarquee() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-4 w-full max-w-[1200px] flex flex-col items-center gap-3 px-4 sm:mt-6 sm:gap-4 sm:px-6 md:mt-8 md:items-start md:gap-4 lg:mt-10 lg:px-12">
+    <div className="relative z-10 mx-auto mt-8 w-full max-w-[1200px] flex flex-col items-center gap-3 px-4 sm:mt-10 sm:gap-4 sm:px-6 md:mt-12 md:items-start md:gap-4 lg:mt-16 lg:px-12">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />

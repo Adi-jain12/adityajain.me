@@ -5,10 +5,18 @@ export const siteConfig = {
     "Software Engineer. Building things for the web.",
   url: "https://adityajain.me",
 
+  email: "jaditya98@gmail.com",
+
+  location: {
+    tagline: "Coding and Building . . .",
+    place: "Ahmedabad, India",
+  },
+
   navLinks: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
     // { label: "Work", href: "/work" },
   ],
 
