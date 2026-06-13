@@ -65,7 +65,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   if (!mounted) {
     return (
       <span
-        className={cn("mb-2 inline-flex size-5 shrink-0 items-center justify-center", className)}
+        className={cn("inline-flex size-5 shrink-0 items-center justify-center sm:mb-2", className)}
         aria-hidden
       />
     );
@@ -78,7 +78,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       type="button"
       onClick={handleToggle}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className={cn("mb-2 inline-flex items-center justify-center text-foreground", className)}
+      className={cn("inline-flex items-center justify-center text-foreground sm:mb-2", className)}
     >
       <motion.span
         className="inline-flex items-center justify-center"
