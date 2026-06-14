@@ -36,22 +36,20 @@ const iconMap: Record<TechIconKey, IconComponent> = {
   framer: SiFramer,
 };
 
-const iconColorMap: Record<TechIconKey, string> = {
+const iconColorMap: Partial<Record<TechIconKey, string>> = {
   react: "#61DAFB",
-  next: "#FFFFFF",
   typescript: "#3178C6",
   javascript: "#F7DF1E",
   node: "#5FA04E",
   tailwind: "#38BDF8",
   postgres: "#4169E1",
   git: "#F05033",
-  github: "#FFFFFF",
   figma: "#F24E1E",
   docker: "#2496ED",
-  vercel: "#FFFFFF",
   python: "#3776AB",
-  framer: "#FFFFFF",
 };
+
+const themeAwareIcons = new Set<TechIconKey>(["next", "github", "vercel", "framer"]);
 
 interface TechStackProps {
   items: TechItem[];
@@ -59,13 +57,13 @@ interface TechStackProps {
 
 function TechCard({ item }: { item: TechItem }) {
   const Icon = iconMap[item.icon];
-  const color = iconColorMap[item.icon];
+  const isThemeAware = themeAwareIcons.has(item.icon);
 
   return (
     <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-border/40 bg-surface/30 px-3 py-5 sm:gap-4 sm:px-4 sm:py-6">
       <Icon
-        className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
-        style={{ color }}
+        className={`h-10 w-10 shrink-0 sm:h-12 sm:w-12${isThemeAware ? " text-text" : ""}`}
+        style={isThemeAware ? undefined : { color: iconColorMap[item.icon] }}
         aria-hidden="true"
       />
       <span className="text-center text-[10px] font-medium uppercase tracking-wider text-text-muted sm:text-xs">
