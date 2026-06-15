@@ -144,17 +144,17 @@ export function Hero() {
     <section
       data-fit-viewport
       aria-label="Aditya Jain — portfolio"
-      className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[auto_minmax(0,1fr)] md:overflow-hidden"
+      className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[minmax(0,1fr)_auto] md:overflow-hidden"
     >
       {/* <TopMarquee /> */}
 
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
-      <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:overflow-hidden">
+      <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center md:overflow-hidden">
         <HeroIntro />
       </div>
 
       {/* Orange card */}
-      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:overflow-hidden md:pt-6 md:pb-0 lg:px-5">
+      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:overflow-hidden md:pt-6 md:pb-0 lg:px-5 3xl:pt-0">
         <OrangeCard />
       </div>
     </section>
@@ -206,7 +206,7 @@ function TopMarquee() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-8 w-full max-w-[1200px] flex flex-col items-center gap-3 px-4 sm:mt-10 sm:gap-4 sm:px-6 md:mt-12 md:items-start md:gap-4 lg:mt-16 lg:px-12">
+    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-3 px-4 sm:mt-8 sm:gap-4 sm:px-6 md:my-0 md:items-start md:gap-4 lg:px-12 xl:pt-12 3xl:pt-0">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
@@ -280,12 +280,9 @@ function HeroHeadline() {
         </span>
       </div>
 
-      {/* Desktop headline */}
+      {/* Desktop headline — fixed on laptop; scales only on wide desktop monitors (1700px+) */}
       <div
-        className="font-heading hidden flex-col gap-[0.14em] text-left font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em]"
-        style={{
-          fontSize: "clamp(1.35rem, 4.8vw + 0.15rem, 4.9rem)",
-        }}
+        className="font-heading hidden flex-col gap-[0.14em] text-left text-[clamp(1.35rem,4.15vw+0.1rem,4.25rem)] font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em] min-[1700px]:text-[clamp(2.75rem,5vw+0.2rem,5.75rem)] min-[1920px]:text-[clamp(3rem,5.2vw+0.2rem,6.25rem)]"
       >
         <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
           <span className="font-bold">Hello</span>
@@ -301,7 +298,7 @@ function HeroHeadline() {
       </div>
 
       <p
-        className="mt-4 w-full max-w-none text-left text-base leading-relaxed tracking-tight text-text/80 sm:mt-4.5 md:max-w-[80ch] lg:text-lg"
+        className="mt-3 w-full max-w-none text-left text-base leading-relaxed tracking-tight text-text/80 sm:mt-4 md:max-w-[80ch] lg:text-lg"
       >
         Full-stack developer crafting high-performance, interactive web
         experiences with scalable backends and clean interfaces.
@@ -454,7 +451,7 @@ function OrangeCard() {
       <MobileCardStack />
 
       <div
-        className="relative mx-auto hidden min-h-fit w-full flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:flex md:min-h-0 md:flex-1 lg:rounded-t-[2.2rem]"
+        className="relative mx-auto hidden min-h-fit w-full flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:flex md:min-h-[44vh] lg:min-h-[48vh] lg:rounded-t-[2.2rem]"
         style={{
           backgroundImage: POSTER_GRADIENT,
           maxWidth: ORANGE_CARD_MAX_WIDTH,
@@ -474,7 +471,7 @@ function OrangeCard() {
         />
 
         <div
-          className="no-scrollbar relative grid h-full min-h-0 items-start gap-y-2.5 overflow-y-auto px-6 py-5 md:grid-cols-[1.14fr_0.86fr_1fr] md:gap-x-5 md:py-6 lg:gap-x-7 lg:px-9 lg:py-7"
+          className="no-scrollbar relative grid h-full min-h-0 items-start gap-y-2.5 overflow-y-auto px-6 py-5 md:grid-cols-[1.14fr_0.86fr_1fr] md:content-center md:gap-x-4 md:py-6 lg:gap-x-6 lg:px-9 lg:py-7"
           style={{ color: CREAM }}
         >
           {/* Col 1 - intro */}

@@ -23,6 +23,9 @@
 
   /* Typography */
   --font-mono: var(--font-ia-mono), "iA Writer Mono", "Monaco", "Consolas", "Andale Mono", "Ubuntu Mono", monospace;
+
+  /* Breakpoints — 3xl targets large/ultrawide screens (1800px+) */
+  --breakpoint-3xl: 112.5rem; /* 1800px at 16px root */
 }
 
 [data-theme="light"] {

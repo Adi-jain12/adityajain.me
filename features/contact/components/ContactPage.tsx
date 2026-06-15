@@ -20,12 +20,12 @@ const contactRowLabelClass =
   "font-mono text-[10px] uppercase tracking-[0.2em] text-text-muted sm:text-xs sm:tracking-[0.22em]";
 
 const contactRowValueClass =
-  "mt-1 text-base font-semibold text-text sm:mt-1.5 sm:text-lg";
+ `mt-1 text-base font-semibold text-text sm:mt-1.5 sm:text-lg`;
 
 function IconCircle({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-surface/40 sm:h-14 sm:w-14"
+      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-accent/20 to-accent/5 text-accent sm:h-14 sm:w-14"
       aria-hidden="true"
     >
       {children}
@@ -60,7 +60,7 @@ function ContactInfoRow({
         {href ? (
           <a
             href={href}
-            className={`${contactRowValueClass} inline-block transition-colors hover:text-accent`}
+            className={`${contactRowValueClass} ${label === 'Email' ? 'tracking-wider' : ''} inline-block transition-colors hover:text-accent`}
           >
             {children}
           </a>
