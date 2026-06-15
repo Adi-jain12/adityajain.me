@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, Caveat, Playfair_Display, Inter } from "next/font/google";
 import localFont from 'next/font/local'
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Loader } from "@/components/ui/Loader";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
@@ -84,6 +85,7 @@ export default function RootLayout({
           <Loader />
           <Header />
           <main className="flex flex-1 flex-col">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
