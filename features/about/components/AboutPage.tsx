@@ -2,6 +2,8 @@ import Image from "next/image";
 import type { IconType } from "react-icons";
 import {
   LuBookOpen,
+  LuCalendar,
+  LuMapPin,
   LuPalette,
   LuRocket,
   LuZap,
@@ -55,7 +57,7 @@ function EntryCard({
   entry: AboutEntry;
   mutedOrganization?: boolean;
 }) {
-  const hasMeta = entry.organization || entry.location;
+  const hasMeta = entry.organization || entry.employmentType;
 
   const titleEl = entry.url ? (
     <a
@@ -98,26 +100,37 @@ function EntryCard({
           {hasMeta && (
             <p className="mt-1 text-sm sm:text-base">
               {entry.organization && orgEl}
-              {entry.organization && entry.location && (
+              {entry.organization && entry.employmentType && (
                 <span className="mx-2 text-text-muted">·</span>
               )}
-              {entry.location && (
-                <span className="text-text-muted">{entry.location}</span>
+              {entry.employmentType && (
+                <span className="text-text-muted">{entry.employmentType}</span>
               )}
             </p>
           )}
         </div>
 
-        {(entry.duration || entry.current) && (
-          <div className="flex shrink-0 flex-wrap items-center gap-2">
-            {entry.duration && (
-              <span className="font-mono text-xs text-text-muted sm:text-sm">
-                {entry.duration}
-              </span>
+        {(entry.duration || entry.location || entry.current) && (
+          <div className="flex shrink-0 flex-col items-start gap-2 sm:items-end">
+            {(entry.duration || entry.current) && (
+              <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+                {entry.duration && (
+                  <span className="inline-flex items-center gap-1.5 font-mono text-xs text-text-muted sm:text-sm">
+                    <LuCalendar className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                    {entry.duration}
+                  </span>
+                )}
+                {entry.current && (
+                  <span className="rounded-full bg-green-500/20  px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-green-500 sm:text-xs">
+                    Current
+                  </span>
+                )}
+              </div>
             )}
-            {entry.current && (
-              <span className="rounded-full bg-green-500/20  px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-green-500 sm:text-xs">
-                Current
+            {entry.location && (
+              <span className="inline-flex items-center gap-1.5 text-xs text-text-muted sm:text-sm">
+                <LuMapPin className="mb-3 h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                {entry.location}
               </span>
             )}
           </div>

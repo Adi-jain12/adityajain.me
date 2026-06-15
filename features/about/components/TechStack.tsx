@@ -14,6 +14,7 @@ import {
   SiVercel,
   SiPython,
   SiFramer,
+  SiGraphql,
 } from "react-icons/si";
 import type { TechIconKey, TechItem } from "../types";
 
@@ -33,7 +34,7 @@ const iconMap: Record<TechIconKey, IconComponent> = {
   docker: SiDocker,
   vercel: SiVercel,
   python: SiPython,
-  framer: SiFramer,
+  graphql: SiGraphql,
 };
 
 const iconColorMap: Partial<Record<TechIconKey, string>> = {
@@ -47,9 +48,10 @@ const iconColorMap: Partial<Record<TechIconKey, string>> = {
   figma: "#F24E1E",
   docker: "#2496ED",
   python: "#3776AB",
+  graphql: "#E10098",
 };
 
-const themeAwareIcons = new Set<TechIconKey>(["next", "github", "vercel", "framer"]);
+const themeAwareIcons = new Set<TechIconKey>(["next", "github", "vercel", "graphql"]);
 
 interface TechStackProps {
   items: TechItem[];

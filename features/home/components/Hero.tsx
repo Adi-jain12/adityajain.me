@@ -3,11 +3,11 @@ import Link from "next/link";
 import type { IconType } from "react-icons";
 import {
   LuBrainCircuit,
-  LuCalendarDays,
-  LuCode,
+  LuBriefcase,
   LuCodeXml,
   LuCoffee,
   LuRocket,
+  LuUser,
   LuZap,
 } from "react-icons/lu";
 
@@ -51,6 +51,9 @@ const POSTER_GRADIENT = `
   )
 `;
 
+const ORANGE_CARD_DIVIDER = "rgba(241,231,210,0.16)";
+const ORANGE_CARD_LABEL = "#f0a67a";
+
 // 🎛 Orange card width — tweak this value to resize the bottom card.
 // Accepts any CSS width: "100%", "1260px", "92%", "min(100%, 1320px)", etc.
 const ORANGE_CARD_MAX_WIDTH = "94%";
@@ -88,24 +91,31 @@ const MARQUEE_WORDS = [
   "Full-Stack Development",
 ];
 
-type ExperienceItem = {
-  icon: IconType;
-  value: string;
-  label: string;
-};
-
-const EXPERIENCE_ITEMS: ExperienceItem[] = [
-  { icon: LuCalendarDays, value: "2+", label: "Years Experience" },
-  { icon: LuRocket, value: "10+", label: "Projects Delivered" },
-  { icon: LuCode, value: "End-to-End", label: "Development" },
-  { icon: LuCode, value: "Coffee", label: "Coffee" },
-];
-
 type FocusItem = {
   icon: IconType;
   title: string;
   description: string;
   // color: string;
+};
+
+const CURRENT_EXPERIENCE = {
+  role: "Web Developer",
+  period: "December 2024 -- May 2026",
+  company: "Yudiz Solutions Ltd.",
+  location: "Ahmedabad, India",
+  highlights: [
+    "Built React.js and Next.js modules for production web applications, leveraging SSR and ISR to improve initial page rendering and SEO.",
+    "Integrated RESTful APIs and Socket.IO-based real-time communication to deliver live updates and dynamic user experiences.",
+    "Optimized frontend performance through lazy loading, code splitting, and memoization, reducing unnecessary re-renders in data-intensive views.",
+    "Collaborated with product, QA, and backend teams throughout feature development, testing, and release cycles.",
+  ],
+} as const;
+
+type DesktopHighlightItem = {
+  icon: IconType;
+  title: string;
+  value: string;
+  description: string;
 };
 
 const FOCUS_ITEMS: FocusItem[] = [
@@ -132,6 +142,45 @@ const FOCUS_ITEMS: FocusItem[] = [
     title: "Focusing On",
     description: "Clean Code & Performance Optimization",
     // color: "#18df78",
+  },
+];
+
+const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
+  {
+    icon: LuBriefcase,
+    title: "Years Experience",
+    value: "2.4+",
+    description: "Building production web applications",
+  },
+  {
+    icon: LuRocket,
+    title: "Projects Built",
+    value: "10+",
+    description: "From concept to deployment",
+  },
+  {
+    icon: LuCodeXml,
+    title: "Development",
+    value: "End-to-End Development",
+    description: "Frontend, backend & databases",
+  },
+  {
+    icon: LuBrainCircuit,
+    title: "Engineering Mindset",
+    value: "Problem Solving",
+    description: "Turning requirements into solutions",
+  },
+  {
+    icon: LuZap,
+    title: "Optimization",
+    value: "Performance Optimization",
+    description: "Fast and responsive experiences",
+  },
+  {
+    icon: LuUser,
+    title: "Let's Connect",
+    value: "Open to Opportunities",
+    description: "Available for full-time roles",
   },
 ];
 
@@ -300,8 +349,7 @@ function HeroHeadline() {
       <p
         className="mt-3 w-full max-w-none text-left text-base leading-relaxed tracking-tight text-text/80 sm:mt-4 md:max-w-[80ch] lg:text-lg"
       >
-        Full-stack developer crafting high-performance, interactive web
-        experiences with scalable backends and clean interfaces.
+       Full-Stack Developer building modern web applications from frontend to backend, focused on performance, scalability, and user experience.
       </p>
     </div>
   );
@@ -471,11 +519,11 @@ function OrangeCard() {
         />
 
         <div
-          className="no-scrollbar relative grid h-full min-h-0 items-start gap-y-2.5 overflow-y-auto px-6 py-5 md:grid-cols-[1.14fr_0.86fr_1fr] md:content-center md:gap-x-4 md:py-6 lg:gap-x-6 lg:px-9 lg:py-7"
+          className="no-scrollbar relative flex h-full min-h-0 items-stretch overflow-y-auto px-6 py-5 md:py-6 lg:px-9 lg:py-7"
           style={{ color: CREAM }}
         >
-          {/* Col 1 - intro */}
-          <div className="flex min-w-0 flex-col justify-start gap-8 sm:gap-8">
+          {/* Left intro — ~30% */}
+          <div className="flex min-h-0 min-w-0 flex-[0.88] flex-col">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
               <span aria-hidden className="presence-dot" />
               <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-400 sm:text-[8.5px]">
@@ -483,51 +531,85 @@ function OrangeCard() {
               </span>
             </div>
 
-            <h2
-              className="max-w-[16ch] font-heading text-[1.1rem] font-bold leading-[1.12] tracking-tight sm:text-[1.35rem] md:text-[1.15rem] lg:text-[1.5rem] xl:text-[1.65rem]"
-              style={{ color: CREAM }}
-            >
-              Build. Innovate. Scale.
-            </h2>
-
-            {/* <p className="max-w-[42ch] font-mono text-[9px] leading-[1.55] tracking-[0.02em] opacity-95 sm:text-[10px] md:max-w-[36ch] md:text-[11px] lg:text-[12px]">
-              From idea to production, I help startups and teams build fast,
-              reliable and user-focused web applications.
-            </p> */}
+            <div className="flex min-h-0 flex-1 items-center">
+              <h2
+                className="max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem] md:text-[1.75rem] lg:text-[2rem] xl:text-[2.2rem]"
+                style={{ color: CREAM }}
+              >
+                Build.
+                <br />
+                Ship.
+                <br />
+                Improve.
+              </h2>
+            </div>
           </div>
 
-          {/* Col 2 - experience */}
-          <div className="flex min-w-0 flex-col justify-start gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
-            {/* <OrangeCardHeading compact>experience</OrangeCardHeading> */}
-            <ul className="flex flex-col">
-              {EXPERIENCE_ITEMS.map((item, index) => (
-                <ExperienceRow
-                  key={item.label}
-                  item={item}
-                  showDivider={index > 0}
-                  compact
-                />
-              ))}
-            </ul>
-          </div>
-
-          {/* Col 3 - current focus */}
-          <div className="flex min-w-0 flex-col justify-start gap-2 md:border-l md:border-[rgba(241,231,210,0.16)] md:pl-5 lg:pl-8">
-            {/* <OrangeCardHeading compact>current focus</OuncrangeCardHeading> */}
-            <ul className="flex flex-col">
-              {FOCUS_ITEMS.map((item, index) => (
-                <FocusRow
-                  key={item.title}
-                  item={item}
-                  showDivider={index > 0}
-                  compact
-                />
-              ))}
-            </ul>
+          {/* Right grid — 2×3 with shared dividers */}
+          <div
+            className="grid h-full min-h-0 flex-[2.12] grid-cols-3 grid-rows-2"
+            style={{ borderLeft: `1px solid rgba(241,231,210,0.16)` }}
+          >
+            {DESKTOP_HIGHLIGHT_ITEMS.map((item, index) => (
+              <DesktopHighlightCell key={item.title} item={item} index={index} />
+            ))}
           </div>
         </div>
       </div>
     </>
+  );
+}
+
+function DesktopHighlightCell({
+  item,
+  index,
+}: {
+  item: DesktopHighlightItem;
+  index: number;
+}) {
+  const column = index % 3;
+  const row = Math.floor(index / 3);
+  const cellStyle: React.CSSProperties = {};
+
+  if (column > 0) {
+    cellStyle.borderLeft = `1px solid ${ORANGE_CARD_DIVIDER}`;
+  }
+
+  if (row > 0) {
+    cellStyle.borderTop = `1px solid ${ORANGE_CARD_DIVIDER}`;
+  }
+
+  return (
+    <div
+      className="flex h-full min-w-0 items-center justify-start gap-3 px-5 py-4 sm:gap-3.5 sm:px-6 lg:px-7"
+      style={cellStyle}
+    >
+      <span
+        aria-hidden
+        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-[17px] sm:h-11 sm:w-11 sm:text-[19px] lg:h-12 lg:w-12 lg:text-[21px]"
+        style={{
+          backgroundColor: "rgba(10,10,10,0.78)",
+          color: CREAM,
+          boxShadow: "0 10px 24px -14px rgba(0,0,0,0.6)",
+        }}
+      >
+        <item.icon />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="font-heading text-sm font-bold leading-tight tracking-tight sm:text-base lg:text-lg">
+          {item.value}
+        </p>
+        <p
+          className="mt-1 font-mono text-xs leading-tight sm:text-sm"
+          style={{ color: ORANGE_CARD_LABEL }}
+        >
+          {item.title}
+        </p>
+        <p className="mt-1 text-xs leading-tight opacity-95 sm:text-sm">
+          {item.description}
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -577,15 +659,36 @@ function MobileCardStack() {
         <OrangeCardHeading style={{ color: "#ff6b3d" }}>
           experience
         </OrangeCardHeading>
-        <ul className="mt-2 flex flex-col">
-          {EXPERIENCE_ITEMS.map((item, index) => (
-            <ExperienceRow
-              key={item.label}
-              item={item}
-              showDivider={index > 0}
-            />
-          ))}
-        </ul>
+        <div className="mt-3">
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1">
+              <p className="font-heading text-lg font-bold leading-tight tracking-tight">
+                {CURRENT_EXPERIENCE.role}
+              </p>
+              <p className="font-mono text-xs leading-tight opacity-80">
+                {CURRENT_EXPERIENCE.period}
+              </p>
+            </div>
+            <p className="text-sm leading-tight opacity-95">
+              {CURRENT_EXPERIENCE.company}
+              <span className="mx-1.5 opacity-45">/</span>
+              {CURRENT_EXPERIENCE.location}
+            </p>
+          </div>
+
+          <ul className="mt-4 space-y-2.5">
+            {CURRENT_EXPERIENCE.highlights.map((highlight) => (
+              <li key={highlight} className="flex gap-2.5 text-sm leading-snug">
+                <span
+                  aria-hidden
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: "#ff6b3d" }}
+                />
+                <span className="opacity-95">{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Box 3 — light current focus card */}
@@ -677,30 +780,6 @@ function IconTile({
     >
       <Icon />
     </span>
-  );
-}
-
-function ExperienceRow({
-  item,
-  showDivider,
-  compact = false,
-}: {
-  item: ExperienceItem;
-  showDivider: boolean;
-  compact?: boolean;
-}) {
-  return (
-    <li
-      className={`${ORANGE_CARD_LIST_ROW_CLASS} ${
-        showDivider ? "border-t border-[rgba(241,231,210,0.12)]" : ""
-      }`}
-    >
-      <IconTile icon={item.icon} compact={compact} />
-      <div className="min-w-0">
-        <p className={ORANGE_CARD_LIST_TITLE_CLASS(compact)}>{item.value}</p>
-        <p className={ORANGE_CARD_LIST_DETAIL_CLASS(compact)}>{item.label}</p>
-      </div>
-    </li>
   );
 }
 

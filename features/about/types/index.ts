@@ -4,6 +4,7 @@ export interface AboutEntry {
   organizationUrl?: string;
   duration?: string;
   location?: string;
+  employmentType?: string;
   current?: boolean;
   description?: string;
   achievements?: string[];
@@ -30,7 +31,7 @@ export type TechIconKey =
   | "docker"
   | "vercel"
   | "python"
-  | "framer";
+  | "graphql";
 
 export interface TechItem {
   name: string;
