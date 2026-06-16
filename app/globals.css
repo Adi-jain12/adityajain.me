@@ -18,7 +18,7 @@
   --color-border: #2a2a2a;
 
   /* Typography */
-  --font-mono: var(--font-ia-mono), "iA Writer Mono", "Monaco", "Consolas", "Andale Mono", "Ubuntu Mono", monospace;
+  --font-mono: var(--font-vg), "VG", "Georgia", serif;
 
   /* Breakpoints — 3xl targets large/ultrawide screens (1800px+) */
   --breakpoint-3xl: 112.5rem; /* 1800px at 16px root */
@@ -70,14 +70,6 @@ h3 {
 
 .font-heading {
   font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
-}
-
-.font-script {
-  font-family: var(--font-caveat), "Caveat", "Bradley Hand", cursive;
-}
-
-.font-playfair {
-  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
 }
 
 .font-display {

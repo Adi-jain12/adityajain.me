@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Caveat, Playfair_Display, Inter } from "next/font/google";
+import { Source_Serif_4, Inter } from "next/font/google";
 import localFont from 'next/font/local'
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -16,41 +16,11 @@ const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
 });
 
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["500", "700"],
-  variable: "--font-caveat",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-});
-
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
 });
-
-const iAMono = localFont({
-  src: [
-    {
-      path: '../public/fonts/iaWriter400.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/iaWriter400.woff',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-ia-mono',
-  display: 'swap',
-})
 
 const VG = localFont({
   src: [
@@ -83,7 +53,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable} ${playfair.variable} ${inter.variable}`}
+      className={`${sourceSerif.variable} ${VG.variable} ${inter.variable}`}
     >
       <head>
         <StructuredData />

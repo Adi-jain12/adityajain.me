@@ -328,7 +328,7 @@ function FacePill() {
       >
         <Image
           src="/images/about/profile.jpeg"
-          alt="Aditya Jain Full-Stack Developer"
+          alt=""
           width={140}
           height={140}
           priority
@@ -461,8 +461,8 @@ function OrangeCard() {
         >
           {/* Left intro — ~30% */}
           <div className="flex min-h-0 min-w-0 flex-[0.88] flex-col">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 py-1 backdrop-blur-[2px] sm:px-3 sm:py-1.5">
-              <span aria-hidden className="presence-dot" />
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 pb-1 pt-2.5 backdrop-blur-[2px] sm:px-3 sm:pb-1 sm:pt-2.5">
+              <span aria-hidden className="presence-dot mb-2" />
               <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-400 sm:text-[8.5px]">
                 Available for full-time opportunities
               </span>

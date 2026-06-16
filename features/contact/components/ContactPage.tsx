@@ -17,7 +17,7 @@ const socialIconClass: Record<string, string> = {
 };
 
 const contactRowLabelClass =
-  "font-mono text-[10px] uppercase tracking-[0.2em] text-text-muted sm:text-xs sm:tracking-[0.22em]";
+  "text-[10px] uppercase tracking-[0.2em] text-text-muted sm:text-xs sm:tracking-[0.22em]";
 
 const contactRowValueClass =
  `mt-1 text-base font-semibold text-text sm:mt-1.5 sm:text-lg`;

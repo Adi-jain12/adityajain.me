@@ -116,7 +116,7 @@ function EntryCard({
               <div className="flex flex-wrap items-center gap-2 sm:justify-end">
                 {entry.duration && (
                   <span className="inline-flex items-center gap-1.5 font-mono text-xs text-text-muted sm:text-sm">
-                    <LuCalendar className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                    <LuCalendar className="h-3.5 w-3.5 text-accent mb-2.5" aria-hidden="true" />
                     {entry.duration}
                   </span>
                 )}
@@ -129,7 +129,7 @@ function EntryCard({
             )}
             {entry.location && (
               <span className="inline-flex items-center gap-1.5 text-xs text-text-muted sm:text-sm">
-                <LuMapPin className="mb-3 h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                <LuMapPin className="mb-2.5 h-3.5 w-3.5 text-accent" aria-hidden="true" />
                 {entry.location}
               </span>
             )}
@@ -153,7 +153,7 @@ function EntryCard({
           {entry.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] tracking-wider text-accent sm:text-xs"
+              className="rounded-full bg-accent/10 px-2.5 pt-2 font-mono text-[10px] tracking-wider text-accent sm:text-xs"
             >
               {tech}
             </span>
