@@ -22,12 +22,23 @@ export const siteConfig = {
     { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    // { label: "Work", href: "/work" },
   ],
 
   socialLinks: [
     { label: "GitHub", href: "https://github.com/adityajain" },
     { label: "Twitter", href: "https://twitter.com/adityajain" },
     { label: "LinkedIn", href: "https://linkedin.com/in/adityajain" },
+  ],
+  techStack: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "PostgreSQL",
+    "Git",
+    "GraphQL",
+    "AWS",
   ],
 } as const;

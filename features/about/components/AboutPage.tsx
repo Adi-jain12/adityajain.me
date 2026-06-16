@@ -228,7 +228,7 @@ export function AboutPage() {
               <div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-surface shadow-sm md:aspect-auto md:h-full md:min-h-0">
                 <Image
                   src="/images/about/profile.jpeg"
-                  alt="Aditya Jain"
+                  alt="Aditya Jain Full-Stack Developer"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 384px, 480px"

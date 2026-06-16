@@ -26,7 +26,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.image ? (
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} Project`}
             fill
             className="object-cover transition-[filter] duration-500 group-hover:blur-xs"
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"

@@ -3,6 +3,7 @@ import { Source_Serif_4, Caveat, Playfair_Display, Inter } from "next/font/googl
 import localFont from 'next/font/local'
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { StructuredData } from "@/components/StructuredData";
 import { Loader } from "@/components/ui/Loader";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -84,6 +85,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${sourceSerif.variable} ${iAMono.variable} ${VG.variable} ${caveat.variable} ${playfair.variable} ${inter.variable}`}
     >
+      <head>
+        <StructuredData />
+      </head>
       <body className="antialiased flex min-h-svh flex-col">
         <ThemeProvider>
           <SmoothScroll />

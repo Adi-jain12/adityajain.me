@@ -108,7 +108,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-border bg-surface">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} Project`}
             fill
             className="object-cover"
             sizes="(max-width: 1280px) 100vw, 1280px"

@@ -328,7 +328,7 @@ function FacePill() {
       >
         <Image
           src="/images/about/profile.jpeg"
-          alt=""
+          alt="Aditya Jain Full-Stack Developer"
           width={140}
           height={140}
           priority
