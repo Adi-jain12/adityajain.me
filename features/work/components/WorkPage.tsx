@@ -5,7 +5,7 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
   const isCurrent = experience.endDate === null;
 
   return (
-    <div className="relative flex gap-4 pb-10 sm:gap-8 sm:pb-12">
+    <article className="relative flex gap-4 pb-10 sm:gap-8 sm:pb-12">
       {/* Timeline line */}
       {!isLast && (
         <div className="absolute left-[7px] top-[18px] h-full w-px bg-border sm:left-[9px]" />
@@ -86,14 +86,14 @@ function WorkCard({ experience, isLast }: { experience: WorkExperience; isLast: 
           ))}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
 export function WorkPage() {
   return (
-    <div className="py-10 sm:py-16">
-      <div className="max-w-2xl">
+    <section className="py-10 sm:py-16">
+      <header className="max-w-2xl">
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
           Work Experience
         </h1>
@@ -102,7 +102,7 @@ export function WorkPage() {
           with, the roles I&apos;ve held, and the impact I&apos;ve made along
           the way.
         </p>
-      </div>
+      </header>
 
       <div className="mt-10 sm:mt-14">
         {workData.experiences.map((experience, i) => (
@@ -113,6 +113,6 @@ export function WorkPage() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }

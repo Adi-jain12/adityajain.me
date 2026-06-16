@@ -89,13 +89,15 @@ export function ContactPage() {
     <div className="pt-16 pb-10 sm:pb-14 md:pb-20">
       <section className="mx-auto max-w-7xl">
         <Reveal>
-          <h1 className="font-heading text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
-            Get in <span className="text-accent">Touch</span>
-          </h1>
-          <p className="mt-3 max-w-2xl text-base text-text-muted sm:mt-4 sm:text-lg">
-            Open to discussing new opportunities, interesting
-            projects, and technology.
-          </p>
+          <header>
+            <h1 className="font-heading text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
+              Get in <span className="text-accent">Touch</span>
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-text-muted sm:mt-4 sm:text-lg">
+              Open to discussing new opportunities, interesting
+              projects, and technology.
+            </p>
+          </header>
         </Reveal>
 
         <div className="mx-auto w-full max-w-4xl">

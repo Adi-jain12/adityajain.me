@@ -24,9 +24,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <Container className="py-10 sm:py-16">
-      <div className="mx-auto max-w-7xl">
+      <section className="mx-auto max-w-7xl">
         <ProjectDetail project={project} />
-      </div>
+      </section>
     </Container>
   );
 }

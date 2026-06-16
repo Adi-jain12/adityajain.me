@@ -66,6 +66,11 @@ const VG = localFont({
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.openGraph.title,
+    description: siteConfig.openGraph.description,
+    images: [...siteConfig.openGraph.images],
+  },
 };
 
 export default function RootLayout({

@@ -39,9 +39,9 @@ function HighlightCard({ highlight }: { highlight: AboutHighlight }) {
         <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
       </span>
       <div className="min-w-0">
-        <h2 className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
+        <h3 className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
           {highlight.title}
-        </h2>
+        </h3>
         <p className="mt-1 text-sm text-text-muted sm:text-[15px]">
           {highlight.description}
         </p>
@@ -94,9 +94,9 @@ function EntryCard({
     <article className="group rounded-2xl border border-border bg-surface/60 p-5 transition-colors hover:border-border/80 hover:bg-surface sm:p-6 md:p-7">
       <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
         <div className="min-w-0">
-          <h2 className="text-base font-semibold tracking-tight text-foreground sm:text-lg md:text-xl">
+          <h3 className="text-base font-semibold tracking-tight text-foreground sm:text-lg md:text-xl">
             {titleEl}
-          </h2>
+          </h3>
           {hasMeta && (
             <p className="mt-1 text-sm sm:text-base">
               {entry.organization && orgEl}
@@ -170,9 +170,9 @@ function Section({ section }: { section: AboutSection }) {
   return (
     <section className="mt-12 sm:mt-16 md:mt-24">
       <Reveal>
-        <h3 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
+        <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
           {section.heading}
-        </h3>
+        </h2>
       </Reveal>
 
       <div className="mt-5 grid grid-cols-1 gap-4 sm:mt-6 sm:gap-5">
@@ -194,12 +194,14 @@ export function AboutPage() {
     <div className="pt-16 pb-10 sm:pb-14 md:pb-20">
       <section className="mx-auto max-w-7xl">
         <Reveal>
-          <h1 className="font-heading text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
-            About <span className="text-accent">Me</span>
-          </h1>
-          <p className="mt-3 text-base text-text-muted sm:mt-4 sm:text-lg">
-            Get to know more about my journey, experience, and passion.
-          </p>
+          <header>
+            <h1 className="font-heading text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
+              About <span className="text-accent">Me</span>
+            </h1>
+            <p className="mt-3 text-base text-text-muted sm:mt-4 sm:text-lg">
+              Get to know more about my journey, experience, and passion.
+            </p>
+          </header>
         </Reveal>
 
         <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,480px)] md:items-stretch md:gap-12 lg:gap-16">
@@ -242,9 +244,9 @@ export function AboutPage() {
         {aboutData.techStack && aboutData.techStack.length > 0 && (
           <section>
             <Reveal>
-              <h3 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
+              <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
                 tech stack
-              </h3>
+              </h2>
             </Reveal>
 
             <Reveal delay={0.1}>

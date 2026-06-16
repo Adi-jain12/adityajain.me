@@ -292,59 +292,61 @@ function MobileEstablishedLine() {
 function HeroHeadline() {
   return (
     <div className="flex w-full flex-col items-start">
-      {/* Mobile headline — stacked like the poster layout */}
-      <div
-        className="font-heading flex w-full flex-col items-start text-left font-bold tracking-tight md:hidden"
-        style={{ color: INK }}
-      >
+      <h1 className="contents">
+        {/* Mobile headline — stacked like the poster layout */}
         <div
-          className="flex items-center justify-start gap-x-[0.16em] font-bold"
-          style={{
-            fontSize: "clamp(2.2rem, 10.2vw, 3rem)",
-            lineHeight: 0.95,
-          }}
+          className="font-heading flex w-full flex-col items-start text-left font-bold tracking-tight md:hidden"
+          style={{ color: INK }}
         >
-          <span>Hello,</span>
-          <FacePill />
-        </div>
-        <span
-          className="mt-1 font-bold"
-          style={{
-            fontSize: "clamp(2.55rem, 12vw, 3.55rem)",
-            lineHeight: 0.95,
-          }}
-        >
-          I&rsquo;m Aditya
-        </span>
-        <span
-          className="mt-3 flex max-w-[12ch] flex-wrap items-center justify-start gap-x-[0.18em] gap-y-1 font-bold"
-          style={{
-            fontSize: "clamp(1.75rem, 8.2vw, 2.35rem)",
-            lineHeight: 1.02,
-          }}
-        >
-          <span>I build</span>
-          <BlueBlob />
-          <span>web experiences</span>
-        </span>
-      </div>
-
-      {/* Desktop headline — fixed on laptop; scales only on wide desktop monitors (1700px+) */}
-      <div
-        className="font-heading hidden flex-col gap-[0.14em] text-left text-[clamp(1.35rem,4.15vw+0.1rem,4.25rem)] font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em] min-[1700px]:text-[clamp(2.75rem,5vw+0.2rem,5.75rem)] min-[1920px]:text-[clamp(3rem,5.2vw+0.2rem,6.25rem)]"
-      >
-        <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
-          <span className="font-bold">Hello</span>
-          <FacePill />
-          <span className="sm:whitespace-nowrap font-bold">I&rsquo;m Aditya</span>
+          <div
+            className="flex items-center justify-start gap-x-[0.16em] font-bold"
+            style={{
+              fontSize: "clamp(2.2rem, 10.2vw, 3rem)",
+              lineHeight: 0.95,
+            }}
+          >
+            <span>Hello,</span>
+            <FacePill />
+          </div>
+          <span
+            className="mt-1 font-bold"
+            style={{
+              fontSize: "clamp(2.55rem, 12vw, 3.55rem)",
+              lineHeight: 0.95,
+            }}
+          >
+            I&rsquo;m Aditya
+          </span>
+          <span
+            className="mt-3 flex max-w-[12ch] flex-wrap items-center justify-start gap-x-[0.18em] gap-y-1 font-bold"
+            style={{
+              fontSize: "clamp(1.75rem, 8.2vw, 2.35rem)",
+              lineHeight: 1.02,
+            }}
+          >
+            <span>I build</span>
+            <BlueBlob />
+            <span>web experiences</span>
+          </span>
         </div>
 
-        <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
-          <span className="font-bold">I build</span>
-          <BlueBlob />
-          <span className="sm:whitespace-nowrap font-bold">web experiences</span>
+        {/* Desktop headline — fixed on laptop; scales only on wide desktop monitors (1700px+) */}
+        <div
+          className="font-heading hidden flex-col gap-[0.14em] text-left text-[clamp(1.35rem,4.15vw+0.1rem,4.25rem)] font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em] min-[1700px]:text-[clamp(2.75rem,5vw+0.2rem,5.75rem)] min-[1920px]:text-[clamp(3rem,5.2vw+0.2rem,6.25rem)]"
+        >
+          <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
+            <span className="font-bold">Hello</span>
+            <FacePill />
+            <span className="sm:whitespace-nowrap font-bold">I&rsquo;m Aditya</span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
+            <span className="font-bold">I build</span>
+            <BlueBlob />
+            <span className="sm:whitespace-nowrap font-bold">web experiences</span>
+          </div>
         </div>
-      </div>
+      </h1>
 
       <p
         className="mt-3 w-full max-w-none text-left text-base leading-relaxed tracking-tight text-text/80 sm:mt-4 md:max-w-[80ch] lg:text-lg"
