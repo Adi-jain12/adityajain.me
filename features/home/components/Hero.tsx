@@ -80,17 +80,6 @@ const HEADLINE_PILL_INNER_RING: React.CSSProperties = {
   boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.18)",
 };
 
-const MARQUEE_WORDS = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Node.js",
-  "PostgreSQL",
-  "AI Applications",
-  "Performance Optimization",
-  "Full-Stack Development",
-];
-
 type FocusItem = {
   icon: IconType;
   title: string;
@@ -195,8 +184,6 @@ export function Hero() {
       aria-label="Aditya Jain — portfolio"
       className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[minmax(0,1fr)_auto] md:overflow-hidden"
     >
-      {/* <TopMarquee /> */}
-
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
       <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center md:overflow-hidden">
         <HeroIntro />
@@ -211,45 +198,6 @@ export function Hero() {
 }
 
 // ═════════════════════════════════════════════════════════
-// Top marquee
-// ═════════════════════════════════════════════════════════
-
-function TopMarquee() {
-  const items = [...MARQUEE_WORDS, ...MARQUEE_WORDS, ...MARQUEE_WORDS];
-  return (
-    <div
-      aria-hidden
-      className="relative w-full shrink-0 overflow-hidden bg-marquee-bg transition-colors duration-300"
-    >
-      <div
-        className="marquee-track flex w-max items-center py-1 sm:py-1.5"
-        style={{ ["--marquee-duration" as string]: "70s" }}
-      >
-        {items.map((word, i) => (
-          <span
-            key={`${word}-${i}`}
-            className="flex items-center font-heading text-[11px] font-bold tracking-tight text-marquee-fg/70 sm:text-xs md:text-[13px]"
-          >
-            <span className="px-3 sm:px-4 md:px-6">{word}</span>
-            <span aria-hidden className="opacity-60">
-              ·
-            </span>
-          </span>
-        ))}
-      </div>
-      <div
-        aria-hidden
-        className="hero-marquee-fade-l pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16"
-      />
-      <div
-        aria-hidden
-        className="hero-marquee-fade-r pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16"
-      />
-    </div>
-  );
-}
-
-// ═════════════════════════════════════════════════════════
 // Cream hero — left-aligned headline + CTAs, top margin only
 // ═════════════════════════════════════════════════════════
 
@@ -259,7 +207,6 @@ function HeroIntro() {
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
-      {/* <MobileEstablishedLine /> */}
     </div>
   );
 }
@@ -273,18 +220,6 @@ function MobileAvailabilityBadge() {
       <span className="presence-text font-mono text-[8.5px] uppercase tracking-[0.22em] text-text">
         Available for full-time opportunities
       </span>
-    </div>
-  );
-}
-
-function MobileEstablishedLine() {
-  return (
-    <div
-      className="flex w-full items-center justify-center gap-2 font-mono text-[9px] uppercase tracking-[0.3em] text-text-muted md:hidden"
-    >
-      <span>Est. 2024</span>
-      <span aria-hidden>•</span>
-      <span>India</span>
     </div>
   );
 }
@@ -810,24 +745,5 @@ function FocusRow({
         </p>
       </div>
     </li>
-  );
-}
-
-function CornerMark({ className = "" }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={`pointer-events-none inline-block opacity-30 ${className}`}
-      style={{ color: CREAM }}
-    >
-      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-        <path
-          d="M6 1 V11 M1 6 H11"
-          stroke="currentColor"
-          strokeWidth="1"
-          strokeLinecap="round"
-        />
-      </svg>
-    </span>
   );
 }

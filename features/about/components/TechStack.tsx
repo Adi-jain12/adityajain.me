@@ -13,7 +13,6 @@ import {
   SiDocker,
   SiVercel,
   SiPython,
-  SiFramer,
   SiGraphql,
 } from "react-icons/si";
 import type { TechIconKey, TechItem } from "../types";

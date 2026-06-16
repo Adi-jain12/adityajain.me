@@ -2,10 +2,11 @@
 
 import { motion, useAnimationControls } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
 
 const iconClass = "size-5 shrink-0";
+const subscribe = () => () => {};
 
 function MoonStarsIcon({ className }: { className?: string }) {
   return (
@@ -41,12 +42,8 @@ type ThemeToggleProps = {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribe, () => true, () => false);
   const controls = useAnimationControls();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   function handleToggle() {
     if (resolvedTheme === "dark") {

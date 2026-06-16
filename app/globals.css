@@ -17,10 +17,6 @@
   --color-surface-hover: #252525;
   --color-border: #2a2a2a;
 
-  /* Hero marquee */
-  --color-marquee-bg: #1c1c1c;
-  --color-marquee-fg: #f58361;
-
   /* Typography */
   --font-mono: var(--font-ia-mono), "iA Writer Mono", "Monaco", "Consolas", "Andale Mono", "Ubuntu Mono", monospace;
 
@@ -39,8 +35,6 @@
   --color-surface: #fbf5e9;
   --color-surface-hover: #ebe0cc;
   --color-border: rgba(10, 10, 10, 0.08);
-  --color-marquee-bg: #0a0a0a;
-  --color-marquee-fg: #f1e7d2;
 }
 
 @layer base {
@@ -139,39 +133,6 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
-}
-
-/* Marquee animation */
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: marquee-scroll var(--marquee-duration, 35s) linear infinite;
-  will-change: transform;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-.hero-marquee-fade-l {
-  background: linear-gradient(to right, var(--color-marquee-bg) 0%, transparent 100%);
-}
-
-.hero-marquee-fade-r {
-  background: linear-gradient(to left, var(--color-marquee-bg) 0%, transparent 100%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
 }
 
 /* Premium primitives — easing tokens & reusable micro-animations */
