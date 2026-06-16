@@ -343,7 +343,7 @@ function BlueBlob() {
   return (
     <HeadlinePill aria-hidden style={HEADLINE_PILL_BLUE_SHELL_STYLE}>
       <span
-        className="flex h-full w-full items-center justify-center font-mono font-bold leading-none tracking-tight"
+        className="flex h-full w-full items-center justify-center font-bold leading-none tracking-tight"
         style={{ color: CREAM, fontSize: "0.54em" }}
       >
         {"</>"}
