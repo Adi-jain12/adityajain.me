@@ -116,9 +116,9 @@ export function AboutPage() {
         </div>
       </section>
 
-      <div className="mx-auto mt-12 max-w-7xl sm:mt-16 md:mt-24">
+      <div className="mx-auto max-w-7xl">
         {aboutData.techStack && aboutData.techStack.length > 0 && (
-          <section>
+          <section className="mt-12 sm:mt-16 md:mt-24">
             <Reveal>
               <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
                 tech stack

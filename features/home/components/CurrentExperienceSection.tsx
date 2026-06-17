@@ -77,9 +77,9 @@ export function CurrentExperienceSection() {
           </p>
           <h2
             id="current-experience-heading"
-            className="mt-3 font-heading text-3xl font-bold tracking-tight text-text sm:text-4xl md:text-5xl"
+            className="mt-3 text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl"
           >
-            Current Experience
+            current experience
           </h2>
         </Reveal>
 
@@ -102,12 +102,12 @@ export function CurrentExperienceSection() {
                   Current Role
                 </span>
 
-                <h3 className="mt-6 font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-[2rem]">
+                <h3 className="mt-6 text-base font-semibold tracking-tight text-foreground sm:text-lg md:text-xl">
                   {title}
                 </h3>
 
                 {organization && (
-                  <p className="mt-2 flex items-center gap-2 text-base text-accent sm:text-lg">
+                  <p className="mt-2 flex items-center gap-2 text-sm text-accent sm:text-base">
                     <LuBriefcase
                       className="h-4 w-4 shrink-0"
                       aria-hidden="true"

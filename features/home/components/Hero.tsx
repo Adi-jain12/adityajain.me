@@ -189,7 +189,7 @@ export function Hero() {
       </div>
 
       {/* Orange card */}
-      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:pt-6 md:pb-0 lg:px-5 3xl:pt-0">
+      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:px-4 md:pt-6 md:pb-6 lg:px-5 lg:pb-8 3xl:pt-0">
         <OrangeCard />
       </div>
     </section>
@@ -435,7 +435,7 @@ function OrangeCard() {
       <MobileCardStack />
 
       <div
-        className="relative mx-auto hidden min-h-fit w-full flex-col overflow-hidden rounded-t-[1.4rem] sm:rounded-t-[1.8rem] md:flex md:min-h-[44vh] lg:min-h-[48vh] lg:rounded-t-[2.2rem]"
+        className="relative mx-auto hidden min-h-fit w-full flex-col overflow-hidden rounded-[1.4rem] sm:rounded-[1.8rem] md:flex md:min-h-[44vh] lg:min-h-[48vh] lg:rounded-[2.2rem]"
         style={{
           backgroundImage: POSTER_GRADIENT,
           maxWidth: ORANGE_CARD_MAX_WIDTH,
@@ -532,16 +532,16 @@ function DesktopHighlightCell({
         <item.icon />
       </span>
       <div className="min-w-0 flex-1">
-        <p className="font-heading text-sm font-bold leading-tight tracking-tight sm:text-base lg:text-lg">
+        <p className="font-heading text-base font-semibold leading-tight tracking-tight sm:text-lg md:text-xl">
           {item.value}
         </p>
         <p
-          className="mt-1 font-mono text-xs leading-tight sm:text-sm"
+          className="mt-1 font-heading text-base font-semibold leading-tight tracking-tight sm:text-lg md:text-xl"
           style={{ color: ORANGE_CARD_LABEL }}
         >
           {item.title}
         </p>
-        <p className="mt-1 text-xs leading-tight opacity-95 sm:text-sm">
+        <p className="mt-1 text-sm leading-tight opacity-95 sm:text-base">
           {item.description}
         </p>
       </div>
@@ -598,14 +598,14 @@ function MobileCardStack() {
         <div className="mt-3">
           <div className="flex flex-col gap-1">
             <div className="flex flex-col gap-1">
-              <p className="font-heading text-lg font-bold leading-tight tracking-tight">
+              <p className="font-heading text-base font-semibold leading-tight tracking-tight sm:text-lg md:text-xl">
                 {CURRENT_EXPERIENCE.role}
               </p>
-              <p className="font-mono text-xs leading-tight opacity-80">
+              <p className="font-mono text-xs leading-tight opacity-80 sm:text-sm">
                 {CURRENT_EXPERIENCE.period}
               </p>
             </div>
-            <p className="text-sm leading-tight opacity-95">
+            <p className="text-sm leading-tight opacity-95 sm:text-base">
               {CURRENT_EXPERIENCE.company}
               <span className="mx-1.5 opacity-45">/</span>
               {CURRENT_EXPERIENCE.location}
@@ -614,7 +614,7 @@ function MobileCardStack() {
 
           <ul className="mt-4 space-y-2.5">
             {CURRENT_EXPERIENCE.highlights.map((highlight) => (
-              <li key={highlight} className="flex gap-2.5 text-sm leading-snug">
+              <li key={highlight} className="flex gap-2.5 text-sm leading-snug sm:text-base">
                 <span
                   aria-hidden
                   className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
@@ -666,8 +666,8 @@ function OrangeCardHeading({
     <h3
       className={`font-heading font-bold lowercase tracking-tight opacity-95 ${
         compact
-          ? "text-lg sm:text-xl md:text-lg lg:text-xl"
-          : "text-xl sm:text-2xl md:text-xl lg:text-2xl"
+          ? "text-lg sm:text-xl md:text-2xl"
+          : "text-xl sm:text-2xl md:text-3xl"
       } ${className}`}
       style={style}
     >

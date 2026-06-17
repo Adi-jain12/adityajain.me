@@ -21,22 +21,25 @@ export type TechIconKey =
   | "react"
   | "next"
   | "typescript"
-  | "javascript"
-  | "node"
+  | "redux"
   | "tailwind"
-  | "postgres"
+  | "node"
+  | "express"
+  | "openapi"
+  | "jwt"
   | "mongodb"
-  | "git"
-  | "github"
-  | "figma"
+  | "postgres"
+  | "aws"
   | "docker"
   | "vercel"
-  | "python"
-  | "graphql";
+  | "git"
+  | "github"
+  | "postman"
+  | "vscode";
 
 export interface TechItem {
   name: string;
-  icon?: TechIconKey;
+  icon: TechIconKey;
 }
 
 export type TechCategoryKey =

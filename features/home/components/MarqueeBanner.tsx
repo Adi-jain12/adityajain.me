@@ -1,39 +1,31 @@
+import { SECTION_HEADING_CLASS } from "@/lib/typography";
+
 const MARQUEE_ITEMS = [
-  "BUILDING APPS",
-  "WRITING CODE",
-  "ANIMATING SITES",
-  "CRAFTING UI",
-  "SHIPPING FAST",
+  "building apps",
+  "writing code",
+  "animating sites",
+  "crafting ui",
+  "shipping fast",
 ] as const;
 
-function FlowerIcon() {
+function StarSeparator() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-      className="h-[0.72em] w-[0.72em] shrink-0"
-    >
-      <circle cx="12" cy="12" r="2.2" />
-      <ellipse cx="12" cy="5.5" rx="2.8" ry="4.2" />
-      <ellipse cx="12" cy="18.5" rx="2.8" ry="4.2" />
-      <ellipse cx="5.5" cy="12" rx="4.2" ry="2.8" />
-      <ellipse cx="18.5" cy="12" rx="4.2" ry="2.8" />
-      <ellipse cx="7.2" cy="7.2" rx="2.8" ry="4.2" transform="rotate(-45 7.2 7.2)" />
-      <ellipse cx="16.8" cy="7.2" rx="2.8" ry="4.2" transform="rotate(45 16.8 7.2)" />
-      <ellipse cx="7.2" cy="16.8" rx="2.8" ry="4.2" transform="rotate(45 7.2 16.8)" />
-      <ellipse cx="16.8" cy="16.8" rx="2.8" ry="4.2" transform="rotate(-45 16.8 16.8)" />
-    </svg>
+    <span aria-hidden className="shrink-0 text-[0.72em] leading-none opacity-90">
+      ✦
+    </span>
   );
 }
 
 function MarqueeTrack() {
   return (
-    <div className="flex shrink-0 items-center gap-5 px-5 sm:gap-6 sm:px-6 md:gap-8 md:px-8">
+    <div className="flex shrink-0 items-center gap-4 px-4 sm:gap-5 sm:px-5 md:gap-6 md:px-6">
       {MARQUEE_ITEMS.map((item) => (
-        <span key={item} className="inline-flex items-center gap-5 sm:gap-6 md:gap-8">
+        <span
+          key={item}
+          className={`inline-flex items-center gap-4 sm:gap-5 md:gap-6 ${SECTION_HEADING_CLASS}`}
+        >
           <span>{item}</span>
-          <FlowerIcon />
+          <StarSeparator />
         </span>
       ))}
     </div>
@@ -46,8 +38,10 @@ export function MarqueeBanner() {
       aria-label="Interests and focus areas"
       className="w-full bg-background"
     >
-      <div className="w-full overflow-hidden bg-black py-4 text-white sm:py-5">
-        <div className="home-marquee flex w-max items-center">
+      <div className="w-full overflow-hidden bg-black py-2.5 text-white sm:py-3">
+        <div
+          className="flex w-max animate-home-marquee items-center whitespace-nowrap will-change-transform motion-reduce:w-full motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-5 motion-reduce:whitespace-normal motion-reduce:px-6 motion-reduce:text-center motion-reduce:animate-none"
+        >
           <MarqueeTrack />
           <MarqueeTrack aria-hidden />
         </div>

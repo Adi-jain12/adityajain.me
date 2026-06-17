@@ -22,6 +22,9 @@
 
   /* Breakpoints — 3xl targets large/ultrawide screens (1800px+) */
   --breakpoint-3xl: 112.5rem; /* 1800px at 16px root */
+
+  /* Motion */
+  --animate-home-marquee: home-marquee 28s linear infinite;
 }
 
 [data-theme="light"] {
@@ -314,30 +317,5 @@ body::-webkit-scrollbar-corner,
 @keyframes home-marquee {
   to {
     transform: translateX(-50%);
-  }
-}
-
-.home-marquee {
-  animation: home-marquee 28s linear infinite;
-  font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
-  font-size: clamp(1.25rem, 3vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-marquee {
-    animation: none;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding-inline: 2rem;
-    white-space: normal;
-    text-align: center;
   }
 }
