@@ -74,7 +74,7 @@ const HEADLINE_PILL_BLUE_SHELL_STYLE: React.CSSProperties = {
   background: HEADLINE_PILL_BLUE_GRADIENT,
   boxShadow:
     "0 12px 28px -16px rgba(2, 6, 23, 0.65), inset 0 0 0 1px rgba(255,255,255,0.06)",
-};
+};  
 
 const HEADLINE_PILL_INNER_RING: React.CSSProperties = {
   boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.18)",
@@ -180,17 +180,16 @@ const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
 export function Hero() {
   return (
     <section
-      data-fit-viewport
       aria-label="Aditya Jain — portfolio"
-      className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:min-h-0 md:flex-1 md:grid-rows-[minmax(0,1fr)_auto] md:overflow-hidden"
+      className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:grid-rows-[minmax(0,1fr)_auto]"
     >
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
-      <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center md:overflow-hidden">
+      <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center">
         <HeroIntro />
       </div>
 
       {/* Orange card */}
-      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:overflow-hidden md:pt-6 md:pb-0 lg:px-5 3xl:pt-0">
+      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:pt-6 md:pb-0 lg:px-5 3xl:pt-0">
         <OrangeCard />
       </div>
     </section>

@@ -25,9 +25,9 @@ export const siteConfig = {
   ],
 
   socialLinks: [
-    { label: "GitHub", href: "https://github.com/adityajain" },
+    { label: "GitHub", href: "https://github.com/Adi-jain12" },
     { label: "Twitter", href: "https://twitter.com/adityajain" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/adityajain" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/aditya-jain1211/" },
   ],
   techStack: [
     "Next.js",

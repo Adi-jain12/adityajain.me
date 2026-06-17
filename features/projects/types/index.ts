@@ -11,4 +11,5 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   size?: ProjectSize;
+  company?: string;
 }

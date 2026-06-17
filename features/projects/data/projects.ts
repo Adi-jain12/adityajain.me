@@ -13,6 +13,7 @@ export const projects: Project[] = [
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/adityajain/project-one",
     size: "large",
+    company: "Yudiz Solutions Ltd.",
   },
   {
     slug: "project-two",
@@ -26,12 +27,13 @@ export const projects: Project[] = [
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/adityajain/project-two",
     size: "wide",
+    company: "Yudiz Solutions Ltd.",
   },
   {
     slug: "project-three",
-    title: "Project Two",
+    title: "Project Three",
     description:
-      "A brief description of the second project and what it accomplishes.",
+      "A brief description of the third project and what it accomplishes.",
     category: "App",
     year: 2025,
     tags: ["React", "Node.js"],
@@ -39,6 +41,7 @@ export const projects: Project[] = [
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/adityajain/project-two",
     size: "large",
+    company: "Yudiz Solutions Ltd.",
   },
   {
     slug: "project-four",

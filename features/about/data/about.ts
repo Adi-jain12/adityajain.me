@@ -36,19 +36,51 @@ export const aboutData: AboutData = {
   ],
 
   techStack: [
-    { name: "TypeScript", icon: "typescript" },
-    // { name: "JavaScript", icon: "javascript" },
-    { name: "React", icon: "react" },
-    { name: "Next.js", icon: "next" },
-    { name: "Node.js", icon: "node" },
-    { name: "Tailwind CSS", icon: "tailwind" },
-    // { name: "Framer Motion", icon: "framer" },
-    { name: "PostgreSQL", icon: "postgres" },
-    // { name: "Python", icon: "python" },
-    { name: "Git", icon: "git" },
-    { name: "GraphQL", icon: "graphql" },
-    // { name: "GitHub", icon: "github" },
-    // { name: "Docker", icon: "docker" },
+    {
+      id: "frontend",
+      label: "Frontend",
+      items: [
+        { name: "TypeScript", icon: "typescript" },
+        { name: "React", icon: "react" },
+        { name: "Next.js", icon: "next" },
+        { name: "Tailwind CSS", icon: "tailwind" },
+      ],
+    },
+    {
+      id: "backend",
+      label: "Backend",
+      items: [
+        { name: "Node.js" },
+        { name: "Express" },
+        { name: "REST APIs" },
+        { name: "GraphQL" },
+        { name: "JWT" },
+      ],
+    },
+    {
+      id: "databases",
+      label: "Databases",
+      items: [
+        { name: "PostgreSQL", icon: "postgres" },
+        { name: "MongoDB", icon: "mongodb" },
+      ],
+    },
+    {
+      id: "cloud",
+      label: "Cloud & DevOps",
+      items: [
+        { name: "Docker", icon: "docker" },
+        { name: "Vercel", icon: "vercel" },
+      ],
+    },
+    {
+      id: "tools",
+      label: "Tools",
+      items: [
+        { name: "Git", icon: "git" },
+        { name: "GitHub", icon: "github" },
+      ],
+    },
   ],
 
   sections: [

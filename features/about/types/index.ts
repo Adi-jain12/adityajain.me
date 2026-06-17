@@ -25,6 +25,7 @@ export type TechIconKey =
   | "node"
   | "tailwind"
   | "postgres"
+  | "mongodb"
   | "git"
   | "github"
   | "figma"
@@ -35,7 +36,20 @@ export type TechIconKey =
 
 export interface TechItem {
   name: string;
-  icon: TechIconKey;
+  icon?: TechIconKey;
+}
+
+export type TechCategoryKey =
+  | "frontend"
+  | "backend"
+  | "databases"
+  | "cloud"
+  | "tools";
+
+export interface TechCategory {
+  id: TechCategoryKey;
+  label: string;
+  items: TechItem[];
 }
 
 export type HighlightIconKey = "rocket" | "palette" | "zap" | "book";
@@ -51,6 +65,6 @@ export interface AboutData {
   description: string[];
   photoCaption?: string;
   highlights?: AboutHighlight[];
-  techStack?: TechItem[];
+  techStack?: TechCategory[];
   sections: AboutSection[];
 }
