@@ -5,7 +5,6 @@ import {
   LuBrainCircuit,
   LuBriefcase,
   LuCodeXml,
-  LuCoffee,
   LuRocket,
   LuUser,
   LuZap,
@@ -30,8 +29,6 @@ const HEADLINE_PILL_BLUE_GRADIENT = `
     #1d4ed8 100%
   )
 `;
-const INK = "#0A0A0A";
-
 const POSTER_GRADIENT = `
   radial-gradient(
     circle at 82% 50%,
@@ -80,59 +77,12 @@ const HEADLINE_PILL_INNER_RING: React.CSSProperties = {
   boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.18)",
 };
 
-type FocusItem = {
-  icon: IconType;
-  title: string;
-  description: string;
-  // color: string;
-};
-
-const CURRENT_EXPERIENCE = {
-  role: "Web Developer",
-  period: "December 2024 -- May 2026",
-  company: "Yudiz Solutions Ltd.",
-  location: "Ahmedabad, India",
-  highlights: [
-    "Built React.js and Next.js modules for production web applications, leveraging SSR and ISR to improve initial page rendering and SEO.",
-    "Integrated RESTful APIs and Socket.IO-based real-time communication to deliver live updates and dynamic user experiences.",
-    "Optimized frontend performance through lazy loading, code splitting, and memoization, reducing unnecessary re-renders in data-intensive views.",
-    "Collaborated with product, QA, and backend teams throughout feature development, testing, and release cycles.",
-  ],
-} as const;
-
 type DesktopHighlightItem = {
   icon: IconType;
   title: string;
   value: string;
   description: string;
 };
-
-const FOCUS_ITEMS: FocusItem[] = [
-  {
-    icon: LuCodeXml,
-    title: "Currently Coding",
-    description: "Modern Frontend & Backend Applications",
-    // color: "#20e7ff",
-  },
-  {
-    icon: LuBrainCircuit,
-    title: "Learning",
-    description: "Advanced AI Agents & LLM Integration",
-    // color: "#be38ff",
-  },
-  {
-    icon: LuZap,
-    title: "Building",
-    description: "Scalable Fullstack Architectures",
-    // color: "#f5df22",
-  },
-  {
-    icon: LuCoffee,
-    title: "Focusing On",
-    description: "Clean Code & Performance Optimization",
-    // color: "#18df78",
-  },
-];
 
 const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
   {
@@ -202,7 +152,7 @@ export function Hero() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-3 px-4 sm:mt-8 sm:gap-4 sm:px-6 md:my-0 md:items-start md:gap-4 lg:px-12 xl:pt-12 3xl:-translate-x-96 3xl:pt-0">
+    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:items-start md:gap-4 lg:px-12 xl:pt-12 3xl:-translate-x-96 3xl:pt-0">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
@@ -210,13 +160,11 @@ function HeroIntro() {
   );
 }
 
-// Mobile-only pieces (hidden on md+)
-
 function MobileAvailabilityBadge() {
   return (
-    <div className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1.5 md:hidden">
+    <div className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-3 py-1.5 backdrop-blur-[2px] md:hidden">
       <span aria-hidden className="presence-dot" />
-      <span className="presence-text font-mono text-[8.5px] uppercase tracking-[0.22em] text-text">
+      <span className="presence-text font-mono text-[8.5px] uppercase tracking-[0.22em] text-green-600">
         Available for full-time opportunities
       </span>
     </div>
@@ -225,43 +173,43 @@ function MobileAvailabilityBadge() {
 
 function HeroHeadline() {
   return (
-    <div className="flex w-full flex-col items-start">
+    <div className="flex w-full flex-col items-center md:items-start">
       <h1 className="contents">
-        {/* Mobile headline — stacked like the poster layout */}
-        <div
-          className="font-heading flex w-full flex-col items-start text-left font-bold tracking-tight md:hidden"
-          style={{ color: INK }}
-        >
+        {/* Mobile headline — centered poster layout with clear hierarchy */}
+        <div className="font-heading flex w-full flex-col items-center text-center font-bold tracking-tight text-text md:hidden">
           <div
-            className="flex items-center justify-start gap-x-[0.16em] font-bold"
+            className="flex flex-wrap items-center justify-center gap-x-[0.18em] gap-y-1"
             style={{
-              fontSize: "clamp(2.2rem, 10.2vw, 3rem)",
-              lineHeight: 0.95,
+              fontSize: "clamp(1.85rem, 7.5vw, 2.35rem)",
+              lineHeight: 1.08,
             }}
           >
             <span>Hello,</span>
             <FacePill />
           </div>
+
           <span
-            className="mt-1 font-bold"
+            className="mt-2 font-bold"
             style={{
-              fontSize: "clamp(2.55rem, 12vw, 3.55rem)",
-              lineHeight: 0.95,
+              fontSize: "clamp(2.85rem, 13vw, 3.75rem)",
+              lineHeight: 1.02,
+              letterSpacing: "-0.02em",
             }}
           >
             I&rsquo;m Aditya
           </span>
-          <span
-            className="mt-3 flex max-w-[12ch] flex-wrap items-center justify-start gap-x-[0.18em] gap-y-1 font-bold"
+
+          <div
+            className="mt-5 flex flex-wrap items-center justify-center gap-x-[0.2em] gap-y-2 px-1"
             style={{
-              fontSize: "clamp(1.75rem, 8.2vw, 2.35rem)",
-              lineHeight: 1.02,
+              fontSize: "clamp(1.55rem, 6.8vw, 2.1rem)",
+              lineHeight: 1.12,
             }}
           >
             <span>I build</span>
             <BlueBlob />
             <span>web experiences</span>
-          </span>
+          </div>
         </div>
 
         {/* Desktop headline — fixed on laptop; scales only on wide desktop monitors (1700px+) */}
@@ -283,7 +231,7 @@ function HeroHeadline() {
       </h1>
 
       <p
-        className="mt-3 w-full max-w-none text-left text-base leading-relaxed tracking-tight text-text/80 sm:mt-4 md:max-w-[80ch] lg:text-lg"
+        className="mt-5 w-full max-w-[36ch] text-center text-base text-text/80 sm:mt-6 md:mt-4 md:max-w-[80ch] md:text-left lg:text-lg"
       >
        Full-Stack Developer building modern web applications from frontend to backend, focused on performance, scalability, and user experience.
       </p>
@@ -441,18 +389,7 @@ function OrangeCard() {
           maxWidth: ORANGE_CARD_MAX_WIDTH,
         }}
       >
-        {/* dotted texture */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-25"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
-          }}
-        />
+        <OrangeCardDottedTexture />
 
         <div
           className="no-scrollbar relative flex h-full min-h-0 items-stretch overflow-y-auto px-6 py-5 md:py-6 lg:px-9 lg:py-7"
@@ -462,7 +399,7 @@ function OrangeCard() {
           <div className="flex min-h-0 min-w-0 flex-[0.88] flex-col">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 pb-1 pt-2.5 backdrop-blur-[2px] sm:px-3 sm:pb-1 sm:pt-2.5">
               <span aria-hidden className="presence-dot mb-2" />
-              <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-400 sm:text-[8.5px]">
+              <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-600 sm:text-[8.5px]">
                 Available for full-time opportunities
               </span>
             </div>
@@ -555,194 +492,102 @@ function DesktopHighlightCell({
 
 function MobileCardStack() {
   return (
-    <div className="mx-auto flex w-full max-w-136 flex-col gap-3 pb-7 md:hidden">
-      {/* Box 1 — orange statement card */}
-      <div
-        className="relative overflow-hidden rounded-[1.4rem] px-5 py-7"
-        style={{ backgroundImage: POSTER_GRADIENT, color: CREAM }}
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-25"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
-          }}
-        />
-        <span
-          aria-hidden
-          className="absolute right-4 top-4 text-[16px] opacity-90"
-        >
-          ✦
-        </span>
-
-        <h2
-          className="relative max-w-[18ch] font-display text-[1.2rem] font-black leading-[1.15] tracking-[-0.02em]"
-          style={{ color: CREAM }}
-        >
-          I build products that scale and solve real problems.
-        </h2>
-      </div>
-
-      {/* Box 2 — dark experience card */}
-      <div
-        className="relative overflow-hidden rounded-[1.4rem] px-5 py-6"
-        style={{ backgroundColor: INK, color: CREAM }}
-      >
-        <OrangeCardHeading style={{ color: "#ff6b3d" }}>
-          experience
-        </OrangeCardHeading>
-        <div className="mt-3">
-          <div className="flex flex-col gap-1">
-            <div className="flex flex-col gap-1">
-              <p className="font-heading text-base font-semibold leading-tight tracking-tight sm:text-lg md:text-xl">
-                {CURRENT_EXPERIENCE.role}
-              </p>
-              <p className="font-mono text-xs leading-tight opacity-80 sm:text-sm">
-                {CURRENT_EXPERIENCE.period}
-              </p>
-            </div>
-            <p className="text-sm leading-tight opacity-95 sm:text-base">
-              {CURRENT_EXPERIENCE.company}
-              <span className="mx-1.5 opacity-45">/</span>
-              {CURRENT_EXPERIENCE.location}
-            </p>
-          </div>
-
-          <ul className="mt-4 space-y-2.5">
-            {CURRENT_EXPERIENCE.highlights.map((highlight) => (
-              <li key={highlight} className="flex gap-2.5 text-sm leading-snug sm:text-base">
-                <span
-                  aria-hidden
-                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                  style={{ backgroundColor: "#ff6b3d" }}
-                />
-                <span className="opacity-95">{highlight}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* Box 3 — light current focus card */}
-      <div className="relative overflow-hidden rounded-[1.4rem] border border-border bg-surface px-5 py-6 text-text shadow-[0_18px_40px_-28px_rgba(10,10,10,0.25)]">
-        <OrangeCardHeading className="opacity-85">
-          current focus
-        </OrangeCardHeading>
-        <ul className="mt-2 flex flex-col">
-          {FOCUS_ITEMS.map((item, index) => (
-            <FocusRow
-              key={item.title}
-              item={item}
-              showDivider={index > 0}
-              dividerClassName="border-border"
-            />
-          ))}
-        </ul>
-      </div>
+    <div className="mx-auto flex w-full max-w-136 flex-col gap-3 md:hidden">
+      <MobileOrangeIntroCard />
+      <MobileHighlightsCard />
     </div>
   );
 }
 
-// ═════════════════════════════════════════════════════════
-// Sub-pieces
-// ═════════════════════════════════════════════════════════
-
-function OrangeCardHeading({
-  children,
-  className = "",
-  style,
-  compact = false,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  compact?: boolean;
-}) {
+function MobileOrangeIntroCard() {
   return (
-    <h3
-      className={`font-heading font-bold lowercase tracking-tight opacity-95 ${
-        compact
-          ? "text-lg sm:text-xl md:text-2xl"
-          : "text-xl sm:text-2xl md:text-3xl"
-      } ${className}`}
-      style={style}
+    <div
+      className="relative overflow-hidden rounded-[1.4rem] px-5 py-7"
+      style={{ backgroundImage: POSTER_GRADIENT, color: CREAM }}
     >
-      {children}
-    </h3>
+      <OrangeCardDottedTexture />
+
+      <h2
+        className="relative max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem]"
+        style={{ color: CREAM }}
+      >
+        Build.
+        <br />
+        Ship.
+        <br />
+        Improve.
+      </h2>
+    </div>
   );
 }
 
-const ORANGE_CARD_LIST_ROW_CLASS =
-  "flex min-w-0 items-center gap-3 py-2.5 sm:gap-3.5 sm:py-2.5";
-
-const ORANGE_CARD_LIST_TITLE_CLASS = (compact: boolean) =>
-  `font-heading font-bold leading-tight tracking-tight ${
-    compact
-      ? "text-sm sm:text-base lg:text-lg"
-      : "text-base sm:text-lg lg:text-xl"
-  }`;
-
-const ORANGE_CARD_LIST_DETAIL_CLASS = (compact: boolean) =>
-  `mt-1 leading-tight opacity-95 ${
-    compact ? "text-xs sm:text-sm" : "text-sm sm:text-base"
-  }`;
-
-function IconTile({
-  icon: Icon,
-  color = CREAM,
-  compact = false,
-}: {
-  icon: IconType;
-  color?: string;
-  compact?: boolean;
-}) {
+function MobileHighlightsCard() {
   return (
-    <span
-      aria-hidden
-      className={`inline-flex shrink-0 items-center justify-center rounded-md ${
-        compact
-          ? "h-7 w-7 text-[13px] sm:h-8 sm:w-8 sm:text-[15px] lg:h-9 lg:w-9 lg:text-[16px]"
-          : "h-8 w-8 text-[15px] sm:h-9 sm:w-9 sm:text-[17px] lg:h-10 lg:w-10 lg:text-[18px]"
-      }`}
-      style={{
-        backgroundColor: "rgba(10,10,10,0.78)",
-        color,
-        boxShadow: "0 10px 24px -14px rgba(0,0,0,0.6)",
-      }}
-    >
-      <Icon />
-    </span>
+    <div className="relative overflow-hidden rounded-[1.4rem] border border-border bg-surface px-5 pt-2 pb-0 text-text shadow-[0_18px_40px_-28px_rgba(10,10,10,0.25)]">
+      <ul className="flex flex-col">
+        {DESKTOP_HIGHLIGHT_ITEMS.map((item, index) => (
+          <MobileHighlightRow
+            key={item.title}
+            item={item}
+            showDivider={index > 0}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 
-function FocusRow({
+function MobileHighlightRow({
   item,
   showDivider,
-  dividerClassName = "border-[rgba(241,231,210,0.12)]",
-  compact = false,
 }: {
-  item: FocusItem;
+  item: DesktopHighlightItem;
   showDivider: boolean;
-  dividerClassName?: string;
-  compact?: boolean;
 }) {
   return (
     <li
-      className={`${ORANGE_CARD_LIST_ROW_CLASS} ${
-        showDivider ? `border-t ${dividerClassName}` : ""
+      className={`flex min-w-0 items-center gap-3 py-3.5 ${
+        showDivider ? "border-t border-border" : ""
       }`}
     >
-      <IconTile icon={item.icon} compact={compact} />
-      <div className="min-w-0">
-        <p className={ORANGE_CARD_LIST_TITLE_CLASS(compact)}>{item.title}</p>
-        <p className={`${ORANGE_CARD_LIST_DETAIL_CLASS(compact)} wrap-break-word`}>
+      <span
+        aria-hidden
+        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-[17px]"
+        style={{
+          backgroundColor: "rgba(10,10,10,0.78)",
+          color: CREAM,
+          boxShadow: "0 10px 24px -14px rgba(0,0,0,0.6)",
+        }}
+      >
+        <item.icon />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="font-heading text-base font-semibold leading-tight tracking-tight">
+          {item.value}
+        </p>
+        <p className="mt-1 font-heading text-base font-semibold leading-tight tracking-tight text-accent">
+          {item.title}
+        </p>
+        <p className="mt-1 text-sm leading-tight text-text/80">
           {item.description}
         </p>
       </div>
     </li>
+  );
+}
+
+function OrangeCardDottedTexture() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 opacity-25"
+      style={{
+        backgroundImage:
+          "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
+        backgroundSize: "20px 20px",
+        maskImage:
+          "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
+      }}
+    />
   );
 }
