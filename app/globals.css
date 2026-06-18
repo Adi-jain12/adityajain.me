@@ -191,6 +191,29 @@ html.lenis body {
   }
 }
 
+/* Chip label — the custom display font (VG) renders glyphs off-center
+   within their line box, so uppercase chip text would otherwise sit too
+   high/low. Trimming to the cap-height box lets flex `items-center` center
+   it perfectly inside the pill on every screen size, with no padding hacks. */
+.chip-label {
+  display: inline-block;
+  line-height: 1;
+}
+
+@supports (text-box-trim: trim-both) {
+  .chip-label {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
+}
+
+@supports (-webkit-text-box-trim: trim-both) {
+  .chip-label {
+    -webkit-text-box-trim: trim-both;
+    -webkit-text-box-edge: cap alphabetic;
+  }
+}
+
 /* Magnetic / soft-lift button affordance */
 .btn-magnetic {
   transition:

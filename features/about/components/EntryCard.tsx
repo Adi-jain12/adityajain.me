@@ -58,15 +58,16 @@ export function EntryCard({
             {titleEl}
           </h3>
           {hasMeta && (
-            <p className="mt-1 text-sm sm:text-base">
+            <div className="mt-1 flex flex-wrap items-center gap-2 text-sm sm:text-base">
               {entry.organization && orgEl}
-              {entry.organization && entry.employmentType && (
-                <span className="mx-2 text-text-muted">·</span>
-              )}
               {entry.employmentType && (
-                <span className="text-text-muted">{entry.employmentType}</span>
+                <div className="mb-2">
+                  <Chip variant="muted" className="w-fit">
+                    {entry.employmentType}
+                  </Chip>
+                </div>
               )}
-            </p>
+            </div>
           )}
         </div>
 

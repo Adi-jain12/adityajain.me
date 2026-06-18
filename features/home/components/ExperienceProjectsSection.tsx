@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LuArrowRight, LuExternalLink, LuGithub } from "react-icons/lu";
-import { Chip, chipMobileTextOffset, getChipClassName } from "@/components/ui/Chip";
+import { Chip, chipLabel, getChipClassName } from "@/components/ui/Chip";
 import { getProjectsByCompany } from "@/features/projects";
 import type { Project } from "@/features/projects/types";
 
@@ -85,7 +85,7 @@ function CompactProjectItem({
             href={`/projects/${project.slug}`}
             className={getChipClassName("accentOutline")}
           >
-            <span className={chipMobileTextOffset}>Case study</span>
+            <span className={chipLabel}>Case study</span>
             <LuArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
 
@@ -96,7 +96,7 @@ function CompactProjectItem({
               rel="noopener noreferrer"
               className={getChipClassName("outline")}
             >
-              <span className={chipMobileTextOffset}>Live</span>
+              <span className={chipLabel}>Live</span>
               <LuExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           )}
@@ -108,7 +108,7 @@ function CompactProjectItem({
               rel="noopener noreferrer"
               className={getChipClassName("outline")}
             >
-              <span className={chipMobileTextOffset}>Code</span>
+              <span className={chipLabel}>Code</span>
               <LuGithub className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           )}
@@ -160,7 +160,7 @@ export function ExperienceProjectsList({
             "group bg-background/50 text-text hover:border-accent/30"
           )}
         >
-          <span className={chipMobileTextOffset}>View all projects</span>
+          <span className={chipLabel}>View all projects</span>
           <LuArrowRight
             className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
             aria-hidden="true"
