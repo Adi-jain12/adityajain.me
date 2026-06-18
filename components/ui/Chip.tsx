@@ -1,6 +1,8 @@
 import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+export const chipMobileTextOffset = "max-sm:mb-2";
+
 export const chipVariants = {
   accent: cn(
     "rounded-full font-mono text-[10px] text-accent",
@@ -59,17 +61,20 @@ export function Chip({
   ...props
 }: ChipSpanProps | ChipAnchorProps) {
   const classes = getChipClassName(variant, className);
+  const mobileTextOffset = chipMobileTextOffset;
 
   const textContent =
     showDot && variant === "success" ? (
-      <span className="presence-text">{children}</span>
+      <span className={cn("presence-text", mobileTextOffset)}>{children}</span>
     ) : (
-      children
+      <span className={mobileTextOffset}>{children}</span>
     );
 
   const content = (
     <>
-      {showDot && <span aria-hidden className="presence-dot mb-2.5" />}
+      {showDot && (
+        <span aria-hidden className="presence-dot max-sm:mb-2 sm:mb-2.5" />
+      )}
       {textContent}
     </>
   );

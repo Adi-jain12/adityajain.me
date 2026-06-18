@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const DRAW_STEP_MS = 18;
-const COMPLETE_PAUSE_MS = 400;
+const COMPLETE_PAUSE_MS = 600;
 
 type Grid = number[][];
 
