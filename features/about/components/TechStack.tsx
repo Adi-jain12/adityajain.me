@@ -4,11 +4,14 @@ import {
   SiReact,
   SiNextdotjs,
   SiTypescript,
+  SiJavascript,
   SiRedux,
   SiTailwindcss,
   SiNodedotjs,
   SiExpress,
   SiOpenapiinitiative,
+  SiGraphql,
+  SiSocketdotio,
   SiJsonwebtokens,
   SiMongodb,
   SiPostgresql,
@@ -25,6 +28,7 @@ import { cn } from "@/lib/utils";
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 const iconMap: Record<TechIconKey, IconComponent> = {
+  javascript: SiJavascript,
   react: SiReact,
   next: SiNextdotjs,
   typescript: SiTypescript,
@@ -33,6 +37,8 @@ const iconMap: Record<TechIconKey, IconComponent> = {
   node: SiNodedotjs,
   express: SiExpress,
   openapi: SiOpenapiinitiative,
+  graphql: SiGraphql,
+  socketio: SiSocketdotio,
   jwt: SiJsonwebtokens,
   mongodb: SiMongodb,
   postgres: SiPostgresql,
@@ -46,6 +52,7 @@ const iconMap: Record<TechIconKey, IconComponent> = {
 };
 
 const iconColorMap: Partial<Record<TechIconKey, string>> = {
+  javascript: "#F7DF1E",
   react: "#61DAFB",
   typescript: "#3178C6",
   redux: "#764ABC",
@@ -58,6 +65,8 @@ const iconColorMap: Partial<Record<TechIconKey, string>> = {
   postman: "#FF6C37",
   aws: "#FF9900",
   openapi: "#6BA539",
+  graphql: "#E10098",
+  socketio: "#010101",
 };
 
 const themeAwareIcons = new Set<TechIconKey>([
@@ -67,6 +76,7 @@ const themeAwareIcons = new Set<TechIconKey>([
   "vscode",
   "express",
   "jwt",
+  "socketio",
 ]);
 
 interface TechStackProps {

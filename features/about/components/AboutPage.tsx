@@ -41,8 +41,6 @@ function HighlightCard({ highlight }: { highlight: AboutHighlight }) {
 }
 
 function Section({ section }: { section: AboutSection }) {
-  const mutedOrganization = section.heading === "education";
-
   return (
     <section className="mt-12 sm:mt-16 md:mt-24">
       <Reveal>
@@ -54,10 +52,7 @@ function Section({ section }: { section: AboutSection }) {
       <div className="mt-5 grid grid-cols-1 gap-4 sm:mt-6 sm:gap-5">
         {section.entries.map((entry, i) => (
           <Reveal key={`${section.heading}-${i}`} delay={i * 0.08}>
-            <EntryCard
-              entry={entry}
-              mutedOrganization={mutedOrganization}
-            />
+            <EntryCard entry={entry} />
           </Reveal>
         ))}
       </div>

@@ -5,9 +5,9 @@ export const aboutData: AboutData = {
     "Aditya Jain is a web developer with a passion for clean code, thoughtful design, and shipping products.",
 
   description: [
-    "His programmatic interests revolve around the intersection of engineering and design — how thoughtful technical decisions can shape product experience, and how small details compound into great software. He is drawn to clean code, well-structured systems, and interfaces that feel inevitable.",
-    "His current practice spans full-stack web development, design engineering, and side projects that scratch a creative itch. He cares about the craft of building: the quality of an API, the rhythm of a UI, the architecture of a codebase, and the experience of the people who use what he ships.",
-    "When he isn't writing code, he is reading about software architecture, exploring AI-powered developer tooling, and building things on the web for the joy of it.",
+    "I'm a Full-Stack Developer who enjoys building web applications that are both technically robust and thoughtfully designed. My interests lie at the intersection of engineering and user experience where clean architecture, scalable systems, and intuitive interfaces come together to create meaningful products.",
+    "With experience across the MERN stack, Next.js, PostgreSQL, AWS, and modern web technologies, I focus on building applications that are maintainable, performant, and user-centric. I care deeply about the craft of software development from designing efficient APIs and structuring codebases to refining the details that make a product feel polished.",
+    "Beyond professional work, I enjoy exploring new technologies, experimenting with side projects, and staying current with advancements in web development, cloud technologies, and AI-powered tools. I'm constantly learning, building, and looking for better ways to turn ideas into impactful digital experiences.",
   ],
 
   photoCaption: "Photo of Aditya",
@@ -40,10 +40,10 @@ export const aboutData: AboutData = {
       id: "frontend",
       label: "Frontend",
       items: [
+        { name: "JavaScript", icon: "javascript" },
+        { name: "TypeScript", icon: "typescript" },
         { name: "React.js", icon: "react" },
         { name: "Next.js", icon: "next" },
-        { name: "TypeScript", icon: "typescript" },
-        { name: "Redux Toolkit", icon: "redux" },
         { name: "Tailwind CSS", icon: "tailwind" },
       ],
     },
@@ -54,7 +54,8 @@ export const aboutData: AboutData = {
         { name: "Node.js", icon: "node" },
         { name: "Express.js", icon: "express" },
         { name: "REST APIs", icon: "openapi" },
-        { name: "JWT", icon: "jwt" },
+        { name: "GraphQL", icon: "graphql" },
+        { name: "Socket.IO", icon: "socketio" },
       ],
     },
     {
@@ -67,11 +68,10 @@ export const aboutData: AboutData = {
     },
     {
       id: "cloud",
-      label: "Cloud",
+      label: "Cloud & DevOps",
       items: [
-        { name: "AWS", icon: "aws" },
+        { name: "AWS (EC2 & S3)", icon: "aws" },
         { name: "Docker", icon: "docker" },
-        { name: "Vercel", icon: "vercel" },
       ],
     },
     {
@@ -80,8 +80,6 @@ export const aboutData: AboutData = {
       items: [
         { name: "Git", icon: "git" },
         { name: "GitHub", icon: "github" },
-        { name: "Postman", icon: "postman" },
-        { name: "VS Code", icon: "vscode" },
       ],
     },
   ],
@@ -137,7 +135,7 @@ export const aboutData: AboutData = {
       heading: "education",
       entries: [
         {
-          title: "M.S. in Information Technology",
+          title: "Master of Science in Information Technology (MS-IT)",
           organization:
             "Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT)",
         },

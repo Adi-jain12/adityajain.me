@@ -18,6 +18,7 @@ export interface AboutSection {
 }
 
 export type TechIconKey =
+  | "javascript"
   | "react"
   | "next"
   | "typescript"
@@ -26,6 +27,8 @@ export type TechIconKey =
   | "node"
   | "express"
   | "openapi"
+  | "graphql"
+  | "socketio"
   | "jwt"
   | "mongodb"
   | "postgres"
