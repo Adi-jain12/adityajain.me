@@ -10,6 +10,7 @@ import {
   LuUser,
   LuZap,
 } from "react-icons/lu";
+import { Chip } from "@/components/ui/Chip";
 
 // ───────────────── Tokens ─────────────────
 
@@ -170,12 +171,13 @@ function HeroIntro() {
 
 function MobileAvailabilityBadge() {
   return (
-    <div className="mx-auto inline-flex w-fit items-center justify-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-3 py-1.5 backdrop-blur-[2px] md:hidden">
-      <span aria-hidden className="presence-dot" />
-      <span className="presence-text font-mono text-[8.5px] uppercase tracking-[0.22em] text-green-600">
-        Available for full-time opportunities
-      </span>
-    </div>
+    <Chip
+      variant="success"
+      showDot
+      className="mx-auto w-fit justify-center md:hidden"
+    >
+      Available for full-time opportunities
+    </Chip>
   );
 }
 
@@ -402,12 +404,9 @@ function OrangeCard() {
         >
           {/* Left intro */}
           <div className="flex min-w-0 flex-col px-6 py-8 sm:px-8 md:border-r md:border-[rgba(241,231,210,0.16)] md:py-8 lg:px-8 lg:py-10">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 pb-1 pt-2.5 backdrop-blur-[2px] sm:px-3 sm:pb-1 sm:pt-2.5">
-              <span aria-hidden className="presence-dot mb-2" />
-              <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-600 sm:text-[8.5px]">
-                Available for full-time opportunities
-              </span>
-            </div>
+            <Chip variant="success" showDot className="w-fit">
+              Available for full-time opportunities
+            </Chip>
 
             <h2
               className="mt-6 max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem] md:text-[1.75rem] lg:text-[2rem] xl:text-[2.2rem]"
@@ -576,10 +575,7 @@ function MobileHighlightRow({
         >
           {item.value}
         </p>
-        <p className="mt-1 font-heading text-base font-semibold leading-tight tracking-tight text-accent">
-          {item.title}
-        </p>
-        <p className="mt-1 text-sm leading-tight text-text/80">
+        <p className="mt-1 text-sm leading-tight text-text/80 sm:text-base">
           {item.description}
         </p>
       </div>

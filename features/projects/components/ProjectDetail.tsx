@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Chip } from "@/components/ui/Chip";
 import type { Project } from "../types";
 
 const CTA_BUTTON_CLASS =
@@ -22,14 +23,11 @@ function MetaRow({ label, children }: { label: string; children: React.ReactNode
 
 function TechPills({ items }: { items: string[] }) {
   return (
-    <div className="flex flex-wrap gap-1.5">
+    <div className="flex flex-wrap gap-2">
       {items.map((tech) => (
-        <span
-          key={tech}
-          className="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] tracking-wider text-accent sm:text-xs"
-        >
+        <Chip key={tech} variant="accent">
           {tech}
-        </span>
+        </Chip>
       ))}
     </div>
   );

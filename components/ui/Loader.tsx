@@ -1,15 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLoadingPercentage } from "@/lib/hooks/useLoadingPercentage";
 
-const TICK_INTERVAL = 125;
 const DRAW_STEP_MS = 18;
-const GOL_DELAY_MS = 600;
-const LOADER_DURATION_MS = 6500;
-const PERCENTAGE_DURATION_MS = 4200;
-const PERCENTAGE_START_DELAY_MS = 1000;
 
 type Grid = number[][];
 
@@ -23,11 +17,7 @@ export function Loader() {
   const [visible, setVisible] = useState(true);
   const [grid, setGrid] = useState<Grid>([]);
   const [cellSize, setCellSize] = useState(20);
-  const percent = useLoadingPercentage(
-    PERCENTAGE_DURATION_MS,
-    PERCENTAGE_START_DELAY_MS
-  );
-  const golIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [percent, setPercent] = useState(0);
 
   useEffect(() => {
     const w = window.innerWidth;
@@ -41,7 +31,6 @@ export function Loader() {
 
     const sequence = getNameSequence(w, rows, cols);
     let step = 0;
-    let golTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
     const drawInterval = setInterval(() => {
       if (step < sequence.length) {
@@ -53,23 +42,16 @@ export function Loader() {
           return next;
         });
         step++;
+        setPercent(Math.round((step / sequence.length) * 100));
       } else {
         clearInterval(drawInterval);
-        golTimeoutId = setTimeout(() => {
-          golIntervalRef.current = setInterval(() => {
-            setGrid((prev) => nextGen(prev));
-          }, TICK_INTERVAL);
-        }, GOL_DELAY_MS);
+        setPercent(100);
+        setVisible(false);
       }
     }, DRAW_STEP_MS);
 
-    const exitId = setTimeout(() => setVisible(false), LOADER_DURATION_MS);
-
     return () => {
       clearInterval(drawInterval);
-      if (golTimeoutId) clearTimeout(golTimeoutId);
-      if (golIntervalRef.current) clearInterval(golIntervalRef.current);
-      clearTimeout(exitId);
     };
   }, []);
 
@@ -119,40 +101,6 @@ export function Loader() {
 
 function makeEmptyGrid(rows: number, cols: number): Grid {
   return Array.from({ length: rows }, () => Array<number>(cols).fill(0));
-}
-
-function nextGen(grid: Grid): Grid {
-  if (!grid.length) return grid;
-  const rows = grid.length;
-  const cols = grid[0].length;
-  const next = makeEmptyGrid(rows, cols);
-
-  const dirs: [number, number][] = [
-    [0, 1],
-    [0, -1],
-    [1, 0],
-    [-1, 0],
-    [1, 1],
-    [-1, -1],
-    [1, -1],
-    [-1, 1],
-  ];
-
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      let live = 0;
-      for (const [dr, dc] of dirs) {
-        const nr = r + dr;
-        const nc = c + dc;
-        if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
-          live += grid[nr][nc];
-        }
-      }
-      if (grid[r][c] === 1 && (live === 2 || live === 3)) next[r][c] = 1;
-      else if (grid[r][c] === 0 && live === 3) next[r][c] = 1;
-    }
-  }
-  return next;
 }
 
 const LETTERS: Record<string, number[][]> = {

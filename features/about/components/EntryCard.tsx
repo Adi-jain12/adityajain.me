@@ -1,4 +1,5 @@
 import { LuCalendar, LuMapPin } from "react-icons/lu";
+import { Chip } from "@/components/ui/Chip";
 import type { AboutEntry } from "../types";
 
 export function EntryCard({
@@ -83,9 +84,7 @@ export function EntryCard({
                   </span>
                 )}
                 {entry.current && (
-                  <span className="rounded-full bg-green-500/20 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-green-500 sm:text-xs">
-                    Current
-                  </span>
+                  <Chip variant="success">Current</Chip>
                 )}
               </div>
             )}
@@ -119,12 +118,9 @@ export function EntryCard({
       {entry.technologies && entry.technologies.length > 0 && (
         <div className="mt-5 flex flex-wrap gap-1.5">
           {entry.technologies.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full bg-accent/10 px-2.5 pt-2 font-mono text-[10px] tracking-wider text-accent sm:text-xs"
-            >
+            <Chip key={tech} variant="accent">
               {tech}
-            </span>
+            </Chip>
           ))}
         </div>
       )}

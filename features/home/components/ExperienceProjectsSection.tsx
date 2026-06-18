@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LuArrowRight, LuExternalLink, LuGithub } from "react-icons/lu";
+import { Chip, getChipClassName } from "@/components/ui/Chip";
 import { getProjectsByCompany } from "@/features/projects";
 import type { Project } from "@/features/projects/types";
 
@@ -72,12 +73,9 @@ function CompactProjectItem({
         {project.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-border bg-background/50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted sm:text-[11px]"
-              >
+              <Chip key={tag} variant="accent">
                 {tag}
-              </span>
+              </Chip>
             ))}
           </div>
         )}
@@ -85,7 +83,7 @@ function CompactProjectItem({
         <div className="mt-5 flex flex-wrap items-center gap-2.5">
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-accent transition-colors hover:bg-accent hover:text-background sm:text-[11px]"
+            className={getChipClassName("accentOutline")}
           >
             Case study
             <LuArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -96,7 +94,7 @@ function CompactProjectItem({
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-text-muted transition-colors hover:border-accent/25 hover:text-accent sm:text-[11px]"
+              className={getChipClassName("outline")}
             >
               Live
               <LuExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -108,7 +106,7 @@ function CompactProjectItem({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-text-muted transition-colors hover:border-accent/25 hover:text-accent sm:text-[11px]"
+              className={getChipClassName("outline")}
             >
               Code
               <LuGithub className="h-3.5 w-3.5" aria-hidden="true" />
@@ -157,7 +155,10 @@ export function ExperienceProjectsList({
       <div className="flex justify-center border-t border-border px-6 py-5 sm:px-8">
         <Link
           href="/projects"
-          className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-text transition-colors hover:border-accent/30 hover:text-accent sm:text-xs"
+          className={getChipClassName(
+            "outline",
+            "group bg-background/50 text-text hover:border-accent/30"
+          )}
         >
           View all projects
           <LuArrowRight

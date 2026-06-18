@@ -7,6 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { aboutData } from "@/features/about/data/about";
 import { getProjectsByCompany } from "@/features/projects";
 import { ExperienceProjectsList } from "./ExperienceProjectsSection";
+import { Chip } from "@/components/ui/Chip";
 import { cn } from "@/lib/utils";
 
 const currentExperience = aboutData.sections
@@ -94,10 +95,9 @@ export function CurrentExperienceSection() {
                 className="relative border-b border-border px-6 py-8 sm:px-8 sm:py-10 lg:border-b-0 lg:border-r"
                 style={{ backgroundImage: PANEL_GRADIENT }}
               >
-                <span className="inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-green-400 sm:text-[11px]">
-                  <span aria-hidden className="presence-dot" />
+                <Chip variant="success" showDot>
                   Current Role
-                </span>
+                </Chip>
 
                 <h3 className="mt-6 text-base font-semibold tracking-tight text-foreground sm:text-lg md:text-xl">
                   {title}
@@ -106,7 +106,7 @@ export function CurrentExperienceSection() {
                 {organization && (
                   <p className="mt-2 flex items-center gap-2 text-sm text-accent sm:text-base">
                     <LuBriefcase
-                      className="h-4 w-4 shrink-0"
+                      className="mb-2.5 h-4 w-4 shrink-0"
                       aria-hidden="true"
                     />
                     {organization}
@@ -117,7 +117,7 @@ export function CurrentExperienceSection() {
                   {duration && (
                     <span className="inline-flex items-center gap-2">
                       <LuCalendar
-                        className="h-4 w-4 shrink-0 text-accent"
+                        className="mb-2.5 h-4 w-4 shrink-0 text-accent"
                         aria-hidden="true"
                       />
                       {duration}
@@ -126,16 +126,16 @@ export function CurrentExperienceSection() {
                   {location && (
                     <span className="inline-flex items-center gap-2">
                       <LuMapPin
-                        className="h-4 w-4 shrink-0 text-accent"
+                        className="mb-2.5 h-4 w-4 shrink-0 text-accent"
                         aria-hidden="true"
                       />
                       {location}
                     </span>
                   )}
                   {employmentType && (
-                    <span className="w-fit rounded-full border border-border bg-background/40 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-text-muted sm:text-[11px]">
+                    <Chip variant="muted" className="w-fit">
                       {employmentType}
-                    </span>
+                    </Chip>
                   )}
                 </div>
 
@@ -170,12 +170,9 @@ export function CurrentExperienceSection() {
                 {technologies.length > 0 && (
                   <div className="mt-8 flex flex-wrap gap-2 border-t border-border pt-6">
                     {technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-accent/15 bg-accent/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-accent sm:text-[11px]"
-                      >
+                      <Chip key={tech} variant="accent">
                         {tech}
-                      </span>
+                      </Chip>
                     ))}
                   </div>
                 )}
