@@ -12,7 +12,7 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="mt-3 text-base text-text-muted sm:mt-4 sm:text-lg">
-            A collection of things I&apos;ve built.
+            A collection of things I&apos;ve built and worked on.
           </p>
         </header>
         <div className="mt-8 sm:mt-10">
