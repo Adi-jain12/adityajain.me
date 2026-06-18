@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const DRAW_STEP_MS = 18;
+const COMPLETE_PAUSE_MS = 400;
 
 type Grid = number[][];
 
@@ -31,6 +32,7 @@ export function Loader() {
 
     const sequence = getNameSequence(w, rows, cols);
     let step = 0;
+    let pauseId: ReturnType<typeof setTimeout> | null = null;
 
     const drawInterval = setInterval(() => {
       if (step < sequence.length) {
@@ -46,12 +48,13 @@ export function Loader() {
       } else {
         clearInterval(drawInterval);
         setPercent(100);
-        setVisible(false);
+        pauseId = setTimeout(() => setVisible(false), COMPLETE_PAUSE_MS);
       }
     }, DRAW_STEP_MS);
 
     return () => {
       clearInterval(drawInterval);
+      if (pauseId) clearTimeout(pauseId);
     };
   }, []);
 
