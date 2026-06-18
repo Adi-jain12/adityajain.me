@@ -5,6 +5,7 @@ import {
   LuBrainCircuit,
   LuBriefcase,
   LuCodeXml,
+  LuGithub,
   LuRocket,
   LuUser,
   LuZap,
@@ -49,11 +50,6 @@ const POSTER_GRADIENT = `
 `;
 
 const ORANGE_CARD_DIVIDER = "rgba(241,231,210,0.16)";
-const ORANGE_CARD_LABEL = "#f0a67a";
-
-// 🎛 Orange card width — tweak this value to resize the bottom card.
-// Accepts any CSS width: "100%", "1260px", "92%", "min(100%, 1320px)", etc.
-const ORANGE_CARD_MAX_WIDTH = "94%";
 
 // Headline inline pills (face + blob) — shared box so both scale with the title
 const HEADLINE_PILL = {
@@ -82,20 +78,30 @@ type DesktopHighlightItem = {
   title: string;
   value: string;
   description: string;
+  largeValue?: boolean;
 };
 
 const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
   {
     icon: LuBriefcase,
     title: "Years Experience",
-    value: "2.4+",
-    description: "Building production web applications",
+    value: "2+",
+    description: "Years Experience",
+    largeValue: true,
   },
   {
     icon: LuRocket,
     title: "Projects Built",
     value: "10+",
-    description: "From concept to deployment",
+    description: "Projects Built",
+    largeValue: true,
+  },
+  {
+    icon: LuGithub,
+    title: "GitHub Contributions",
+    value: "500+",
+    description: "GitHub Contributions",
+    largeValue: true,
   },
   {
     icon: LuCodeXml,
@@ -115,32 +121,34 @@ const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
     value: "Performance Optimization",
     description: "Fast and responsive experiences",
   },
-  {
-    icon: LuUser,
-    title: "Let's Connect",
-    value: "Open to Opportunities",
-    description: "Available for full-time roles",
-  },
 ];
 
 // ═════════════════════════════════════════════════════════
 // Main
 // ═════════════════════════════════════════════════════════
 
+const HERO_SECTION_PADDING = "px-4 sm:px-8 lg:px-10";
+// Wider than section cards (7xl / 1280px), still capped on ultrawide
+const ORANGE_CARD_CONTAINER = "mx-auto w-full max-w-[min(94%,1520px)]";
+
 export function Hero() {
   return (
     <section
       aria-label="Aditya Jain — portfolio"
-      className="relative grid min-h-svh w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:grid-rows-[minmax(0,1fr)_auto]"
+      className="relative grid min-h-[calc(100svh-var(--header-height))] w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:h-[calc(100svh-var(--header-height))] md:grid-rows-[minmax(0,1fr)_auto]"
     >
       {/* Cream hero — headline + CTAs, left-aligned with top margin */}
       <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center">
         <HeroIntro />
       </div>
 
-      {/* Orange card */}
-      <div className="relative flex min-h-0 flex-col overflow-visible bg-background px-4 pt-4 pb-7 transition-colors duration-300 sm:px-3 sm:pt-5 md:px-4 md:pt-6 md:pb-6 lg:px-5 lg:pb-8 3xl:pt-0">
-        <OrangeCard />
+      {/* Orange card — same container + padding as CurrentExperienceSection */}
+      <div
+        className={`relative flex min-h-0 shrink-0 flex-col overflow-visible bg-background pt-3 pb-4 transition-colors duration-300 sm:pt-4 md:pt-4 md:pb-4 lg:pb-6 ${HERO_SECTION_PADDING}`}
+      >
+        <div className={ORANGE_CARD_CONTAINER}>
+          <OrangeCard />
+        </div>
       </div>
     </section>
   );
@@ -152,7 +160,7 @@ export function Hero() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:items-start md:gap-4 lg:px-12 xl:pt-12 3xl:-translate-x-96 3xl:pt-0">
+    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:min-h-0 md:items-start md:gap-3 lg:gap-4 lg:px-12 3xl:-translate-x-96">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
@@ -382,21 +390,18 @@ function OrangeCard() {
     <>
       <MobileCardStack />
 
-      <div
-        className="relative mx-auto hidden min-h-fit w-full flex-col overflow-hidden rounded-[1.4rem] sm:rounded-[1.8rem] md:flex md:min-h-[44vh] lg:min-h-[48vh] lg:rounded-[2.2rem]"
-        style={{
-          backgroundImage: POSTER_GRADIENT,
-          maxWidth: ORANGE_CARD_MAX_WIDTH,
-        }}
+      <article
+        className="relative hidden w-full overflow-hidden rounded-[1.4rem] sm:rounded-[1.8rem] md:block lg:rounded-[2.2rem]"
+        style={{ backgroundImage: POSTER_GRADIENT }}
       >
         <OrangeCardDottedTexture />
 
         <div
-          className="no-scrollbar relative flex h-full min-h-0 items-stretch overflow-y-auto px-6 py-5 md:py-6 lg:px-9 lg:py-7"
+          className="relative grid items-stretch md:grid-cols-[minmax(0,0.88fr)_minmax(0,2.12fr)]"
           style={{ color: CREAM }}
         >
-          {/* Left intro — ~30% */}
-          <div className="flex min-h-0 min-w-0 flex-[0.88] flex-col">
+          {/* Left intro */}
+          <div className="flex min-w-0 flex-col px-6 py-8 sm:px-8 md:border-r md:border-[rgba(241,231,210,0.16)] md:py-8 lg:px-8 lg:py-10">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-2.5 pb-1 pt-2.5 backdrop-blur-[2px] sm:px-3 sm:pb-1 sm:pt-2.5">
               <span aria-hidden className="presence-dot mb-2" />
               <span className="presence-text font-mono text-[7.5px] uppercase tracking-[0.22em] text-green-600 sm:text-[8.5px]">
@@ -404,44 +409,44 @@ function OrangeCard() {
               </span>
             </div>
 
-            <div className="flex min-h-0 flex-1 items-center">
-              <h2
-                className="max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem] md:text-[1.75rem] lg:text-[2rem] xl:text-[2.2rem]"
-                style={{ color: CREAM }}
-              >
-                Build.
-                <br />
-                Ship.
-                <br />
-                Improve.
-              </h2>
-            </div>
+            <h2
+              className="mt-6 max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem] md:text-[1.75rem] lg:text-[2rem] xl:text-[2.2rem]"
+              style={{ color: CREAM }}
+            >
+              Build.
+              <br />
+              Ship.
+              <br />
+              Improve.
+            </h2>
           </div>
 
-          {/* Right grid — 2×3 with shared dividers */}
-          <div
-            className="grid h-full min-h-0 flex-[2.12] grid-cols-3 grid-rows-2"
-            style={{ borderLeft: `1px solid rgba(241,231,210,0.16)` }}
-          >
+          {/* Right grid — 3×2 equal cells */}
+          <div className="grid h-full min-h-0 grid-cols-3 grid-rows-[1fr_1fr]">
             {DESKTOP_HIGHLIGHT_ITEMS.map((item, index) => (
-              <DesktopHighlightCell key={item.title} item={item} index={index} />
+              <DesktopHighlightCell
+                key={item.title}
+                item={item}
+                column={index % 3}
+                row={Math.floor(index / 3)}
+              />
             ))}
           </div>
         </div>
-      </div>
+      </article>
     </>
   );
 }
 
 function DesktopHighlightCell({
   item,
-  index,
+  column,
+  row,
 }: {
   item: DesktopHighlightItem;
-  index: number;
+  column: number;
+  row: number;
 }) {
-  const column = index % 3;
-  const row = Math.floor(index / 3);
   const cellStyle: React.CSSProperties = {};
 
   if (column > 0) {
@@ -454,7 +459,7 @@ function DesktopHighlightCell({
 
   return (
     <div
-      className="flex h-full min-w-0 items-center justify-start gap-3 px-5 py-4 sm:gap-3.5 sm:px-6 lg:px-7"
+      className="flex h-full min-h-0 items-center gap-x-3 gap-y-2 px-4 py-5 sm:gap-x-3.5 sm:px-5 sm:py-6 lg:px-6 lg:py-7"
       style={cellStyle}
     >
       <span
@@ -468,17 +473,17 @@ function DesktopHighlightCell({
       >
         <item.icon />
       </span>
-      <div className="min-w-0 flex-1">
-        <p className="font-heading text-base font-semibold leading-tight tracking-tight sm:text-lg md:text-xl">
+      <div className="flex min-w-0 flex-1 flex-col gap-2 sm:gap-2.5">
+        <p
+          className={`font-heading font-semibold leading-tight tracking-tight ${
+            item.largeValue
+              ? "text-2xl sm:text-3xl md:text-4xl"
+              : "text-base sm:text-lg md:text-xl"
+          }`}
+        >
           {item.value}
         </p>
-        <p
-          className="mt-1 font-heading text-base font-semibold leading-tight tracking-tight sm:text-lg md:text-xl"
-          style={{ color: ORANGE_CARD_LABEL }}
-        >
-          {item.title}
-        </p>
-        <p className="mt-1 text-sm leading-tight opacity-95 sm:text-base">
+        <p className="text-sm leading-tight opacity-95 sm:text-base">
           {item.description}
         </p>
       </div>
@@ -492,7 +497,7 @@ function DesktopHighlightCell({
 
 function MobileCardStack() {
   return (
-    <div className="mx-auto flex w-full max-w-136 flex-col gap-3 md:hidden">
+    <div className="flex w-full flex-col gap-3 md:hidden">
       <MobileOrangeIntroCard />
       <MobileHighlightsCard />
     </div>
@@ -562,7 +567,13 @@ function MobileHighlightRow({
         <item.icon />
       </span>
       <div className="min-w-0 flex-1">
-        <p className="font-heading text-base font-semibold leading-tight tracking-tight">
+        <p
+          className={`font-heading font-semibold leading-tight tracking-tight ${
+            item.largeValue
+              ? "text-2xl sm:text-3xl"
+              : "text-base"
+          }`}
+        >
           {item.value}
         </p>
         <p className="mt-1 font-heading text-base font-semibold leading-tight tracking-tight text-accent">

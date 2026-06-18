@@ -72,9 +72,6 @@ export function CurrentExperienceSection() {
     >
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent sm:text-xs">
-            Now
-          </p>
           <h2
             id="current-experience-heading"
             className="mt-3 text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl"

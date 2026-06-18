@@ -27,6 +27,23 @@
   --animate-home-marquee: home-marquee 28s linear infinite;
 }
 
+:root {
+  /* Sticky header — used to size above-the-fold hero */
+  --header-height: 3.25rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-height: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 4.5rem;
+  }
+}
+
 [data-theme="light"] {
   --color-background: #f1e7d2;
   --color-foreground: #e04b22;

@@ -1,11 +1,13 @@
 import { SECTION_HEADING_CLASS } from "@/lib/typography";
 
 const MARQUEE_ITEMS = [
-  "building apps",
-  "writing code",
-  "animating sites",
+  "building products",
   "crafting ui",
-  "shipping fast",
+  "solving problems",
+  "shipping features",
+  "scaling systems",
+  "optimizing performance",
+  "continuous learning and innovation",
 ] as const;
 
 function StarSeparator() {
