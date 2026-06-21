@@ -103,16 +103,17 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       </h1>
 
       {project.image && (
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-border bg-surface">
-          <Image
-            src={project.image}
-            alt={`${project.title} Project`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            priority
-          />
-        </div>
+       <div className="overflow-hidden rounded-lg border border-border bg-surface">
+  <Image
+    src={project.image}
+    alt={`${project.title} Project`}
+    width={1600}
+    height={900}
+    className="h-auto w-full"
+    sizes="(max-width: 1280px) 100vw, 1280px"
+    priority
+  />
+</div>
       )}
 
       <div className="flex flex-col gap-8 py-4 md:flex-row md:gap-8">

@@ -284,7 +284,7 @@ function FacePill() {
         style={HEADLINE_PILL_INNER_RING}
       >
         <Image
-          src="/images/about/profile.jpeg"
+          src="/images/about/profile.webp"
           alt=""
           width={140}
           height={140}

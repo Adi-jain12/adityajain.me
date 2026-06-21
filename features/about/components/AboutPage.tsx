@@ -98,7 +98,7 @@ export function AboutPage() {
             <figure className="relative mx-auto w-full max-w-sm sm:max-w-md md:mx-0 md:h-full md:max-w-none">
               <div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-surface shadow-sm md:aspect-auto md:h-full md:min-h-0">
                 <Image
-                  src="/images/about/profile.jpeg"
+                  src="/images/about/profile.webp"
                   alt="Aditya Jain Full-Stack Developer"
                   fill
                   className="object-cover"

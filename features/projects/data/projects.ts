@@ -2,16 +2,16 @@ import type { Project } from "../types";
 
 export const projects: Project[] = [
   {
-    slug: "project-one",
-    title: "Project One",
+    slug: "rishi",
+    title: "Rishi",
     description:
-      "A brief description of the first project and what it accomplishes.",
+      "Rishi is a platform for creating and sharing recipes.",
     category: "Website",
     year: 2026,
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    image: "/images/projects/spiderman.jpg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/adityajain/project-one",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Node.js"],
+    image: "/images/projects/rishi.webp",
+    liveUrl: "https://rishidts.ai",
+    // githubUrl: "https://github.com/adityajain/rishi",
     size: "large",
     company: "Yudiz Solutions Ltd.",
   },
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/adityajain/project-two",
-    size: "wide",
+    size: "large",
     company: "Yudiz Solutions Ltd.",
   },
   {
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/adityajain/project-two",
-    size: "wide",
+    size: "large",
   },
   {
     slug: "project-six",
@@ -80,6 +80,6 @@ export const projects: Project[] = [
     image: "/images/projects/sleeping-dog.jpg",
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/adityajain/project-two",
-    size: "wide",
+    size: "large",
   },
 ];
