@@ -138,7 +138,7 @@ export function Hero() {
       aria-label="Aditya Jain — portfolio"
       className="relative grid min-h-[calc(100svh-var(--header-height))] w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:h-[calc(100svh-var(--header-height))] md:grid-rows-[minmax(0,1fr)_auto]"
     >
-      {/* Cream hero — headline + CTAs, left-aligned with top margin */}
+      {/* Cream hero — headline + CTAs, centered like laptop on all desktop widths */}
       <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center">
         <HeroIntro />
       </div>
@@ -161,7 +161,7 @@ export function Hero() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:min-h-0 md:items-start md:gap-3 lg:gap-4 lg:px-12 3xl:-translate-x-96">
+    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:min-h-0 md:items-start md:gap-3 lg:gap-4 lg:px-12 3xl:-translate-x-32">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
@@ -222,9 +222,9 @@ function HeroHeadline() {
           </div>
         </div>
 
-        {/* Desktop headline — fixed on laptop; scales only on wide desktop monitors (1700px+) */}
+        {/* Desktop headline — scales on wide monitors; locked at 3xl (1800px+) */}
         <div
-          className="font-heading hidden flex-col gap-[0.14em] text-left text-[clamp(1.35rem,4.15vw+0.1rem,4.25rem)] font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em] min-[1700px]:text-[clamp(2.75rem,5vw+0.2rem,5.75rem)] min-[1920px]:text-[clamp(3rem,5.2vw+0.2rem,6.25rem)]"
+          className="font-heading hidden flex-col gap-[0.14em] text-left text-[clamp(1.35rem,4.15vw+0.1rem,4.25rem)] font-bold leading-[0.90] tracking-tight text-text sm:gap-[0.20em] md:flex md:gap-[0.20em] min-[1700px]:text-[clamp(2.75rem,5vw+0.2rem,5.75rem)] 3xl:text-[5.75rem]"
         >
           <div className="flex flex-wrap items-center justify-start gap-x-[0.16em] gap-y-1 md:flex-nowrap md:whitespace-nowrap">
             <span className="font-bold">Hello</span>

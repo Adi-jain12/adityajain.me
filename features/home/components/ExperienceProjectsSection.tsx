@@ -81,14 +81,6 @@ function CompactProjectItem({
         )}
 
         <div className="mt-5 flex flex-wrap items-center gap-2.5">
-          <Link
-            href={`/projects/${project.slug}`}
-            className={getChipClassName("accentOutline")}
-          >
-            <span className={chipLabel}>Case study</span>
-            <LuArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </Link>
-
           {project.liveUrl && (
             <a
               href={project.liveUrl}
