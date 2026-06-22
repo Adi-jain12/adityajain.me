@@ -83,12 +83,12 @@ export function CurrentExperienceSection() {
 
         <Reveal delay={0.08}>
           <article className="relative mt-8 overflow-hidden rounded-[1.75rem] border border-border bg-surface shadow-[0_28px_60px_-36px_rgba(0,0,0,0.55)] sm:mt-10 sm:rounded-4xl md:mt-12">
-            <div
+            {/* <div
               aria-hidden
               className="pointer-events-none absolute -right-8 -top-10 select-none font-display text-[9rem] font-black leading-none tracking-tighter text-foreground/4 sm:text-[11rem]"
             >
               01
-            </div>
+            </div> */}
 
             <div className="grid lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
               <div
