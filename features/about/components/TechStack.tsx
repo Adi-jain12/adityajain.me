@@ -83,14 +83,26 @@ interface TechStackProps {
   categories: TechCategory[];
 }
 
-function RowDivider() {
+function SlashDivider({ className }: { className?: string }) {
   return (
     <div
       aria-hidden
-      className="relative hidden shrink-0 self-stretch sm:mx-2 md:mx-4 lg:mx-6 sm:block"
+      className={cn(
+        "relative hidden w-5 shrink-0 self-stretch sm:block md:w-6",
+        className
+      )}
     >
-      <div className="h-full w-px bg-border" />
-      <div className="absolute top-1/2 left-0 h-14 w-px -translate-y-1/2 bg-accent md:h-16" />
+      <div className="absolute top-1/2 left-1/2 h-[120%] w-px -translate-x-1/2 -translate-y-1/2 rotate-[22deg] bg-border/90" />
+    </div>
+  );
+}
+
+function CategoryLabel({ label }: { label: string }) {
+  return (
+    <div className="flex min-w-0 items-center">
+      <h3 className="font-heading text-lg font-bold italic tracking-tight text-text sm:text-xl md:text-[1.65rem]">
+        {label}
+      </h3>
     </div>
   );
 }
@@ -100,18 +112,18 @@ function TechIcon({ item }: { item: TechItem }) {
   const useTextColor = themeAwareIcons.has(item.icon);
 
   return (
-    <div className="flex w-[4.75rem] flex-col items-center gap-2.5 sm:w-20 md:w-[5.25rem]">
-      <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border/60 bg-surface/50 sm:h-16 sm:w-16">
+    <div className="group flex shrink-0 flex-col items-center gap-2">
+      <span className="flex h-10 w-10 items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 sm:h-11 sm:w-11 md:h-12 md:w-12">
         <Icon
           className={cn(
-            "h-6 w-6 shrink-0 sm:h-7 sm:w-7",
+            "h-[1.65rem] w-[1.65rem] shrink-0 sm:h-7 sm:w-7 md:h-8 md:w-8",
             useTextColor && "text-text"
           )}
           style={useTextColor ? undefined : { color: iconColorMap[item.icon] }}
           aria-hidden="true"
         />
       </span>
-      <span className="max-w-full text-center text-[11px] font-medium leading-tight text-text-muted sm:text-xs">
+      <span className="max-w-[4.75rem] text-center text-[10px] font-medium leading-tight text-text-muted transition-colors duration-300 group-hover:text-text sm:max-w-[5.25rem] sm:text-[11px]">
         {item.name}
       </span>
     </div>
@@ -125,25 +137,30 @@ function TechStackRow({
   category: TechCategory;
   index: number;
 }) {
+  const isEven = index % 2 === 0;
+
   return (
     <div
       className={cn(
-        "flex flex-col gap-5 py-4 sm:flex-row sm:items-center sm:gap-0 sm:py-5 md:py-6",
-        index > 0 && "border-t border-border"
+        "border-y border-border transition-colors duration-300",
+        isEven ? "bg-surface/35" : "bg-background"
       )}
     >
-      <div className="w-full shrink-0 sm:w-44 md:w-52 lg:w-56">
-        <h3 className="font-heading text-xl font-bold tracking-tight text-text sm:text-2xl">
-          {category.label}
-        </h3>
-      </div>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 px-4 py-5 sm:grid-cols-[13.5rem_auto_1fr] sm:items-center sm:gap-0 sm:px-6 sm:py-6 md:py-7">
+        <CategoryLabel label={category.label} />
 
-      <RowDivider />
+        <SlashDivider className="mx-3 md:mx-4 lg:mx-5" />
 
-      <div className="flex min-w-0 flex-1 flex-wrap gap-x-4 gap-y-6 sm:gap-x-8 sm:pl-2 md:gap-x-10 md:pl-4 lg:gap-x-12">
-        {category.items.map((item) => (
-          <TechIcon key={item.name} item={item} />
-        ))}
+        <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-5 sm:gap-x-0 sm:gap-y-0">
+          {category.items.map((item, itemIndex) => (
+            <div key={item.name} className="flex shrink-0 items-center">
+              {itemIndex > 0 && (
+                <SlashDivider className="mx-2 md:mx-3 lg:mx-4" />
+              )}
+              <TechIcon item={item} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -151,7 +168,10 @@ function TechStackRow({
 
 export function TechStack({ categories }: TechStackProps) {
   return (
-    <div aria-label="Tech stack">
+    <div
+      aria-label="Tech stack"
+      className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-clip border-y border-border"
+    >
       {categories.map((category, index) => (
         <TechStackRow key={category.id} category={category} index={index} />
       ))}

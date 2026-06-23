@@ -62,7 +62,7 @@ function Section({ section }: { section: AboutSection }) {
 
 export function AboutPage() {
   return (
-    <div className="pt-16 pb-10 sm:pb-14 md:pb-20">
+    <div className="overflow-x-clip pt-16 pb-10 sm:pb-14 md:pb-20">
       <section className="mx-auto max-w-7xl">
         <Reveal>
           <header>
@@ -115,13 +115,15 @@ export function AboutPage() {
         {aboutData.techStack && aboutData.techStack.length > 0 && (
           <section className="mt-12 sm:mt-16 md:mt-24">
             <Reveal>
-              <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
-                tech stack
-              </h2>
+              <div className="max-w-2xl">
+                <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
+                  tech stack
+                </h2>
+              </div>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="mt-5 sm:mt-6">
+              <div className="mt-6 sm:mt-8">
                 <TechStack categories={aboutData.techStack} />
               </div>
             </Reveal>
