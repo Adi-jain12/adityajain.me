@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
   /* Base colors */
   --color-background: #141414;
@@ -198,6 +200,15 @@ html.lenis body {
 .chip-label {
   display: inline-block;
   line-height: 1;
+}
+
+/* Tech stack — preserve brand colors in light mode; invert dark logos only in dark theme */
+.tech-icon-invert-dark {
+  filter: none;
+}
+
+html[data-theme="dark"] .tech-icon-invert-dark {
+  filter: invert(1);
 }
 
 @supports (text-box-trim: trim-both) {

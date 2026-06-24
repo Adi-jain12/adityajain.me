@@ -53,7 +53,6 @@ export const aboutData: AboutData = {
       items: [
         { name: "Node.js", icon: "node" },
         { name: "Express.js", icon: "express" },
-        { name: "REST APIs", icon: "openapi" },
         { name: "GraphQL", icon: "graphql" },
         { name: "Socket.IO", icon: "socketio" },
       ],
@@ -62,8 +61,9 @@ export const aboutData: AboutData = {
       id: "databases",
       label: "Database",
       items: [
-        { name: "MongoDB", icon: "mongodb" },
         { name: "PostgreSQL", icon: "postgres" },
+        { name: "MongoDB", icon: "mongodb" },
+        { name: "Redis", icon: "redis" },
       ],
     },
     {
@@ -143,3 +143,5 @@ export const aboutData: AboutData = {
     },
   ],
 };
+
+

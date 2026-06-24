@@ -1,81 +1,30 @@
-import type { ComponentType, SVGProps } from "react";
-import { DiAws } from "react-icons/di";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiJavascript,
-  SiRedux,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiExpress,
-  SiOpenapiinitiative,
-  SiGraphql,
-  SiSocketdotio,
-  SiJsonwebtokens,
-  SiMongodb,
-  SiPostgresql,
-  SiDocker,
-  SiVercel,
-  SiGit,
-  SiGithub,
-  SiPostman,
-} from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
 import type { TechCategory, TechIconKey, TechItem } from "../types";
 import { cn } from "@/lib/utils";
 
-type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
-
-const iconMap: Record<TechIconKey, IconComponent> = {
-  javascript: SiJavascript,
-  react: SiReact,
-  next: SiNextdotjs,
-  typescript: SiTypescript,
-  redux: SiRedux,
-  tailwind: SiTailwindcss,
-  node: SiNodedotjs,
-  express: SiExpress,
-  openapi: SiOpenapiinitiative,
-  graphql: SiGraphql,
-  socketio: SiSocketdotio,
-  jwt: SiJsonwebtokens,
-  mongodb: SiMongodb,
-  postgres: SiPostgresql,
-  aws: DiAws,
-  docker: SiDocker,
-  vercel: SiVercel,
-  git: SiGit,
-  github: SiGithub,
-  postman: SiPostman,
-  vscode: VscVscode,
+const iconPathMap: Partial<Record<TechIconKey, string>> = {
+  javascript: "/tech/javascript.svg",
+  typescript: "/tech/typescript.svg",
+  react: "/tech/react.svg",
+  next: "/tech/nextdotjs.svg",
+  tailwind: "/tech/tailwindcss.svg",
+  node: "/tech/nodedotjs.svg",
+  express: "/tech/express.svg",
+  graphql: "/tech/graphql.svg",
+  socketio: "/tech/socketdotio.svg",
+  mongodb: "/tech/mongodb.svg",
+  postgres: "/tech/postgresql.svg",
+  redis: "/tech/icons8-redis.svg",
+  aws: "/tech/icons8-aws.svg",
+  docker: "/tech/docker.svg",
+  git: "/tech/git.svg",
+  github: "/tech/github.svg",
 };
 
-const iconColorMap: Partial<Record<TechIconKey, string>> = {
-  javascript: "#F7DF1E",
-  react: "#61DAFB",
-  typescript: "#3178C6",
-  redux: "#764ABC",
-  node: "#5FA04E",
-  tailwind: "#38BDF8",
-  postgres: "#4169E1",
-  mongodb: "#47A248",
-  git: "#F05033",
-  docker: "#2496ED",
-  postman: "#FF6C37",
-  aws: "#FF9900",
-  openapi: "#6BA539",
-  graphql: "#E10098",
-  socketio: "#010101",
-};
-
-const themeAwareIcons = new Set<TechIconKey>([
+/** Dark/black logos — CSS invert in dark mode only; colored icons stay untouched. */
+const darkModeInvertIcons = new Set<TechIconKey>([
   "next",
-  "github",
-  "vercel",
-  "vscode",
   "express",
-  "jwt",
+  "github",
   "socketio",
 ]);
 
@@ -108,20 +57,24 @@ function CategoryLabel({ label }: { label: string }) {
 }
 
 function TechIcon({ item }: { item: TechItem }) {
-  const Icon = iconMap[item.icon];
-  const useTextColor = themeAwareIcons.has(item.icon);
+  const src = iconPathMap[item.icon];
+  const invertInDarkMode = darkModeInvertIcons.has(item.icon);
 
   return (
     <div className="group flex shrink-0 flex-col items-center gap-2">
       <span className="flex h-10 w-10 items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 sm:h-11 sm:w-11 md:h-12 md:w-12">
-        <Icon
-          className={cn(
-            "h-[1.65rem] w-[1.65rem] shrink-0 sm:h-7 sm:w-7 md:h-8 md:w-8",
-            useTextColor && "text-text"
-          )}
-          style={useTextColor ? undefined : { color: iconColorMap[item.icon] }}
-          aria-hidden="true"
-        />
+        {src ? (
+          <img
+            src={src}
+            alt=""
+            className={cn(
+              "h-[1.65rem] w-[1.65rem] shrink-0 sm:h-7 sm:w-7 md:h-8 md:w-8",
+              invertInDarkMode && "tech-icon-invert-dark"
+            )}
+            style={{ colorScheme: "only light" }}
+            aria-hidden
+          />
+        ) : null}
       </span>
       <span className="max-w-[4.75rem] text-center text-[10px] font-medium leading-tight text-text-muted transition-colors duration-300 group-hover:text-text sm:max-w-[5.25rem] sm:text-[11px]">
         {item.name}

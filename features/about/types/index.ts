@@ -32,6 +32,7 @@ export type TechIconKey =
   | "jwt"
   | "mongodb"
   | "postgres"
+  | "redis"
   | "aws"
   | "docker"
   | "vercel"
