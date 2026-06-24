@@ -63,7 +63,7 @@ export const aboutData: AboutData = {
       items: [
         { name: "PostgreSQL", icon: "postgres" },
         { name: "MongoDB", icon: "mongodb" },
-        { name: "Redis", icon: "redis" },
+        // { name: "Redis", icon: "redis" },
       ],
     },
     {
