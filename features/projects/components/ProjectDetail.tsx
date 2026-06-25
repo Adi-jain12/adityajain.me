@@ -2,12 +2,6 @@ import Image from "next/image";
 import { Chip } from "@/components/ui/Chip";
 import type { Project } from "../types";
 
-const CTA_BUTTON_CLASS =
-  "btn-magnetic group relative inline-flex min-h-11 w-full min-w-0 flex-row items-center justify-center gap-2 rounded-full px-5 text-base leading-none tracking-tight whitespace-nowrap sm:min-h-12 sm:px-6";
-
-const CTA_RED = "#cd5230";
-const CREAM = "#F1E7D2";
-
 interface ProjectDetailProps {
   project: Project;
 }
@@ -52,43 +46,16 @@ function ArrowUpRight({ className = "" }: { className?: string }) {
   );
 }
 
-function ProjectLinkPrimary({ href, label }: { href: string; label: string }) {
+function ProjectLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${CTA_BUTTON_CLASS} overflow-hidden`}
-      style={{
-        backgroundColor: CTA_RED,
-        color: CREAM,
-        boxShadow: "0 14px 32px -16px rgba(224,75,34,0.65)",
-      }}
+      className="group inline-flex w-fit items-center gap-1.5 text-accent transition-colors hover:text-accent-light"
     >
-      <span className="relative z-10 mt-2 shrink-0">{label}</span>
-      <ArrowUpRight className="relative z-10 block h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
-      <span
-        aria-hidden
-        className="absolute inset-0 -translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0))",
-        }}
-      />
-    </a>
-  );
-}
-
-function ProjectLinkSecondary({ href, label }: { href: string; label: string }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${CTA_BUTTON_CLASS} border border-text/65 text-text transition-colors duration-300 hover:bg-text hover:text-background`}
-    >
-      <span className="mt-2 shrink-0">{label}</span>
-      <ArrowUpRight className="block h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+      <span>{label}</span>
+      <ArrowUpRight className="mb-2 h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
     </a>
   );
 }
@@ -125,12 +92,12 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           )}
           {hasLinks && (
             <MetaRow label="Links">
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col items-start gap-2">
                 {project.liveUrl && (
-                  <ProjectLinkPrimary href={project.liveUrl} label="Website" />
+                  <ProjectLink href={project.liveUrl} label="Website" />
                 )}
                 {project.githubUrl && (
-                  <ProjectLinkSecondary href={project.githubUrl} label="GitHub" />
+                  <ProjectLink href={project.githubUrl} label="GitHub" />
                 )}
               </div>
             </MetaRow>
