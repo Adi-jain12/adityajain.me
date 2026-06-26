@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { ProjectGrid, getAllProjects } from "@/features/projects";
 import { Container } from "@/components/ui/Container";
+import { canonicalMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  ...canonicalMetadata("/projects"),
+};
 
 export default function ProjectsPage() {
   const projects = getAllProjects();

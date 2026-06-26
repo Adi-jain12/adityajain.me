@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
   ProjectDetail,
@@ -5,6 +6,7 @@ import {
   getAllProjectSlugs,
 } from "@/features/projects";
 import { Container } from "@/components/ui/Container";
+import { canonicalMetadata } from "@/lib/metadata";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -12,6 +14,16 @@ interface ProjectPageProps {
 
 export async function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  return {
+    ...canonicalMetadata(`/projects/${slug}`),
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

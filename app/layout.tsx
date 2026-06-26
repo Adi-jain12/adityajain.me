@@ -35,8 +35,12 @@ const VG = localFont({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: siteConfig.title,
   description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: siteConfig.openGraph.title,
     description: siteConfig.openGraph.description,
