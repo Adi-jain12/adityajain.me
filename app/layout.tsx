@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     description: siteConfig.openGraph.description,
     images: [...siteConfig.openGraph.images],
   },
+  verification: {
+    google: "9aiCBvre6SQqDTBXhnf07EoRlrOoj-Laj2fpSJNo2lw",
+  },
 };
 
 export default function RootLayout({
