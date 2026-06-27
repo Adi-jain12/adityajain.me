@@ -3,6 +3,7 @@ import { Source_Serif_4, Inter } from "next/font/google";
 import localFont from 'next/font/local'
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
 import { Loader } from "@/components/ui/Loader";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
@@ -73,6 +74,8 @@ export default function RootLayout({
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
         </ThemeProvider>
+        
+        <GoogleAnalytics />
       </body>
     </html>
   );
