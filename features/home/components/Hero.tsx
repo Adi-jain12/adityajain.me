@@ -139,7 +139,7 @@ export function Hero() {
       className="relative grid min-h-[calc(100svh-var(--header-height))] w-full grid-rows-[auto_auto] overflow-visible bg-background transition-colors duration-300 md:h-[calc(100svh-var(--header-height))] md:grid-rows-[minmax(0,1fr)_auto]"
     >
       {/* Cream hero — headline + CTAs, centered like laptop on all desktop widths */}
-      <div className="paper-grain relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center">
+      <div className="relative flex min-h-0 flex-col overflow-visible bg-background transition-colors duration-300 md:justify-center">
         <HeroIntro />
       </div>
 
@@ -396,8 +396,6 @@ function OrangeCard() {
         className="relative hidden w-full overflow-hidden rounded-[1.4rem] sm:rounded-[1.8rem] md:block lg:rounded-[2.2rem]"
         style={{ backgroundImage: POSTER_GRADIENT }}
       >
-        <OrangeCardDottedTexture />
-
         <div
           className="relative grid items-stretch md:grid-cols-[minmax(0,0.88fr)_minmax(0,2.12fr)]"
           style={{ color: CREAM }}
@@ -509,8 +507,6 @@ function MobileOrangeIntroCard() {
       className="relative overflow-hidden rounded-[1.4rem] px-5 py-7"
       style={{ backgroundImage: POSTER_GRADIENT, color: CREAM }}
     >
-      <OrangeCardDottedTexture />
-
       <h2
         className="relative max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem]"
         style={{ color: CREAM }}
@@ -583,18 +579,3 @@ function MobileHighlightRow({
   );
 }
 
-function OrangeCardDottedTexture() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 opacity-25"
-      style={{
-        backgroundImage:
-          "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
-        backgroundSize: "20px 20px",
-        maskImage:
-          "linear-gradient(to bottom, transparent 0%, black 22%, black 92%, transparent 100%)",
-      }}
-    />
-  );
-}
