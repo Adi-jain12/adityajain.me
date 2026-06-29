@@ -2,21 +2,25 @@
 
 import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack/ScrollStack";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { AboutEntry } from "../types";
 import { EntryCard } from "./EntryCard";
 
 interface ExperienceSectionProps {
   heading: string;
   entries: AboutEntry[];
+  index?: number;
 }
 
-export function ExperienceSection({ heading, entries }: ExperienceSectionProps) {
+export function ExperienceSection({
+  heading,
+  entries,
+  index,
+}: ExperienceSectionProps) {
   return (
     <section className="relative z-20 mt-12 bg-background sm:mt-16 md:mt-24">
       <Reveal>
-        <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
-          {heading}
-        </h2>
+        <SectionHeading index={index}>{heading}</SectionHeading>
       </Reveal>
 
       <div className="mt-5 sm:mt-6">

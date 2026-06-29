@@ -7,6 +7,7 @@ import { EntryCard } from "./EntryCard";
 import { ExperienceSection } from "./ExperienceSection";
 import { TechStack } from "./TechStack";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const highlightIconMap: Record<HighlightIconKey, IconType> = {
   rocket: LuRocket,
@@ -40,13 +41,17 @@ function HighlightCard({ highlight }: { highlight: AboutHighlight }) {
   );
 }
 
-function Section({ section }: { section: AboutSection }) {
+function Section({
+  section,
+  index,
+}: {
+  section: AboutSection;
+  index: number;
+}) {
   return (
     <section className="mt-12 sm:mt-16 md:mt-24">
       <Reveal>
-        <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
-          {section.heading}
-        </h2>
+        <SectionHeading index={index}>{section.heading}</SectionHeading>
       </Reveal>
 
       <div className="mt-5 grid grid-cols-1 gap-4 sm:mt-6 sm:gap-5">
@@ -116,9 +121,7 @@ export function AboutPage() {
           <section className="mt-12 sm:mt-16 md:mt-24">
             <Reveal>
               <div className="max-w-2xl">
-                <h2 className="text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl">
-                  tech stack
-                </h2>
+                <SectionHeading index={1}>tech stack</SectionHeading>
               </div>
             </Reveal>
 
@@ -130,15 +133,20 @@ export function AboutPage() {
           </section>
         )}
 
-        {aboutData.sections.map((section) =>
+        {aboutData.sections.map((section, sectionIndex) =>
           section.heading === "experiences" ? (
             <ExperienceSection
               key={section.heading}
               heading={section.heading}
               entries={section.entries}
+              index={sectionIndex + 2}
             />
           ) : (
-            <Section key={section.heading} section={section} />
+            <Section
+              key={section.heading}
+              section={section}
+              index={sectionIndex + 2}
+            />
           )
         )}
       </div>

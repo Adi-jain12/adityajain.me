@@ -61,9 +61,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      data-theme="light"
       className={`${sourceSerif.variable} ${VG.variable} ${inter.variable}`}
     >
       <head>
+        {/* <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){}})()`,
+          }}
+        /> */}
         <StructuredData />
       </head>
       <body className="antialiased flex min-h-svh flex-col">

@@ -9,6 +9,7 @@ import { getProjectsByCompany } from "@/features/projects";
 import { ExperienceProjectsList } from "./ExperienceProjectsSection";
 import { Chip } from "@/components/ui/Chip";
 import { cn } from "@/lib/utils";
+import { SectionHeading } from '@/components/ui/SectionHeading';
 
 const currentExperience = aboutData.sections
   .find((section) => section.heading === "experiences")
@@ -73,12 +74,7 @@ export function CurrentExperienceSection() {
     >
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <h2
-            id="current-experience-heading"
-            className="mt-3 text-xl font-bold lowercase tracking-tight text-text sm:text-2xl md:text-3xl"
-          >
-            current experience
-          </h2>
+         <SectionHeading index={1}>Current Experience</SectionHeading>
         </Reveal>
 
         <Reveal delay={0.08}>
