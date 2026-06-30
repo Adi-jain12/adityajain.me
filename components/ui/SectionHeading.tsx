@@ -51,7 +51,7 @@ export function SectionHeading({
         className="mt-3 flex items-center gap-2 pl-4 sm:mt-4 sm:pl-5"
         aria-hidden
       >
-        <span className="h-px max-w-[10rem] flex-1 bg-linear-to-r from-accent/45 via-border to-transparent sm:max-w-xs md:max-w-sm" />
+        <span className="h-px max-w-40 flex-1 bg-linear-to-r from-accent/45 via-border to-transparent sm:max-w-xs md:max-w-sm" />
       </div>
     </div>
   );
