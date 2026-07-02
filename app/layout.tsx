@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import { Loader } from "@/components/ui/Loader";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -74,6 +75,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased flex min-h-svh flex-col">
         <ThemeProvider>
+          <CustomCursor />
           <SmoothScroll />
           <Loader />
           <Header />
