@@ -20,8 +20,10 @@ export const aboutData: AboutData = {
     },
     {
       icon: "palette",
-      title: "Design Engineering",
-      description: "Combining aesthetics with functionality.",
+      title: "User-Centered Engineering",
+      description: "Crafting intuitive interfaces backed by robust architecture.",
+
+
     },
     {
       icon: "zap",
