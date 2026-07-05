@@ -68,7 +68,6 @@ export interface AboutHighlight {
 }
 
 export interface AboutData {
-  headline: string;
   description: string[];
   photoCaption?: string;
   highlights?: AboutHighlight[];

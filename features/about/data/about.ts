@@ -1,9 +1,6 @@
 import type { AboutData } from "../types";
 
 export const aboutData: AboutData = {
-  headline:
-    "Aditya Jain is a web developer with a passion for clean code, thoughtful design, and shipping products.",
-
   description: [
     "I'm a Full-Stack Developer who enjoys building web applications that are both technically robust and thoughtfully designed. My interests lie at the intersection of engineering and user experience where clean architecture, scalable systems, and intuitive interfaces come together to create meaningful products.",
     "With experience across the MERN stack, Next.js, PostgreSQL, AWS, and modern web technologies, I focus on building applications that are maintainable, performant, and user-centric. I care deeply about the craft of software development from designing efficient APIs and structuring codebases to refining the details that make a product feel polished.",
@@ -65,7 +62,7 @@ export const aboutData: AboutData = {
       items: [
         { name: "PostgreSQL", icon: "postgres" },
         { name: "MongoDB", icon: "mongodb" },
-        // { name: "Redis", icon: "redis" },
+        { name: "Redis", icon: "redis" },
       ],
     },
     {
@@ -137,7 +134,7 @@ export const aboutData: AboutData = {
       heading: "education",
       entries: [
         {
-          title: "Master of Science in Information Technology (MS-IT)",
+          title: "Master of Science in Information Technology (MSc. IT)",
           organization:
             "Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT)",
         },
