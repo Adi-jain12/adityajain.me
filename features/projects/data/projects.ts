@@ -43,19 +43,20 @@ export const projects: Project[] = [
     size: "large",
     company: "Yudiz Solutions Ltd.",
   },
-  // {
-  //   slug: "project-four",
-  //   title: "Project Two",
-  //   description:
-  //     "A brief description of the second project and what it accomplishes.",
-  //   category: "App",
-  //   year: 2024,
-  //   tags: ["React", "Node.js"],
-  //   image: "/images/projects/sleeping-dog.jpg",
-  //   liveUrl: "https://example.com",
-  //   githubUrl: "https://github.com/adityajain/project-two",
-  //   size: "large",
-  // },
+  {
+    slug: "forkify",
+    title: "Forkify",
+    description:
+      "A recipe application with custom recipe uploads, ingredient tracking, and a shopping list feature.",
+    category: "App",
+    year: 2023,
+    tags: ["React", "TypeScript", "Tailwind CSS", "JavaScript", "Node.js"],
+    image: "/images/projects/forkify.webp",
+    liveUrl: "https://forkify-aj.netlify.app/",
+    githubUrl: "https://github.com/adityajain/forkify",
+    size: "large",
+    company: "Personal Project",
+  },
   // {
   //   slug: "project-five",
   //   title: "Project Two",
