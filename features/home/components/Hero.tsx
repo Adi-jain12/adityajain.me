@@ -406,7 +406,7 @@ function OrangeCard() {
               Available for full-time opportunities
             </Chip>
 
-            <h2
+            {/* <h2
               className="mt-6 max-w-[16ch] text-left font-heading text-[1.45rem] font-bold leading-[1.1] tracking-tight sm:text-[1.6rem] md:text-[1.75rem] lg:text-[2rem] xl:text-[2.2rem]"
               style={{ color: CREAM }}
             >
@@ -415,7 +415,7 @@ function OrangeCard() {
               Ship.
               <br />
               Improve.
-            </h2>
+            </h2> */}
           </div>
 
           {/* Right grid — 3×2 equal cells */}
