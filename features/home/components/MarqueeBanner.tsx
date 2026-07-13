@@ -2,7 +2,7 @@ import { SECTION_HEADING_CLASS } from "@/lib/typography";
 
 const MARQUEE_ITEMS = [
   "building products",
-  "crafting ui",
+  "designing intuitive interfaces",
   "solving problems",
   "shipping features",
   "scaling systems",
