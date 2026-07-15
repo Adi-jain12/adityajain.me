@@ -8,6 +8,9 @@ const MARQUEE_ITEMS = [
   "scaling systems",
   "optimizing performance",
   "continuous learning and innovation",
+  "building scalable systems",
+  "creating efficient workflows",
+  "designing intuitive interfaces",
 ] as const;
 
 function StarSeparator() {
