@@ -161,7 +161,7 @@ export function ContactPage() {
           </div>
         </Reveal>
 
-        {/* <div className="relative mt-10 border-t border-border pt-10 sm:mt-12 sm:pt-12">
+        <div className="relative mt-10 border-t border-border pt-10 sm:mt-12 sm:pt-12">
           <span
             className="absolute left-1/2 top-0 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background sm:h-10 sm:w-10"
             aria-hidden
@@ -171,7 +171,7 @@ export function ContactPage() {
           <p className="text-center text-sm text-text-muted sm:text-base">
             Let&apos;s create something amazing together.
           </p>
-        </div> */}
+        </div>
         </div>
       </section>
     </div>
