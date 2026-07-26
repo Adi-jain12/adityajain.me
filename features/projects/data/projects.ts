@@ -51,7 +51,7 @@ export const projects: Project[] = [
     category: "App",
     year: 2023,
     tags: ["React", "TypeScript", "Tailwind CSS", "JavaScript", "Node.js"],
-    image: "/images/projects/forkify.webp",
+    image: "/images/projects/forkify.png",
     liveUrl: "https://forkify-aj.netlify.app/",
     githubUrl: "https://github.com/adityajain/forkify",
     size: "large",
