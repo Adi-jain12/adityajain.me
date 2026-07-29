@@ -52,7 +52,7 @@ export const projects: Project[] = [
     year: 2023,
     tags: ["React", "TypeScript", "Tailwind CSS", "JavaScript", "Node.js"],
     image: "/images/projects/forkify.png",
-    liveUrl: "https://forkify-aj.netlify.app/",
+    liveUrl: "https://mern-food-ordering-app-frontend-qbuu.onrender.com/",
     githubUrl: "https://github.com/adityajain/forkify",
     size: "large",
     company: "Personal Project",
