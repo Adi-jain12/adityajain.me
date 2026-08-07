@@ -11,9 +11,9 @@ export function Header() {
           aria-label={`${siteConfig.name} — Home`}
           className="group inline-flex items-baseline gap-2 transition-opacity duration-300 hover:opacity-90 sm:gap-2.5"
         >
-          <span className="font-heading text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
+          {/* <span className="font-heading text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
             {siteConfig.name}
-          </span>
+          </span> */}
          
         </Link>
         <Navigation />
