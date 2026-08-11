@@ -24,17 +24,17 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const VG = localFont({
-  src: [
-    {
-      path: '../public/fonts/VG.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-vg',
-  display: 'swap',
-})
+// const VG = localFont({
+//   src: [
+//     {
+//       path: '../public/fonts/VG.woff2',
+//       weight: '400',
+//       style: 'normal',
+//     },
+//   ],
+//   variable: '--font-vg',
+//   display: 'swap',
+// })
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -63,7 +63,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-theme="light"
-      className={`${sourceSerif.variable} ${VG.variable} ${inter.variable}`}
+      className={`${sourceSerif.variable} ${inter.variable}`}
     >
       <head>
         {/* <script
