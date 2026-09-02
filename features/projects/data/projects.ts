@@ -57,23 +57,23 @@ export const projects: Project[] = [
     size: "large",
     company: "Personal Project",
   },
-  {
-    slug: "adstock",
-    title: "Adstock",
-    description:
-      "Adstock is a platform that allows you to manage your inventory and sales.",
-    category: "App",
-    year: 2024,
-    tags: ["React", "Node.js", "Tailwind CSS", "JavaScript", "TypeScript", "MongoDB", "Express", "RESTful API", "AWS"],
-    image: "/images/projects/adstock.png",
-    // liveUrl: "https://main.d34bxybpjtg254.amplifyapp.com/",
-    githubUrl: "https://github.com/Adi-jain12/nextjs-inventory-management",
-    size: "large",
-    company: "Personal Project",
-  },
+  // {
+  //   slug: "adstock",
+  //   title: "Adstock",
+  //   description:
+  //     "Adstock is a platform that allows you to manage your inventory and sales.",
+  //   category: "App",
+  //   year: 2024,
+  //   tags: ["React", "Node.js", "Tailwind CSS", "JavaScript", "TypeScript", "MongoDB", "Express", "RESTful API", "AWS"],
+  //   image: "/images/projects/adstock.png",
+  //   // liveUrl: "https://main.d34bxybpjtg254.amplifyapp.com/",
+  //   githubUrl: "https://github.com/Adi-jain12/nextjs-inventory-management",
+  //   size: "large",
+  //   company: "Personal Project",
+  // },
   // {
   //   slug: "project-six",
-  //   title: "Project Two",
+  //   title: "Project Two", 
   //   description:
   //     "A brief description of the second project and what it accomplishes.",
   //   category: "App",
