@@ -37,6 +37,7 @@ export const siteConfig = {
     "Node.js",
     "MongoDB",
     "PostgreSQL",
+    "Redis",
     "Git",
     "GraphQL",
     "AWS",
