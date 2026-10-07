@@ -86,7 +86,7 @@ const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
   {
     icon: LuBriefcase,
     title: "Years Experience",
-    value: "2+",
+    value: "2.5+",
     description: "Years Experience",
     largeValue: true,
   },
