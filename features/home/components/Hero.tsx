@@ -85,7 +85,7 @@ type DesktopHighlightItem = {
 const DESKTOP_HIGHLIGHT_ITEMS: DesktopHighlightItem[] = [
   {
     icon: LuBriefcase,
-    title: "Years Experience",
+    title: "Years Experience", 
     value: "2.5+",
     description: "Years Experience",
     largeValue: true,
@@ -161,7 +161,7 @@ export function Hero() {
 
 function HeroIntro() {
   return (
-    <div className="relative z-10 mx-auto mt-6 w-full max-w-[1200px] flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:min-h-0 md:items-start md:gap-3 lg:gap-4 lg:px-12 3xl:-translate-x-32">
+    <div className="relative z-10 mx-auto mt-6 w-full max-w-300 flex flex-col items-center gap-4 px-4 sm:mt-8 sm:gap-5 sm:px-6 md:my-0 md:min-h-0 md:items-start md:gap-3 lg:gap-4 lg:px-12 3xl:-translate-x-32">
       <MobileAvailabilityBadge />
       <HeroHeadline />
       <HeroFooter />
