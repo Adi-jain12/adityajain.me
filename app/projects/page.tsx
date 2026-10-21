@@ -15,10 +15,10 @@ export default function ProjectsPage() {
       <section className="mx-auto max-w-7xl">
         <header>
           <h1 className="font-heading text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
-            Projects
+            Projects 
           </h1>
           <p className="mt-3 text-base text-text-muted sm:mt-4 sm:text-lg">
-            A collection of things I&apos;ve built and worked on.
+            A collection of things I&apos;ve built and currently working on.
           </p>
         </header>
         <div className="mt-8 sm:mt-10">
