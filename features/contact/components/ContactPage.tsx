@@ -95,7 +95,7 @@ export function ContactPage() {
             </h1>
             <p className="mt-3 max-w-2xl text-base text-text-muted sm:mt-4 sm:text-lg">
               Open to discussing new opportunities, interesting
-              projects, and technology.
+              projects, and technology. Let&apos;s create something amazing together.
             </p>
           </header>
         </Reveal>
