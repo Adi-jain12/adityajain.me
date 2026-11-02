@@ -134,7 +134,7 @@ export function ContactPage() {
 
               <div className="min-w-0 flex-1 border-t border-border pt-8 text-center md:border-0 md:pt-1">
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-muted sm:text-xs sm:tracking-[0.22em]">
-                  Let&apos;s Connect and Create Something Amazing Together
+                  Let&apos;s Connect
                 </p>
 
                 <div className="mt-5 flex items-center justify-center gap-4 sm:mt-6 sm:gap-5">
