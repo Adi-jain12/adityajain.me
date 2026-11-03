@@ -47,6 +47,7 @@ export interface TechItem {
 }
 
 export type TechCategoryKey =
+  | "programming-languages"
   | "frontend"
   | "backend"
   | "databases"

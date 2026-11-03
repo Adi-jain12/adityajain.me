@@ -36,11 +36,17 @@ export const aboutData: AboutData = {
 
   techStack: [
     {
-      id: "frontend",
-      label: "Frontend",
+      id: "programming-languages",
+      label: "Programming Languages",
       items: [
         { name: "JavaScript", icon: "javascript" },
         { name: "TypeScript", icon: "typescript" },
+      ],
+    },
+    {
+      id: "frontend",
+      label: "Frontend",
+      items: [
         { name: "React.js", icon: "react" },
         { name: "Next.js", icon: "next" },
         { name: "Tailwind CSS", icon: "tailwind" },
