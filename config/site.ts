@@ -23,6 +23,16 @@ export const siteConfig = {
     place: "Ahmedabad, India",
   },
 
+  skills: [
+    { label: "Next.js", href: "https://nextjs.org/" },
+    { label: "TypeScript", href: "https://www.typescriptlang.org/" },
+    { label: "Tailwind CSS", href: "https://tailwindcss.com/" },
+    { label: "React", href: "https://react.dev/" },
+    { label: "Node.js", href: "https://nodejs.org/" },
+    { label: "MongoDB", href: "https://www.mongodb.com/" },
+    { label: "PostgreSQL", href: "https://www.postgresql.org/" },
+  ],
+
   navLinks: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
