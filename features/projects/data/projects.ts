@@ -1,6 +1,20 @@
 import type { Project } from "../types";
 
 export const projects: Project[] = [
+    {
+    slug: "proclink",
+    title: "Proclink", 
+    description:
+      "A modern corporate website showcasing Proclink's enterprise technology solutions, AI capabilities, services, and digital transformation expertise.",
+    category: "Website",
+    year: 2026,
+    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL" , "Apollo Client"],
+    image: "/images/projects/proclink.webp",
+    liveUrl: "https://www.proclink.com/",
+    // githubUrl: "https://github.com/adityajain/project-two",
+    size: "large",
+    company: "Yudiz Solutions Ltd.",
+  },
   {
     slug: "rishi",
     title: "Rishi",
@@ -8,7 +22,7 @@ export const projects: Project[] = [
       "Developed a responsive marketing website for an enterprise AI platform focused on industrial operations and decision intelligence.",
     category: "Website",
     year: 2026,
-    tags: ["React", "Next.js", "Tailwind CSS"],
+    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL" , "Apollo Client"],
     image: "/images/projects/rishi.webp",
     liveUrl: "https://rishidts.ai",
     // githubUrl: "https://github.com/adityajain/rishi",
@@ -57,20 +71,20 @@ export const projects: Project[] = [
     size: "large",
     company: "Personal Project",
   },
-  {
-    slug: "adstock",
-    title: "Adstock",
-    description:
-      "Adstock is a platform that allows you to manage your inventory and sales.",
-    category: "App",
-    year: 2024,
-    tags: ["React", "Node.js", "Tailwind CSS", "JavaScript", "TypeScript", "MongoDB", "Express", "RESTful API", "AWS"],
-    image: "/images/projects/adstock.png",
-    // liveUrl: "https://main.d34bxybpjtg254.amplifyapp.com/",
-    githubUrl: "https://github.com/Adi-jain12/nextjs-inventory-management",
-    size: "large",
-    company: "Personal Project",
-  },
+  // {
+  //   slug: "adstock",
+  //   title: "Adstock",
+  //   description:
+  //     "Adstock is a platform that allows you to manage your inventory and sales.",
+  //   category: "App",
+  //   year: 2024,
+  //   tags: ["React", "Node.js", "Tailwind CSS", "JavaScript", "TypeScript", "MongoDB", "Express", "RESTful API", "AWS"],
+  //   image: "/images/projects/adstock.png",
+  //   // liveUrl: "https://main.d34bxybpjtg254.amplifyapp.com/",
+  //   githubUrl: "https://github.com/Adi-jain12/nextjs-inventory-management",
+  //   size: "large",
+  //   company: "Personal Project",
+  // },
   // {
   //   slug: "project-six",
   //   title: "Project Two", 
