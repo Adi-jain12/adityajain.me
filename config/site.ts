@@ -42,7 +42,7 @@ export const siteConfig = {
 
   socialLinks: [
     { label: "GitHub", href: "https://github.com/Adi-jain12" },
-    { label: "Twitter", href: "https://twitter.com/adityajain" },
+    { label: "Twitter", href: "https://x.com/adiev_12" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aditya-jain1211/" },
   ],
   techStack: [
