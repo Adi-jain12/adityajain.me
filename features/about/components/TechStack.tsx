@@ -18,6 +18,10 @@ const iconPathMap: Partial<Record<TechIconKey, string>> = {
   docker: "/tech/docker.svg",
   git: "/tech/git.svg",
   github: "/tech/github.svg",
+  openai: "/tech/openai.svg",
+  brain: "/tech/llm.svg",
+  sparkles: "/tech/prompt.svg",
+  "github-actions": "/tech/github-actions.svg",
 };
 
 /** Dark/black logos — CSS invert in dark mode only; colored icons stay untouched. */
@@ -26,6 +30,10 @@ const darkModeInvertIcons = new Set<TechIconKey>([
   "express",
   "github",
   "socketio",
+  "openai",
+  "brain",
+  "sparkles",
+  "github-actions",
 ]);
 
 interface TechStackProps {

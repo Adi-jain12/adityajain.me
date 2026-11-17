@@ -63,6 +63,15 @@ export const aboutData: AboutData = {
       ],
     },
     {
+      id: "ai-llm",
+      label: "AI & LLM",
+      items: [
+        { name: "OpenAI API", icon: "openai" },
+        { name: "LLM Integration", icon: "brain" },
+        { name: "Prompt Engineering", icon: "sparkles" },
+      ],
+    },
+    {
       id: "databases",
       label: "Database",
       items: [
@@ -77,6 +86,7 @@ export const aboutData: AboutData = {
       items: [
         { name: "AWS (EC2 & S3)", icon: "aws" },
         { name: "Docker", icon: "docker" },
+        { name: "GitHub Actions", icon: "github-actions" },
       ],
     },
     {

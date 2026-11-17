@@ -35,12 +35,6 @@ function CompactProjectItem({
             className="absolute inset-0 bg-linear-to-br from-surface-hover to-surface"
           />
         )}
-        <span
-          aria-hidden
-          className="absolute bottom-3 left-3 font-display text-2xl font-black leading-none text-white/25"
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
       </Link>
 
       <div className="flex min-w-0 flex-1 flex-col justify-center">

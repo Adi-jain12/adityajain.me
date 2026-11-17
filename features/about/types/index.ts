@@ -39,7 +39,11 @@ export type TechIconKey =
   | "git"
   | "github"
   | "postman"
-  | "vscode";
+  | "vscode"
+  | "openai"
+  | "brain"
+  | "sparkles"
+  | "github-actions";
 
 export interface TechItem {
   name: string;
@@ -52,7 +56,8 @@ export type TechCategoryKey =
   | "backend"
   | "databases"
   | "cloud"
-  | "tools";
+  | "tools"
+  | "ai-llm";
 
 export interface TechCategory {
   id: TechCategoryKey;
