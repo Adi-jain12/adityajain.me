@@ -152,7 +152,7 @@ export function CurrentExperienceSection() {
                     <li key={item} className="flex gap-4 sm:gap-5">
                       <span
                         aria-hidden
-                        className="font-display text-2xl font-black leading-none text-accent/35 sm:text-3xl"
+                        className="pt-1 font-display text-lg font-black leading-none text-accent/35"
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
