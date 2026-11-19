@@ -12,11 +12,11 @@ export const siteConfig = {
   },
   email: "jaditya98@gmail.com",
   copyright: "© Aditya Jain 2026",
-  // contact: {
-  //   email: "jaditya98@gmail.com",
-  //   phone: "+91 9825000000",
-  //   address: "Ahmedabad, India",
-  // },
+  contact: {
+    email: "jaditya98@gmail.com",
+    phone: "+91 9825000000",
+    address: "Ahmedabad, India",
+  },
 
   location: {
     tagline: "Coding and Building . . .",
