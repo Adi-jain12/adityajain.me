@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Aditya Jain",
   title: "Aditya Jain | Full-Stack Developer",
+  "designation": "Full-Stack Developer",
   description:
     "Full-Stack Developer building modern web applications from frontend to backend, focused on performance, scalability, and user experience.",
    url: "https://www.adityajaindev.com",
@@ -31,6 +32,7 @@ export const siteConfig = {
     { label: "Node.js", href: "https://nodejs.org/" },
     { label: "MongoDB", href: "https://www.mongodb.com/" },
     { label: "PostgreSQL", href: "https://www.postgresql.org/" },
+
   ],
 
   navLinks: [

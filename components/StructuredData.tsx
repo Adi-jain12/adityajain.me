@@ -5,7 +5,7 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: siteConfig.name,
-    jobTitle: "Full-Stack Developer",
+    jobTitle: siteConfig.designation,
     url: siteConfig.url,
     sameAs: siteConfig.socialLinks.map((link) => link.href),
     knowsAbout: siteConfig.techStack,
